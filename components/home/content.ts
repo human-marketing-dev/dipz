@@ -14,6 +14,8 @@ export const photos = {
   copeliaFachada: { src: "/copelia/render-fachada-copelia.webp", alt: "Fachada de Copelia", position: "70% center" },
   copeliaTerraza: { src: "/copelia/amenidades-terraza-copelia.webp", alt: "Terraza de Copelia con vista a Valle Oriente" },
   copeliaDepto: { src: "/copelia/sala-comedor-departamento-copelia.webp", alt: "Sala comedor de un departamento en Copelia" },
+  piamontRooftop: { src: "/piamont/amenidades-rooftop-piamont.webp", alt: "Rooftop de Piamont" },
+  piamontPiscina: { src: "/piamont/amenidades-piscina-piamont.webp", alt: "Piscina de Piamont" },
   ameliaTorre: { src: "/amelia/amelia-render.webp", alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
 };
 
@@ -87,7 +89,7 @@ export const unidades = {
       capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
       link: "Conocer DIPZ Development",
       drawing: "slab" as Drawing,
-      photo: undefined as Photo | undefined,
+      photo: photos.piamontRooftop as Photo | undefined,
     },
     {
       name: "Amelia Living",
@@ -97,7 +99,7 @@ export const unidades = {
       capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
       link: "Conocer Amelia Living",
       drawing: "interior" as Drawing,
-      photo: undefined as Photo | undefined,
+      photo: photos.ameliaTorre as Photo | undefined,
     },
     {
       name: "Fresh Coco",
@@ -107,7 +109,7 @@ export const unidades = {
       capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
       link: "Conocer Fresh Coco",
       drawing: "landscape" as Drawing,
-      photo: undefined as Photo | undefined,
+      photo: photos.piamontPiscina as Photo | undefined,
     },
   ],
 };
