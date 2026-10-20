@@ -15,7 +15,7 @@ export function ZeroGravity() {
         </Reveal>
       </div>
 
-      <ScrollWords text={zg.paragraph} className="mt-16 type-statement md:mt-40 md:max-w-[1180px]" />
+      <ScrollWords text={zg.paragraph} className="mt-10 type-statement md:mt-16 md:max-w-[1180px]" />
 
       <div className="mt-20 md:mt-30">
         <p className="type-eyebrow text-ink-muted">{zg.stagesTitle}</p>
