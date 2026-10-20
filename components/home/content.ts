@@ -186,22 +186,24 @@ export const presencia = {
   paragraph:
     "Nuestra operación se concentra en Monterrey y San Pedro Garza García, con presencia en las principales ciudades de México y expansión hacia Estados Unidos.",
   // Ciudades con presencia, en coordenadas del SVG de components/home/mexico-map.ts (viewBox 793 × 498),
-  // proyectadas desde su latitud y longitud.
+  // proyectadas desde su latitud y longitud. `label` es el lado y la altura de su etiqueta: las líneas
+  // salen del punto en vertical hasta esa altura y luego en horizontal, sin cruzarse entre sí.
   cities: [
-    { name: "Tijuana", state: "Baja California", x: 35.8, y: 6.4 },
-    { name: "Hermosillo", state: "Sonora", x: 187.2, y: 106.5 },
-    { name: "Chihuahua", state: "Chihuahua", x: 308.6, y: 118.7 },
-    { name: "Culiacán", state: "Sinaloa", x: 276.2, y: 225.5 },
-    { name: "Monterrey", state: "Nuevo León", x: 452.3, y: 201.1 },
-    { name: "San Pedro", state: "Nuevo León", x: 450.3, y: 201.9 },
-    { name: "Aguascalientes", state: "Aguascalientes", x: 403.2, y: 304.5 },
-    { name: "León", state: "Guanajuato", x: 418.4, y: 324.8 },
-    { name: "Guadalajara", state: "Jalisco", x: 376.8, y: 336.8 },
-    { name: "CDMX", state: "Ciudad de México", x: 481.9, y: 369.6 },
-    { name: "Tabasco", state: "Tabasco", x: 636.4, y: 407.4 },
-    { name: "Mérida", state: "Yucatán", x: 718.8, y: 328.8 },
-    { name: "Tulum", state: "Quintana Roo", x: 772.4, y: 349.0 },
-  ],
+    { name: "Tijuana", state: "Baja California", x: 35.8, y: 6.4, label: { side: "left", y: 70 } },
+    { name: "Hermosillo", state: "Sonora", x: 187.2, y: 106.5, label: { side: "left", y: 140 } },
+    { name: "Chihuahua", state: "Chihuahua", x: 308.6, y: 118.7, label: { side: "left", y: 210 } },
+    { name: "Culiacán", state: "Sinaloa", x: 276.2, y: 225.5, label: { side: "left", y: 280 } },
+    { name: "Guadalajara", state: "Jalisco", x: 376.8, y: 336.8, label: { side: "left", y: 350 } },
+    { name: "Aguascalientes", state: "Aguascalientes", x: 403.2, y: 304.5, label: { side: "left", y: 420 } },
+    { name: "León", state: "Guanajuato", x: 418.4, y: 324.8, label: { side: "left", y: 490 } },
+    { name: "Monterrey", state: "Nuevo León", x: 452.3, y: 201.1, label: { side: "right", y: 130 } },
+    { name: "San Pedro", state: "Nuevo León", x: 450.3, y: 201.9, label: { side: "right", y: 201.9 } },
+    { name: "Mérida", state: "Yucatán", x: 718.8, y: 328.8, label: { side: "right", y: 270 } },
+    { name: "Tulum", state: "Quintana Roo", x: 772.4, y: 349.0, label: { side: "right", y: 340 } },
+    { name: "Tabasco", state: "Tabasco", x: 636.4, y: 407.4, label: { side: "right", y: 410 } },
+    { name: "Puebla", state: "Puebla", x: 505.1, y: 379.7, label: { side: "right", y: 480 } },
+    { name: "CDMX", state: "Ciudad de México", x: 481.9, y: 369.6, label: { side: "right", y: 550 } },
+  ] as { name: string; state: string; x: number; y: number; label: { side: "left" | "right"; y: number } }[],
 };
 
 export const rutas = {

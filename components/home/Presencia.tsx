@@ -7,103 +7,112 @@ import { mexicoStates, mexicoViewBox } from "./mexico-map";
 
 const [, , W, H] = mexicoViewBox.split(" ").map(Number);
 
+// Lienzo ampliado: el mapa al centro y una columna de etiquetas a cada lado.
+const SIDE = 200;
+const GAP = 24;
+const TOP = -10;
+const VW = W + SIDE * 2;
+const VH = 580;
+const lineEnd = { left: -GAP, right: W + GAP };
+
+const pct = (x: number, y: number) => ({
+  left: `${((x + SIDE) / VW) * 100}%`,
+  top: `${((y - TOP) / VH) * 100}%`,
+});
+
 // Mapa de puntos: una retícula de puntos recortada con la silueta de la república.
-// Al pasar por una ciudad (en el mapa o en la lista) aparece su etiqueta.
-function MapaMexico({
-  active,
-  onActive,
-}: {
-  active: number;
-  onActive: (i: number) => void;
-}) {
-  const city = presencia.cities[active];
-  const below = city.y < 60;
+// En escritorio todas las ciudades están rotuladas con líneas guía hacia los costados;
+// al pasar por una, su línea se marca en verde. Monterrey es la sede.
+function MapaMexico({ callouts }: { callouts: boolean }) {
+  const [hover, setHover] = useState<number | null>(null);
+  const viewBox = callouts ? `${-SIDE} ${TOP} ${VW} ${VH}` : mexicoViewBox;
+  const id = callouts ? "mx-lg" : "mx-sm";
+
   return (
     <div className="relative">
-      <svg viewBox={mexicoViewBox} className="w-full overflow-visible">
+      <svg viewBox={viewBox} className="w-full overflow-visible" aria-hidden>
         <defs>
-          <pattern
-            id="mx-dots"
-            width="7"
-            height="7"
-            patternUnits="userSpaceOnUse"
-          >
-            <circle
-              cx="3.5"
-              cy="3.5"
-              r="1.7"
-              className="fill-gris-grafito/50"
-            />
+          <pattern id={`${id}-dots`} width="7" height="7" patternUnits="userSpaceOnUse">
+            <circle cx="3.5" cy="3.5" r="1.7" className="fill-gris-grafito/50" />
           </pattern>
-          <clipPath id="mx-clip">
+          <clipPath id={`${id}-clip`}>
             {mexicoStates.map((s) => (
               <path key={s.id} d={s.path} />
             ))}
           </clipPath>
         </defs>
-        <rect
-          width={W}
-          height={H}
-          fill="url(#mx-dots)"
-          clipPath="url(#mx-clip)"
-        />
+        <rect width={W} height={H} fill={`url(#${id}-dots)`} clipPath={`url(#${id}-clip)`} />
 
-        {/* La ciudad activa se dibuja al final para quedar encima (Monterrey y San Pedro se tocan) */}
-        {presencia.cities
-          .map((c, i) => ({ c, i }))
-          .sort((a, b) => Number(a.i === active) - Number(b.i === active))
-          .map(({ c, i }) => (
+        {callouts &&
+          presencia.cities.map((c, i) => {
+            const end = lineEnd[c.label.side];
+            const on = hover === i;
+            return (
+              <g key={c.name} className={`transition-colors duration-300 ${on ? "stroke-accent fill-accent" : "stroke-ink-muted/60 fill-ink-muted"}`}>
+                <path
+                  d={`M${c.x} ${c.y} V${c.label.y} H${end}`}
+                  pathLength={1}
+                  fill="none"
+                  vectorEffect="non-scaling-stroke"
+                  className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] duration-[1400ms] ease-[var(--ease-dipz)] group-data-[shown=true]/map:[stroke-dashoffset:0]"
+                  style={{ transitionDelay: `${0.3 + i * 0.06}s` }}
+                />
+                <circle cx={end} cy={c.label.y} r="2.5" className="stroke-none" />
+              </g>
+            );
+          })}
+
+        {/* Monterrey (sede) se dibuja al final para quedar encima de San Pedro */}
+        {[...presencia.cities.entries()].sort(([, a], [, b]) => Number(a.name === "Monterrey") - Number(b.name === "Monterrey")).map(([i, c]) => {
+          const sede = c.name === "Monterrey";
+          const on = hover === i || sede;
+          return (
             <g
               key={c.name}
-              role="button"
-              tabIndex={0}
-              aria-label={`${c.name}, ${c.state}`}
-              onMouseEnter={() => onActive(i)}
-              onFocus={() => onActive(i)}
-              className="cursor-pointer outline-none"
+              onMouseEnter={callouts ? () => setHover(i) : undefined}
+              onMouseLeave={callouts ? () => setHover(null) : undefined}
             >
-              <circle cx={c.x} cy={c.y} r="14" className="fill-transparent" />
-              {i === active && (
-                <circle
-                  cx={c.x}
-                  cy={c.y}
-                  r="6"
-                  className="ping-dipz fill-accent"
-                />
-              )}
+              <circle cx={c.x} cy={c.y} r="12" className="fill-transparent" />
+              {sede && <circle cx={c.x} cy={c.y} r="5" className="ping-dipz fill-accent" />}
               <circle
                 cx={c.x}
                 cy={c.y}
-                r={i === active ? 6 : 3.5}
-                className={`transition-all duration-300 ${i === active ? "fill-accent" : "fill-negro-profundo"}`}
+                r={on ? 5 : 4}
+                className={`stroke-surface transition-all duration-300 ${on ? "fill-accent" : "fill-negro-profundo"}`}
+                strokeWidth="1.5"
               />
             </g>
-          ))}
+          );
+        })}
       </svg>
 
-      <span
-        className="pointer-events-none absolute flex items-center gap-2 rounded-pill bg-negro-profundo py-1.5 pr-4 pl-3 type-caption whitespace-nowrap text-ink-inverse transition-[left,top] duration-500 ease-[var(--ease-dipz)]"
-        style={{
-          left: `${(city.x / W) * 100}%`,
-          top: `${(city.y / H) * 100}%`,
-          transform: `translate(-50%, ${below ? "16px" : "calc(-100% - 16px)"})`,
-        }}
-      >
-        <span className="size-1.5 rounded-pill bg-accent" />
-        {city.name}
-        <span className="text-arena">{city.state}</span>
-      </span>
+      {callouts &&
+        presencia.cities.map((c, i) => {
+          const left = c.label.side === "left";
+          const on = hover === i;
+          return (
+            <span
+              key={c.name}
+              onMouseEnter={() => setHover(i)}
+              onMouseLeave={() => setHover(null)}
+              className={`absolute -translate-y-2.5 whitespace-nowrap ${left ? "-translate-x-full pr-3 text-right" : "pl-3"}`}
+              style={pct(lineEnd[c.label.side], c.label.y)}
+            >
+              <span className={`block type-label uppercase transition-colors duration-300 ${on ? "text-accent" : "text-ink"}`}>
+                {c.name}
+              </span>
+              <span className="block type-caption text-ink-muted">{c.state}</span>
+            </span>
+          );
+        })}
     </div>
   );
 }
 
 export function Presencia() {
-  const monterrey = presencia.cities.findIndex((c) => c.name === "Monterrey");
-  const [active, setActive] = useState(monterrey);
-
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
-      <div className="md:grid md:grid-cols-6 md:gap-x-6">
+      <div className="md:grid md:grid-cols-6 md:items-end md:gap-x-6">
         <div className="md:col-span-3">
           <Reveal as="p" className="type-eyebrow text-ink-muted">
             {presencia.eyebrow}
@@ -111,42 +120,30 @@ export function Presencia() {
           <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
             {presencia.title}
           </Reveal>
-          <Reveal
-            as="p"
-            delay={0.2}
-            className="mt-6 max-w-[480px] type-body-lg text-ink-muted"
-          >
-            {presencia.paragraph}
-          </Reveal>
-
-          <ul className="mt-10 grid grid-cols-2 gap-x-6 border-t border-line sm:grid-cols-3 md:max-w-[560px]">
-            {presencia.cities.map((c, i) => (
-              <li key={c.name} className="border-b border-line">
-                <button
-                  type="button"
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  className={`flex w-full items-center gap-2 py-3 text-left type-small transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${i === active ? "text-ink" : "text-ink-muted hover:text-ink"}`}
-                >
-                  <span
-                    className={`size-1.5 shrink-0 rounded-pill transition-colors duration-300 ${i === active ? "bg-accent" : "bg-line/40"}`}
-                  />
-                  {c.name}
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
-
-        <Reveal
-          delay={0.2}
-          className="mt-12 md:col-span-3 md:col-start-4 md:mt-0 md:self-end"
-        >
-          <div className="md:max-w-[620px] md:ml-auto">
-            <MapaMexico active={active} onActive={setActive} />
-          </div>
+        <Reveal as="p" delay={0.2} className="mt-6 max-w-[480px] type-body-lg text-ink-muted md:col-span-3 md:col-start-4 md:mt-0">
+          {presencia.paragraph}
         </Reveal>
+      </div>
+
+      {/* Escritorio: mapa al centro con todas las ciudades rotuladas */}
+      <Reveal delay={0.2} className="group/map mx-auto mt-16 hidden max-w-[1040px] lg:block">
+        <MapaMexico callouts />
+      </Reveal>
+
+      {/* Móvil y tableta: mapa con puntos y la lista debajo */}
+      <div className="lg:hidden">
+        <Reveal delay={0.2} className="mt-12">
+          <MapaMexico callouts={false} />
+        </Reveal>
+        <ul className="mt-10 grid grid-cols-2 gap-x-6 border-t border-line sm:grid-cols-3">
+          {presencia.cities.map((c) => (
+            <li key={c.name} className="flex items-center gap-2 border-b border-line py-3 type-small text-ink">
+              <span className={`size-1.5 shrink-0 rounded-pill ${c.name === "Monterrey" ? "bg-accent" : "bg-negro-profundo"}`} />
+              {c.name}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
