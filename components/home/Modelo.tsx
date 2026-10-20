@@ -1,6 +1,4 @@
-import { ArrowLink } from "@/components/ui/ArrowLink";
 import { DrawLine } from "@/components/ui/DrawLine";
-import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { modelo } from "./content";
 
@@ -40,31 +38,6 @@ export function Modelo() {
         </div>
       </section>
 
-      {/* Caso destacado a sangre: la vida dentro (en 06 va la fachada) */}
-      <section data-nav="dark" className="relative flex min-h-[100dvh] items-end overflow-hidden bg-surface-inverse text-ink-inverse">
-        <div className="absolute inset-0">
-          <Media photo={modelo.caso.photo} label="Interior en operación, Amelia Santa Lucía" drawing="interior" tone="graphite" className="size-full" />
-        </div>
-        <div className="absolute inset-0 bg-negro-profundo/30 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/45 to-transparent" />
-        <div className="frame relative w-full pb-12 md:grid md:grid-cols-6 md:items-end md:gap-x-6 md:pb-20">
-          <div className="md:col-span-3">
-            <Reveal as="p" className="type-eyebrow text-arena">
-              {modelo.caso.eyebrow}
-            </Reveal>
-            <Reveal as="h2" delay={0.1} className="mt-6 type-display-xl">
-              {modelo.caso.title}
-            </Reveal>
-          </div>
-          <Reveal delay={0.2} className="mt-8 md:col-span-2 md:col-start-5 md:mt-0">
-            <p className="type-body-lg text-arena">{modelo.caso.text}</p>
-            <div className="mt-8">
-              <ArrowLink href={modelo.caso.link.href} variant="light">
-                {modelo.caso.link.label}
-              </ArrowLink>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

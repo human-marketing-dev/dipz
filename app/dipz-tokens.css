@@ -16,10 +16,10 @@
   --ink: var(--negro-profundo);
   --ink-muted: var(--gris-grafito);
   --ink-inverse: var(--blanco-calido);
-  --accent: var(--terracota);
-  --accent-alt: var(--verde-salvia);
+  --accent: var(--verde-salvia);
+  --accent-alt: var(--terracota);
   --line: var(--gris-grafito);
-  --focus: var(--terracota);
+  --focus: var(--verde-salvia);
 
   /* Espaciado */
   --space-1: 4px;
@@ -89,6 +89,7 @@
   line-height: 38px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 @utility type-h3 {
   font-family: var(--dipz-font-display);
@@ -96,6 +97,7 @@
   line-height: 28px;
   font-weight: 600;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 @utility type-eyebrow {
   font-family: var(--dipz-font-display);

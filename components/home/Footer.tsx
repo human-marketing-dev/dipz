@@ -39,13 +39,25 @@ export function Footer() {
         ))}
       </div>
 
-      <Image
-        src="/brand/dipz-wordmark-blanco.png"
-        alt="DIPZ"
-        width={2640}
-        height={1097}
-        className="mt-20 w-full md:mt-30"
-      />
+      {/* Logotipo sobre el patrón del monograma: la repetición de la D que se desvanece hacia abajo */}
+      <div className="relative -mx-6 mt-20 overflow-hidden md:mt-30">
+        <Image
+          src="/brand/dipz-patron-monograma.png"
+          alt=""
+          width={8000}
+          height={4500}
+          className="pointer-events-none w-full opacity-40 mix-blend-screen invert"
+        />
+        <div className="absolute inset-x-6 bottom-6 flex flex-col gap-6 md:inset-x-[var(--margin)] md:bottom-12 md:flex-row md:items-end md:justify-between">
+          <Image
+            src="/brand/dipz-logo-blanco-recorte.png"
+            alt="DIPZ, The future of real estate"
+            width={2640}
+            height={1267}
+            className="w-44 md:w-80"
+          />
+        </div>
+      </div>
 
       <div className="mt-6 flex flex-col gap-2 border-t border-blanco-calido/20 pt-4 type-caption text-arena md:flex-row md:justify-between">
         <span>© 2026 DIPZ. Todos los derechos reservados.</span>

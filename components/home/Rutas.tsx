@@ -1,9 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { rutas } from "./content";
 
+// Índice editorial: tres filas con regla, como una lista de servicios. La foto de la izquierda
+// cambia según la ruta activa; la fila activa queda en tinta y las demás en gris.
 export function Rutas() {
+  const [active, setActive] = useState(0);
+
   return (
     <section id="rutas" data-nav="light" className="frame border-t border-line/30 bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -15,40 +22,59 @@ export function Rutas() {
         </Reveal>
       </div>
 
-      <ul className="mt-12 grid gap-6 md:mt-20 md:grid-cols-3">
-        {rutas.cards.map((c, i) => (
-          <Reveal as="li" key={c.n} delay={i * 0.12}>
-            {/* La tarjeta se invierte a negro-profundo al pasar el cursor */}
-            <a
-              href="#contacto"
-              className="group flex h-full flex-col border border-line bg-surface transition-colors duration-500 hover:bg-negro-profundo hover:text-ink-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-            >
-              <div className="overflow-hidden">
-                <Media
-                  photo={c.photo}
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  label={c.name}
-                  drawing={c.drawing}
-                  tone="sand"
-                  showCaption={false}
-                  className="aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
-                />
+      <div className="mt-12 md:mt-20 md:grid md:grid-cols-6 md:gap-x-6">
+        {/* Foto de la ruta activa, del margen al riel 1/3 */}
+        <div className="relative hidden md:col-span-2 md:block">
+          <div className="sticky top-30 aspect-[4/5]">
+            {rutas.cards.map((c, i) => (
+              <div
+                key={c.n}
+                className={`absolute inset-0 transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}
+                aria-hidden={i !== active}
+              >
+                <Media photo={c.photo} sizes="33vw" label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="size-full" />
               </div>
-              <div className="flex flex-1 flex-col p-6 md:p-8">
-                <span className="type-eyebrow text-ink-muted transition-colors duration-500 group-hover:text-arena">{c.n}</span>
-                <h3 className="mt-6 type-h2">{c.name}</h3>
-                <p className="mt-4 max-w-[360px] flex-1 type-body text-ink-muted transition-colors duration-500 group-hover:text-arena">{c.text}</p>
-                <span className="mt-10 flex items-center justify-between border-t border-current/20 pt-5 type-label">
-                  {c.link}
-                  <span className="grid size-10 place-items-center rounded-pill border border-current transition-colors duration-500 group-hover:border-accent group-hover:bg-accent">
-                    <Arrow className="arrow-nudge" />
+            ))}
+            <span className="absolute bottom-4 left-4 rounded-pill bg-blanco-calido px-3 py-1 type-caption text-ink">
+              {rutas.cards[active].n} / 0{rutas.cards.length}
+            </span>
+          </div>
+        </div>
+
+        <ol className="border-t border-line md:col-span-4">
+          {rutas.cards.map((c, i) => (
+            <li key={c.n} className="border-b border-line">
+              <a
+                href="#contacto"
+                onMouseEnter={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                className="group grid gap-4 py-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus md:grid-cols-4 md:gap-6 md:py-12"
+              >
+                <Media photo={c.photo} sizes="100vw" label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="aspect-[4/3] md:hidden" />
+                <span className="type-eyebrow text-ink-muted">{c.n}</span>
+                <span className="md:col-span-3">
+                  <span
+                    className={`block type-h2 transition-colors duration-500 md:type-h1 ${i === active ? "text-ink" : "text-ink md:text-ink-muted/60 md:group-hover:text-ink"}`}
+                  >
+                    {c.name}
+                  </span>
+                  <span className="mt-5 grid gap-6 md:grid-cols-3">
+                    <span className="max-w-[420px] type-body text-ink-muted md:col-span-2">{c.text}</span>
+                    <span className="flex items-start gap-3 type-label whitespace-nowrap md:justify-end">
+                      <span className="border-b border-current pb-0.5">{c.link}</span>
+                      <span
+                        className={`grid size-8 shrink-0 place-items-center rounded-pill border transition-colors duration-500 ${i === active ? "border-accent bg-accent text-ink-inverse" : "border-line"}`}
+                      >
+                        <Arrow className="arrow-nudge" />
+                      </span>
+                    </span>
                   </span>
                 </span>
-              </div>
-            </a>
-          </Reveal>
-        ))}
-      </ul>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

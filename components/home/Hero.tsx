@@ -43,11 +43,7 @@ export function Hero() {
               {hero.eyebrow}
             </Reveal>
             <Reveal as="h1" delay={0.1} className="mt-6 type-display-xl">
-              {hero.title.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
+              {hero.title}
             </Reveal>
           </div>
         </div>

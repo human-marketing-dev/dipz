@@ -20,7 +20,7 @@ export const photos = {
 
 export const hero = {
   eyebrow: "Grupo inmobiliario",
-  title: ["Desarrollamos el lugar.", "Operamos la experiencia."],
+  title: "Elevamos la forma de vivir y de invertir.",
   subtitle:
     "Más de 20 años creando proyectos que generan valor para quienes invierten y elevan la vida de quienes los habitan.",
   primary: { label: "Ver desarrollos", href: "#desarrollos" },
@@ -40,7 +40,6 @@ export const respaldo = {
 export const zeroGravity = {
   eyebrow: "Nuestra filosofía",
   title: "Zero Gravity",
-  statement: "Nosotros cargamos el peso. Tú ganas altura.",
   paragraph:
     "Desarrollar un proyecto, estructurar una inversión y administrar una propiedad exigen tiempo, conocimiento y operación constante. En DIPZ asumimos esa parte. Lo que llega a nuestros clientes es la otra: un patrimonio que crece, una propiedad que produce y una forma de vivir que se siente ligera.",
   stagesTitle: "Tres etapas que absorbemos",
@@ -124,13 +123,6 @@ export const modelo = {
     { n: "03", name: "Entregamos", text: "El propietario recibe una propiedad lista para habitar o para producir." },
     { n: "04", name: "Operamos", text: "Amelia Living y Fresh Coco se hacen cargo de la operación, la ocupación y la experiencia." },
   ],
-  caso: {
-    eyebrow: "El modelo completo en un solo activo",
-    title: "Amelia Santa Lucía",
-    text: "DIPZ desarrolla la torre y Amelia Living opera cada departamento, su ocupación y la experiencia de quienes viven en ella. El propietario invierte una vez y recibe resultados sin administrar nada.",
-    link: { label: "Ver el proyecto", href: "#amelia-santa-lucia" },
-    photo: photos.ameliaTorre,
-  },
 };
 
 export const desarrollos = {
@@ -193,12 +185,10 @@ export const presencia = {
   title: "Donde desarrollamos",
   paragraph:
     "Nuestra operación se concentra en Monterrey y San Pedro Garza García, con presencia en las principales ciudades de México y expansión hacia Estados Unidos.",
-  cities: [
-    { name: "Monterrey", note: "Nuevo León" },
-    { name: "San Pedro Garza García", note: "Nuevo León" },
-    { name: "Estados Unidos", note: "Expansión" },
-  ],
-  pending: "Ciudades por confirmar",
+  // Etiquetas del mapa, en coordenadas del SVG de components/home/mexico-map.ts (viewBox 793 × 498).
+  // Las ciudades restantes se agregan cuando el cliente las confirme.
+  cities: [{ name: "Monterrey · San Pedro", state: "Nuevo León", x: 451, y: 201 }],
+  pending: "Más ciudades por confirmar",
 };
 
 export const rutas = {
