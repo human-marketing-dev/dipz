@@ -18,8 +18,9 @@ const columns = [
 export function Footer() {
   return (
     <footer data-nav="dark" className="relative isolate overflow-hidden bg-verde-salvia px-6 pt-16 pb-6 text-ink-inverse md:px-[var(--margin)] md:pt-30">
-      {/* Fondo: textura verde de la marca */}
-      <Image src="/brand/textura-verde-dipz.webp" alt="" fill sizes="100vw" className="-z-10 object-cover" />
+      {/* Fondo: textura verde de la marca. Textura y logo van sin optimizar: la recompresión
+          de next/image ensucia el grano y el relieve. */}
+      <Image src="/brand/textura-verde-dipz.webp" alt="" fill unoptimized className="-z-10 object-cover" />
 
       <div className="grid gap-10 md:grid-cols-4 md:gap-6">
         {columns.map((c) => (
@@ -50,7 +51,7 @@ export function Footer() {
           alt="DIPZ, The future of real estate"
           width={2000}
           height={2000}
-          sizes="(min-width: 768px) 720px, 100vw"
+          unoptimized
           className="size-full scale-125 object-cover mix-blend-multiply"
         />
       </div>
