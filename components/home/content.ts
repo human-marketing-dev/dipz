@@ -185,10 +185,23 @@ export const presencia = {
   title: "Donde desarrollamos",
   paragraph:
     "Nuestra operación se concentra en Monterrey y San Pedro Garza García, con presencia en las principales ciudades de México y expansión hacia Estados Unidos.",
-  // Etiquetas del mapa, en coordenadas del SVG de components/home/mexico-map.ts (viewBox 793 × 498).
-  // Las ciudades restantes se agregan cuando el cliente las confirme.
-  cities: [{ name: "Monterrey · San Pedro", state: "Nuevo León", x: 451, y: 201 }],
-  pending: "Más ciudades por confirmar",
+  // Ciudades con presencia, en coordenadas del SVG de components/home/mexico-map.ts (viewBox 793 × 498),
+  // proyectadas desde su latitud y longitud.
+  cities: [
+    { name: "Tijuana", state: "Baja California", x: 35.8, y: 6.4 },
+    { name: "Hermosillo", state: "Sonora", x: 187.2, y: 106.5 },
+    { name: "Chihuahua", state: "Chihuahua", x: 308.6, y: 118.7 },
+    { name: "Culiacán", state: "Sinaloa", x: 276.2, y: 225.5 },
+    { name: "Monterrey", state: "Nuevo León", x: 452.3, y: 201.1 },
+    { name: "San Pedro", state: "Nuevo León", x: 450.3, y: 201.9 },
+    { name: "Aguascalientes", state: "Aguascalientes", x: 403.2, y: 304.5 },
+    { name: "León", state: "Guanajuato", x: 418.4, y: 324.8 },
+    { name: "Guadalajara", state: "Jalisco", x: 376.8, y: 336.8 },
+    { name: "CDMX", state: "Ciudad de México", x: 481.9, y: 369.6 },
+    { name: "Tabasco", state: "Tabasco", x: 636.4, y: 407.4 },
+    { name: "Mérida", state: "Yucatán", x: 718.8, y: 328.8 },
+    { name: "Tulum", state: "Quintana Roo", x: 772.4, y: 349.0 },
+  ],
 };
 
 export const rutas = {

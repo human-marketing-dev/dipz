@@ -58,12 +58,12 @@ export function Rutas() {
                   >
                     {c.name}
                   </span>
-                  <span className="mt-5 grid gap-6 md:grid-cols-3">
-                    <span className="max-w-[420px] type-body text-ink-muted md:col-span-2">{c.text}</span>
-                    <span className="flex items-start gap-3 type-label whitespace-nowrap md:justify-end">
-                      <span className="border-b border-current pb-0.5">{c.link}</span>
+                  <span className="mt-5 block max-w-[480px] type-body text-ink-muted">{c.text}</span>
+                  <span className="mt-8 flex">
+                    <span className="inline-flex items-center gap-4 rounded-pill border border-line py-2 pr-2 pl-6 type-label whitespace-nowrap transition-colors duration-500 group-hover:border-negro-profundo group-hover:bg-negro-profundo group-hover:text-ink-inverse">
+                      {c.link}
                       <span
-                        className={`grid size-8 shrink-0 place-items-center rounded-pill border transition-colors duration-500 ${i === active ? "border-accent bg-accent text-ink-inverse" : "border-line"}`}
+                        className={`grid size-10 shrink-0 place-items-center rounded-pill transition-colors duration-500 ${i === active ? "bg-accent text-ink-inverse" : "bg-negro-profundo text-ink-inverse"}`}
                       >
                         <Arrow className="arrow-nudge" />
                       </span>
