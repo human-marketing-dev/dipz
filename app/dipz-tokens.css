@@ -1,0 +1,152 @@
+/* Dipz — tokens de marca. Generado desde el design system de Dipz (tokens.json). */
+
+:root {
+  /* Paleta */
+  --negro-profundo: #191918;
+  --gris-grafito: #514d47;
+  --arena: #c9c1b4;
+  --blanco-calido: #f2f0eb;
+  --verde-salvia: #687665;
+  --terracota: #9d5129;
+
+  /* Roles */
+  --surface: var(--blanco-calido);
+  --surface-alt: var(--arena);
+  --surface-inverse: var(--negro-profundo);
+  --ink: var(--negro-profundo);
+  --ink-muted: var(--gris-grafito);
+  --ink-inverse: var(--blanco-calido);
+  --accent: var(--terracota);
+  --accent-alt: var(--verde-salvia);
+  --line: var(--gris-grafito);
+  --focus: var(--terracota);
+
+  /* Espaciado */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 120px;
+
+  /* Radios */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+
+  /* Familias (requieren las variables de next/font en <html>) */
+  --dipz-font-display: var(--font-commuters), var(--font-arimo), "Helvetica Neue", Arial, sans-serif;
+  --dipz-font-sans: var(--font-arimo), "Helvetica Neue", Arial, sans-serif;
+  --dipz-font-serif: var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
+}
+
+/* Tailwind v4: expone los tokens como utilidades (bg-surface, text-ink, font-display, rounded-pill…) */
+@theme inline {
+  --color-negro-profundo: var(--negro-profundo);
+  --color-gris-grafito: var(--gris-grafito);
+  --color-arena: var(--arena);
+  --color-blanco-calido: var(--blanco-calido);
+  --color-verde-salvia: var(--verde-salvia);
+  --color-terracota: var(--terracota);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-accent: var(--accent);
+  --color-accent-alt: var(--accent-alt);
+  --color-line: var(--line);
+  --color-focus: var(--focus);
+  --font-display: var(--dipz-font-display);
+  --font-sans: var(--dipz-font-sans);
+  --font-serif: var(--dipz-font-serif);
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+}
+
+/* Estilos de texto: clases type-* */
+@utility type-display {
+  font-family: var(--dipz-font-display);
+  font-size: 64px;
+  line-height: 68px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+@utility type-h1 {
+  font-family: var(--dipz-font-display);
+  font-size: 44px;
+  line-height: 50px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+@utility type-h2 {
+  font-family: var(--dipz-font-display);
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@utility type-h3 {
+  font-family: var(--dipz-font-display);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+@utility type-eyebrow {
+  font-family: var(--dipz-font-display);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+@utility type-body-lg {
+  font-family: var(--dipz-font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+@utility type-body {
+  font-family: var(--dipz-font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+@utility type-small {
+  font-family: var(--dipz-font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+@utility type-label {
+  font-family: var(--dipz-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+@utility type-caption {
+  font-family: var(--dipz-font-sans);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+@utility type-quote {
+  font-family: var(--dipz-font-serif);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 400;
+  font-style: italic;
+}
+@utility type-accent {
+  font-family: var(--dipz-font-serif);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 400;
+  font-style: italic;
+}
