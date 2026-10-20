@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ArrowLink } from "@/components/ui/ArrowLink";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { unidades } from "./content";
 
@@ -80,7 +80,7 @@ export function Unidades() {
               {/* Móvil: acordeón */}
               {i === active && (
                 <div className="pb-8 md:hidden">
-                  <Placeholder label={b.name} drawing={b.drawing} tone="graphite" className="mb-6 aspect-[4/3]" />
+                  <Media photo={b.photo} sizes="100vw" label={b.name} drawing={b.drawing} tone="graphite" className="mb-6 aspect-[4/3]" />
                   <BrandBody b={b} />
                 </div>
               )}
@@ -99,7 +99,7 @@ export function Unidades() {
               aria-hidden={i !== active}
               className={`grid grid-cols-2 gap-x-6 transition-opacity duration-700 ${i === active ? "relative opacity-100" : "pointer-events-none absolute inset-x-0 top-10 opacity-0"}`}
             >
-              <Placeholder label={b.name} drawing={b.drawing} tone="graphite" className="aspect-[4/5]" />
+              <Media photo={b.photo} sizes="33vw" label={b.name} drawing={b.drawing} tone="graphite" className="aspect-[4/5]" />
               <div className="flex flex-col justify-end">
                 <BrandBody b={b} />
               </div>

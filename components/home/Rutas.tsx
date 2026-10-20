@@ -1,5 +1,5 @@
 import { Arrow } from "@/components/ui/ArrowLink";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { rutas } from "./content";
 
@@ -24,7 +24,9 @@ export function Rutas() {
               className="group flex h-full flex-col border border-line bg-surface transition-colors duration-500 hover:bg-negro-profundo hover:text-ink-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
             >
               <div className="overflow-hidden">
-                <Placeholder
+                <Media
+                  photo={c.photo}
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   label={c.name}
                   drawing={c.drawing}
                   tone="sand"

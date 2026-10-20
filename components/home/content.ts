@@ -1,7 +1,22 @@
+import type { Photo } from "@/components/ui/Media";
+
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
 
 export type Drawing = "tower" | "slab" | "interior" | "landscape" | "street";
+
+// Fotos en /public (renders de cada desarrollo). Donde no hay foto todavía se usa el marcador de línea.
+export const photos = {
+  piamontAcceso: { src: "/piamont/frontal-acceso-piamont.webp", alt: "Acceso de Piamont al atardecer" },
+  piamontFachada: { src: "/piamont/fondo-fachada-piamont.webp", alt: "Fachada de Piamont en Valle del Campestre" },
+  piamontAereo: { src: "/piamont/aereo-piamont.webp", alt: "Vista aérea de San Pedro Garza García con la Sierra Madre" },
+  copeliaCiudad: { src: "/copelia/render-ciudad-copelia.webp", alt: "Copelia en el skyline de Valle Oriente" },
+  copeliaFachada: { src: "/copelia/render-fachada-copelia.webp", alt: "Fachada de Copelia", position: "70% center" },
+  copeliaTerraza: { src: "/copelia/amenidades-terraza-copelia.webp", alt: "Terraza de Copelia con vista a Valle Oriente" },
+  copeliaDepto: { src: "/copelia/sala-comedor-departamento-copelia.webp", alt: "Sala comedor de un departamento en Copelia" },
+  ameliaTorre: { src: "/amelia/amelia-render.webp", alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
+};
+
 
 export const hero = {
   eyebrow: "Grupo inmobiliario",
@@ -63,6 +78,7 @@ export const unidades = {
       capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Generación de valor"],
       link: "Conocer DIPZ Desarrollos",
       drawing: "street" as Drawing,
+      photo: photos.piamontAereo as Photo | undefined,
     },
     {
       name: "DIPZ Development",
@@ -72,6 +88,7 @@ export const unidades = {
       capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
       link: "Conocer DIPZ Development",
       drawing: "slab" as Drawing,
+      photo: undefined as Photo | undefined,
     },
     {
       name: "Amelia Living",
@@ -81,6 +98,7 @@ export const unidades = {
       capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
       link: "Conocer Amelia Living",
       drawing: "interior" as Drawing,
+      photo: undefined as Photo | undefined,
     },
     {
       name: "Fresh Coco",
@@ -90,6 +108,7 @@ export const unidades = {
       capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
       link: "Conocer Fresh Coco",
       drawing: "landscape" as Drawing,
+      photo: undefined as Photo | undefined,
     },
   ],
 };
@@ -110,6 +129,7 @@ export const modelo = {
     title: "Amelia Santa Lucía",
     text: "DIPZ desarrolla la torre y Amelia Living opera cada departamento, su ocupación y la experiencia de quienes viven en ella. El propietario invierte una vez y recibe resultados sin administrar nada.",
     link: { label: "Ver el proyecto", href: "#amelia-santa-lucia" },
+    photo: photos.ameliaTorre,
   },
 };
 
@@ -132,6 +152,8 @@ export const desarrollos = {
         { label: "Comercio", value: "7 locales" },
       ],
       drawing: "slab" as Drawing,
+      heroPhoto: photos.piamontAcceso,
+      photo: photos.piamontFachada,
     },
     {
       id: "copelia",
@@ -145,6 +167,8 @@ export const desarrollos = {
         { label: "Amenidades", value: "10" },
       ],
       drawing: "tower" as Drawing,
+      heroPhoto: photos.copeliaCiudad,
+      photo: photos.copeliaFachada,
     },
     {
       id: "amelia-santa-lucia",
@@ -158,6 +182,8 @@ export const desarrollos = {
         { label: "Operación", value: "Amelia Living" },
       ],
       drawing: "street" as Drawing,
+      heroPhoto: photos.ameliaTorre,
+      photo: photos.ameliaTorre,
     },
   ],
 };
@@ -185,6 +211,7 @@ export const rutas = {
       text: "Conoce cómo estructuramos cada oportunidad y qué modelos de inversión ofrecemos en México y en Estados Unidos.",
       link: "Hablar con un asesor",
       drawing: "street" as Drawing,
+      photo: photos.copeliaTerraza as Photo | undefined,
     },
     {
       n: "02",
@@ -192,6 +219,7 @@ export const rutas = {
       text: "Explora los desarrollos disponibles y encuentra el que corresponde a tu forma de vivir.",
       link: "Ver desarrollos",
       drawing: "interior" as Drawing,
+      photo: photos.copeliaDepto as Photo | undefined,
     },
     {
       n: "03",
@@ -199,6 +227,7 @@ export const rutas = {
       text: "Si ya tienes una propiedad en renta, Amelia Living puede operarla para que produzca sin que tengas que administrarla.",
       link: "Conocer el modelo",
       drawing: "slab" as Drawing,
+      photo: undefined as Photo | undefined,
     },
   ],
 };
@@ -211,9 +240,9 @@ export const perspectivas = {
   link: { label: "Ver todas las publicaciones", href: "#" },
   // Publicaciones de ejemplo: la estrategia editorial se define en la etapa de contenidos.
   posts: [
-    { date: "Octubre 2026", category: "Inversión", title: "Publicación de ejemplo: cómo se estructura una inversión inmobiliaria en preventa", drawing: "street" as Drawing },
-    { date: "Septiembre 2026", category: "Mercado", title: "Publicación de ejemplo: San Pedro y Valle Oriente, lectura del mercado residencial", drawing: "tower" as Drawing },
-    { date: "Agosto 2026", category: "Operación", title: "Publicación de ejemplo: renta administrada, qué recibe el propietario", drawing: "interior" as Drawing },
+    { date: "Octubre 2026", category: "Inversión", title: "Publicación de ejemplo: cómo se estructura una inversión inmobiliaria en preventa", drawing: "street" as Drawing, photo: photos.piamontAcceso },
+    { date: "Septiembre 2026", category: "Mercado", title: "Publicación de ejemplo: San Pedro y Valle Oriente, lectura del mercado residencial", drawing: "tower" as Drawing, photo: photos.copeliaCiudad },
+    { date: "Agosto 2026", category: "Operación", title: "Publicación de ejemplo: renta administrada, qué recibe el propietario", drawing: "interior" as Drawing, photo: photos.ameliaTorre },
   ],
 };
 

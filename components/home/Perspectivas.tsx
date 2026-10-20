@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ArrowLink, Arrow } from "@/components/ui/ArrowLink";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { perspectivas } from "./content";
 
@@ -64,8 +64,10 @@ export function Perspectivas() {
             style={{ transform: `translate(${pos.x + 24}px, ${pos.y - 80}px)` }}
           >
             {perspectivas.posts.map((p, i) => (
-              <Placeholder
+              <Media
                 key={p.title}
+                photo={p.photo}
+                sizes="256px"
                 label={p.category}
                 drawing={p.drawing}
                 tone="sand"

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowLink } from "@/components/ui/ArrowLink";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { desarrollos, hero } from "./content";
 
@@ -31,10 +31,10 @@ export function Hero() {
           aria-hidden={i !== active}
           className={`absolute inset-0 transition-opacity duration-[1500ms] ${i === active ? "opacity-100" : "opacity-0"}`}
         >
-          <Placeholder label={`Render de ${p.name}`} drawing={p.drawing} tone="graphite" className="size-full" showCaption={false} />
+          <Media photo={p.heroPhoto} preload={i === 0} label={`Render de ${p.name}`} drawing={p.drawing} tone="graphite" className="size-full" showCaption={false} />
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-negro-profundo/85 via-negro-profundo/45 to-negro-profundo/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/55 to-negro-profundo/35" />
 
       <div className="frame relative pt-32 pb-8 md:pb-10">
         <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -91,7 +91,9 @@ export function Hero() {
                     )}
                   </span>
                   <span className="mt-4 hidden overflow-hidden md:block">
-                    <Placeholder
+                    <Media
+                      photo={p.heroPhoto}
+                      sizes="25vw"
                       label={p.name}
                       drawing={p.drawing}
                       tone="dark"
