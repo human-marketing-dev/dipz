@@ -17,18 +17,21 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer data-nav="dark" className="bg-surface-inverse px-6 pt-16 pb-6 text-ink-inverse md:pt-30">
+    <footer data-nav="dark" className="relative isolate overflow-hidden bg-verde-salvia px-6 pt-16 pb-6 text-ink-inverse md:px-[var(--margin)] md:pt-30">
+      {/* Fondo: textura verde de la marca */}
+      <Image src="/brand/textura-verde-dipz.webp" alt="" fill sizes="100vw" className="-z-10 object-cover" />
+
       <div className="grid gap-10 md:grid-cols-4 md:gap-6">
         {columns.map((c) => (
           <div key={c.title}>
-            <p className="type-eyebrow text-arena">{c.title}</p>
-            <ul className="mt-5 border-t border-blanco-calido/20">
+            <p className="type-eyebrow text-blanco-calido/80">{c.title}</p>
+            <ul className="mt-5 border-t border-blanco-calido/30">
               {c.links.map((l) => (
-                <li key={l.label} className="border-b border-blanco-calido/20">
+                <li key={l.label} className="border-b border-blanco-calido/30">
                   {/* Al pasar, la fila se llena y el texto se recorre */}
                   <a
                     href={l.href}
-                    className="block px-2 py-3 type-small transition-[background-color,color,padding] duration-500 hover:bg-blanco-calido hover:pl-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                    className="block px-2 py-3 type-small transition-[background-color,color,padding] duration-500 hover:bg-blanco-calido hover:pl-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blanco-calido"
                   >
                     {l.label}
                   </a>
@@ -39,27 +42,20 @@ export function Footer() {
         ))}
       </div>
 
-      {/* Logotipo sobre el patrón del monograma: la repetición de la D que se desvanece hacia abajo */}
-      <div className="relative -mx-6 mt-20 overflow-hidden md:mt-30">
+      {/* Logotipo en relieve al centro. El archivo trae fondo blanco: con multiply el blanco
+          desaparece sobre la textura y solo queda el grabado. Se recorta el aire del cuadro. */}
+      <div className="mx-auto mt-16 aspect-[2/1] w-full max-w-[720px] overflow-hidden md:mt-24">
         <Image
-          src="/brand/dipz-patron-monograma.png"
-          alt=""
-          width={8000}
-          height={4500}
-          className="pointer-events-none w-full opacity-40 mix-blend-screen invert"
+          src="/brand/logo-bevel-emboss-dipz.webp"
+          alt="DIPZ, The future of real estate"
+          width={2000}
+          height={2000}
+          sizes="(min-width: 768px) 720px, 100vw"
+          className="size-full scale-125 object-cover mix-blend-multiply"
         />
-        <div className="absolute inset-x-6 bottom-6 flex flex-col gap-6 md:inset-x-[var(--margin)] md:bottom-12 md:flex-row md:items-end md:justify-between">
-          <Image
-            src="/brand/dipz-logo-blanco-recorte.png"
-            alt="DIPZ, The future of real estate"
-            width={2640}
-            height={1267}
-            className="w-44 md:w-80"
-          />
-        </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-2 border-t border-blanco-calido/20 pt-4 type-caption text-arena md:flex-row md:justify-between">
+      <div className="mt-16 flex flex-col gap-2 border-t border-blanco-calido/30 pt-4 type-caption text-blanco-calido/80 md:mt-24 md:flex-row md:justify-between">
         <span>© 2026 DIPZ. Todos los derechos reservados.</span>
         <span className="tracking-[0.3em] uppercase">The future of real estate</span>
         <a href="#" className="hover:text-blanco-calido">Aviso de privacidad</a>
