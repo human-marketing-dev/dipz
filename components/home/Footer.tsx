@@ -43,16 +43,16 @@ export function Footer() {
         ))}
       </div>
 
-      {/* Logotipo en relieve al centro. El archivo trae fondo blanco: con multiply el blanco
-          desaparece sobre la textura y solo queda el grabado. Se recorta el aire del cuadro. */}
-      <div className="mx-auto mt-16 aspect-[2/1] w-full max-w-[720px] overflow-hidden md:mt-24">
+      {/* Logotipo en relieve al centro. La imagen trae la misma textura de fondo: se recorta
+          el aire del cuadro y sus orillas se desvanecen con una máscara para fundirse con el fondo. */}
+      <div className="mx-auto mt-16 aspect-[2/1] w-full max-w-[840px] overflow-hidden [mask-image:radial-gradient(ellipse,black_60%,transparent_80%)] md:mt-24">
         <Image
-          src="/brand/logo-bevel-emboss-dipz.webp"
+          src="/brand/nuevo-fondo-logo-dipz.webp"
           alt="DIPZ, The future of real estate"
           width={2000}
           height={2000}
           unoptimized
-          className="size-full scale-125 object-cover mix-blend-multiply"
+          className="size-full object-cover"
         />
       </div>
 
