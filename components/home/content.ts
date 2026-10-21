@@ -14,6 +14,7 @@ export const photos = {
   copeliaFachada: { src: "/copelia/render-fachada-copelia.webp", alt: "Fachada de Copelia", position: "70% center" },
   copeliaTerraza: { src: "/copelia/amenidades-terraza-copelia.webp", alt: "Terraza de Copelia con vista a Valle Oriente" },
   copeliaDepto: { src: "/copelia/sala-comedor-departamento-copelia.webp", alt: "Sala comedor de un departamento en Copelia" },
+  copeliaSalaEstar: { src: "/copelia/amenidades-sala-de-estar-copelia.webp", alt: "Sala de estar en las amenidades de Copelia", position: "60% center" },
   piamontRooftop: { src: "/piamont/amenidades-rooftop-piamont.webp", alt: "Rooftop de Piamont" },
   piamontPiscina: { src: "/piamont/amenidades-piscina-piamont.webp", alt: "Piscina de Piamont" },
   ameliaTorre: { src: "/amelia/amelia-render.webp", alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
@@ -234,7 +235,7 @@ export const rutas = {
       text: "Si ya tienes una propiedad en renta, Amelia Living puede operarla para que produzca sin que tengas que administrarla.",
       link: "Conocer el modelo",
       drawing: "slab" as Drawing,
-      photo: undefined as Photo | undefined,
+      photo: photos.copeliaSalaEstar as Photo | undefined,
     },
   ],
 };
