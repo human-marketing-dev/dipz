@@ -16,10 +16,10 @@
   --ink: var(--negro-profundo);
   --ink-muted: var(--gris-grafito);
   --ink-inverse: var(--blanco-calido);
-  --accent: var(--terracota);
-  --accent-alt: var(--verde-salvia);
+  --accent: var(--verde-salvia);
+  --accent-alt: var(--terracota);
   --line: var(--gris-grafito);
-  --focus: var(--terracota);
+  --focus: var(--verde-salvia);
 
   /* Espaciado */
   --space-1: 4px;
@@ -89,6 +89,7 @@
   line-height: 38px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 @utility type-h3 {
   font-family: var(--dipz-font-display);
@@ -96,6 +97,7 @@
   line-height: 28px;
   font-weight: 600;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 @utility type-eyebrow {
   font-family: var(--dipz-font-display);
@@ -149,4 +151,51 @@
   line-height: 30px;
   font-weight: 400;
   font-style: italic;
+}
+
+/* ------------------------------------------------------------------
+   Propuesta de extensión del design system (primer draft del home).
+   Pendiente de validar e integrar al artifact "Dipz".
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Retícula: margen lateral único (24px móvil, 96px escritorio) */
+  --margin: 24px;
+
+  /* Movimiento */
+  --ease-dipz: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-1: 0.5s;
+  --duration-2: 1s;
+  --reveal-shift: 5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --margin: 96px;
+  }
+}
+
+/* Contenedor con el margen único: todo arranca en el mismo borde */
+@utility frame {
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+}
+
+/* Titular grande para hero, Zero Gravity y nombres de desarrollos (48–112px) */
+@utility type-display-xl {
+  font-family: var(--dipz-font-display);
+  font-size: clamp(30px, 5.6vw, 104px);
+  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Párrafo grande de declaración (mismo tamaño que h1, en Arimo) */
+@utility type-statement {
+  font-family: var(--dipz-font-sans);
+  font-size: clamp(24px, 3.06vw, 44px);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }

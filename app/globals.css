@@ -1,2 +1,72 @@
 @import "tailwindcss";
 @import "./dipz-tokens.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--negro-profundo);
+  color: var(--blanco-calido);
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Entrada con fundido y desplazamiento (ver components/ui/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-shift));
+  transition:
+    opacity var(--duration-2) var(--ease-dipz),
+    transform var(--duration-2) var(--ease-dipz);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* La flecha vibra a los lados dos veces al pasar el cursor */
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(4px); }
+  50% { transform: translateX(-2px); }
+  75% { transform: translateX(3px); }
+}
+.group:hover .arrow-nudge,
+.group:focus-visible .arrow-nudge {
+  animation: nudge var(--duration-1) var(--ease-dipz) 2;
+}
+
+/* Pulso del punto en el mapa */
+@keyframes ping-dipz {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+.ping-dipz {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ping-dipz 2.4s var(--ease-dipz) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .arrow-nudge, .ping-dipz { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+/* Barra de avance del slider del hero */
+@keyframes progress-dipz {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.progress-dipz {
+  animation: progress-dipz linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-dipz { animation: none; }
+}

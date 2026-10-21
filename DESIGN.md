@@ -45,14 +45,15 @@ Para Tailwind v3: usa `tailwind.config.v3.ts` como `tailwind.config.ts`, y en `d
 | `ink` | `text-ink` | `negro-profundo` #191918 | Texto principal |
 | `ink-muted` | `text-ink-muted` | `gris-grafito` #514D47 | Texto secundario, metadatos, pies de foto |
 | `ink-inverse` | `text-ink-inverse` | `blanco-calido` #F2F0EB | Texto sobre `surface-inverse` y sobre `accent` |
-| `accent` | `bg-accent` / `text-accent` | `terracota` #9D5129 | Botón primario, enlaces, foco |
-| `accent-alt` | `bg-accent-alt` | `verde-salvia` #687665 | Bloques de color, mapas, estado "disponible" |
+| `accent` | `bg-accent` / `text-accent` | `verde-salvia` #687665 | Botón primario, enlaces, foco |
+| `accent-alt` | `bg-accent-alt` | `terracota` #9D5129 | Acento secundario puntual |
 | `line` | `border-line` | `gris-grafito` #514D47 | Bordes de 1px y divisores |
-| `focus` | `outline-focus` | `terracota` #9D5129 | Anillo de foco |
+| `focus` | `outline-focus` | `verde-salvia` #687665 | Anillo de foco |
 
 Reglas:
 - Usa los tokens de rol (`surface`, `ink`, `accent`…) en los componentes. Los nombres de paleta (`bg-terracota`, `bg-arena`…) también existen, pero son para bloques decorativos.
-- `terracota` es el único acento fuerte: un acento por vista, nunca como fondo de grandes áreas de texto.
+- `verde-salvia` es el acento (octubre 2026, antes `terracota`): un acento por vista, nunca como fondo de grandes áreas de texto.
+- Todos los títulos en Commuters van en MAYÚSCULAS.
 - `verde-salvia` no se combina con `terracota` en el mismo componente.
 - Contraste: `verde-salvia` sobre `blanco-calido` (4.2:1) y `terracota` sobre `arena` (3.2:1) solo para texto de 24px o más.
 - Nunca negro puro (`#000`) ni blanco puro (`#fff`).
@@ -63,8 +64,8 @@ Reglas:
 | --- | --- | --- | --- | --- |
 | `type-display` | Commuters | 64 / 68 | 600, MAYÚSCULAS | Titular del héroe, uno por página |
 | `type-h1` | Commuters | 44 / 50 | 600, MAYÚSCULAS | Título de página |
-| `type-h2` | Commuters | 32 / 38 | 600 | Títulos de sección, nombres de proyecto |
-| `type-h3` | Commuters | 22 / 28 | 600 | Subtítulos |
+| `type-h2` | Commuters | 32 / 38 | 600, MAYÚSCULAS | Títulos de sección, nombres de proyecto |
+| `type-h3` | Commuters | 22 / 28 | 600, MAYÚSCULAS | Subtítulos |
 | `type-eyebrow` | Commuters | 12 / 16, tracking 0.3em | 400, MAYÚSCULAS | Etiqueta sobre titulares y el lema |
 | `type-body-lg` | Arimo | 18 / 28 | 400 | Entradilla |
 | `type-body` | Arimo | 16 / 26 | 400 | Texto corrido |

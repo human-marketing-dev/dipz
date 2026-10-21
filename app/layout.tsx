@@ -4,10 +4,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Dipz — The Future of Real Estate",
-    template: "%s | Dipz",
+    default: "DIPZ | Grupo inmobiliario en Monterrey con más de 20 años",
+    template: "%s | DIPZ",
   },
-  description: "Dipz desarrolla proyectos arquitectónicos pensados para durar.",
+  description:
+    "Desarrollamos y operamos proyectos inmobiliarios en México y Estados Unidos. Más de 20 años creando patrimonio para quienes invierten y para quienes habitan.",
   icons: {
     icon: "/brand/dipz-monograma-negro.png",
   },
