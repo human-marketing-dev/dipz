@@ -32,7 +32,7 @@ export function Rutas() {
                 className={`absolute inset-0 transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}
                 aria-hidden={i !== active}
               >
-                <Media photo={c.photo} sizes="33vw" label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="size-full" />
+                <Media photo={c.photo} sizes="33vw" aspect={4 / 5} label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="size-full" />
               </div>
             ))}
             <span className="absolute bottom-4 left-4 rounded-pill bg-blanco-calido px-3 py-1 type-caption text-ink">
@@ -50,7 +50,7 @@ export function Rutas() {
                 onFocus={() => setActive(i)}
                 className="group grid gap-4 py-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus md:grid-cols-4 md:gap-6 md:py-12"
               >
-                <Media photo={c.photo} sizes="100vw" label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="aspect-[4/3] md:hidden" />
+                <Media photo={c.photo} sizes="100vw" aspect={4 / 3} label={c.name} drawing={c.drawing} tone="sand" showCaption={!c.photo} className="aspect-[4/3] md:hidden" />
                 <span className="type-eyebrow text-ink-muted">{c.n}</span>
                 <span className="md:col-span-3">
                   <span

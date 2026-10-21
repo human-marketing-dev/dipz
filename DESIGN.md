@@ -9,8 +9,9 @@ Este archivo es la fuente de reglas de marca para cualquier UI de Dipz. Los valo
 | Archivo | Qué es |
 | --- | --- |
 | `app/dipz-tokens.css` | Variables CSS (`:root`), `@theme` de Tailwind v4 y las clases de texto `type-*` |
-| `app/fonts.ts` | Commuters Sans, Arimo y Bodoni Moda con `next/font/local` |
+| `app/fonts.ts` | Arimo y Bodoni Moda con `next/font/local` |
 | `app/fonts/*.woff2` | Archivos de fuente |
+| Adobe Fonts (kit `vel2vmg`) | Commuters Sans, familia `commuters-sans`, se carga en `app/layout.tsx` |
 | `public/brand/*.png` | Logotipo, monograma y patrón (PNG transparente) |
 | `tailwind.config.v3.ts` | Solo para proyectos en Tailwind v3 |
 
@@ -18,7 +19,7 @@ Este archivo es la fuente de reglas de marca para cualquier UI de Dipz. Los valo
 
 1. Copia `app/dipz-tokens.css`, `app/fonts.ts`, `app/fonts/` y `public/brand/` al proyecto.
 2. En `app/globals.css`, después de `@import "tailwindcss";`, agrega `@import "./dipz-tokens.css";`.
-3. En `app/layout.tsx`, aplica las variables de fuente en `<html>` (no en `<body>`) y los colores base en `<body>`:
+3. En `app/layout.tsx`, aplica las variables de fuente en `<html>` (no en `<body>`), carga el kit de Adobe Fonts en `<head>` y los colores base en `<body>`:
 
 ```tsx
 import { fontVariables } from "./fonts";
@@ -27,6 +28,9 @@ import "./globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={fontVariables}>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/vel2vmg.css" />
+      </head>
       <body className="bg-surface text-ink type-body antialiased">{children}</body>
     </html>
   );
@@ -79,7 +83,6 @@ Reglas:
 - Bodoni nunca para párrafos ni interfaz.
 - Los tamaños son de escritorio. En móvil reduce `type-display` y `type-h1` (por ejemplo `type-h1 md:type-display` en el héroe) en lugar de inventar tamaños nuevos.
 - Combinación típica de héroe: `type-eyebrow` → `type-display` → `type-accent` → `type-body-lg`.
-- **Commuters es la versión DEMO de Fontspring**: no trae acentos ni ñ (esos caracteres caen a Arimo). Hasta tener la licencia completa, evita títulos en Commuters con tildes o ñ visibles o acéptalo como provisional.
 
 ## Espaciado
 

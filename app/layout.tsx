@@ -17,6 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${fontVariables} h-full`}>
+      <head>
+        {/* Adobe Fonts: Commuters Sans (familia "commuters-sans") */}
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://use.typekit.net/vel2vmg.css" />
+      </head>
       <body className="min-h-full flex flex-col bg-surface text-ink type-body antialiased">
         {children}
       </body>

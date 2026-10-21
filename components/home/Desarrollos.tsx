@@ -37,7 +37,7 @@ export function Desarrollos() {
           >
             <a href="#" className="absolute inset-0 z-10 focus-visible:outline-2 focus-visible:-outline-offset-8 focus-visible:outline-focus" aria-label={`Ver ${p.name}`} />
             <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-dipz)] group-hover:scale-105">
-              <Media photo={p.photo} sizes="(min-width: 768px) 66vw, 100vw" label={`Fachada de ${p.name}`} drawing={p.drawing} tone={i === 1 ? "dark" : "graphite"} className="size-full" captionClassName="top-24 right-6 md:right-12" />
+              <Media photo={p.photo} fit={[{ media: "(min-width: 768px)", vw: 66, vh: 100 }, { vw: 100, vh: 88 }]} label={`Fachada de ${p.name}`} drawing={p.drawing} tone={i === 1 ? "dark" : "graphite"} className="size-full" captionClassName="top-24 right-6 md:right-12" />
             </div>
             <div className="absolute inset-0 bg-negro-profundo/25 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/50 to-negro-profundo/10 transition-colors duration-700 group-hover:bg-negro-profundo/45" />
 

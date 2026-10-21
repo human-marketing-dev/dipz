@@ -1,23 +1,35 @@
 import type { Photo } from "@/components/ui/Media";
+import piamontAccesoSrc from "@/public/piamont/frontal-acceso-piamont.webp";
+import piamontFachadaSrc from "@/public/piamont/fondo-fachada-piamont.webp";
+import piamontAereoSrc from "@/public/piamont/aereo-piamont.webp";
+import copeliaCiudadSrc from "@/public/copelia/render-ciudad-copelia.webp";
+import copeliaFachadaSrc from "@/public/copelia/render-fachada-copelia.webp";
+import copeliaTerrazaSrc from "@/public/copelia/amenidades-terraza-copelia.webp";
+import copeliaDeptoSrc from "@/public/copelia/sala-comedor-departamento-copelia.webp";
+import copeliaSalaEstarSrc from "@/public/copelia/amenidades-sala-de-estar-copelia.webp";
+import piamontRooftopSrc from "@/public/piamont/amenidades-rooftop-piamont.webp";
+import piamontPiscinaSrc from "@/public/piamont/amenidades-piscina-piamont.webp";
+import ameliaTorreSrc from "@/public/amelia/amelia-render.webp";
 
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
 
 export type Drawing = "tower" | "slab" | "interior" | "landscape" | "street";
 
-// Fotos en /public (renders de cada desarrollo). Donde no hay foto todavía se usa el marcador de línea.
+// Fotos en /public (renders de cada desarrollo), importadas para que Media conozca sus medidas.
+// Donde no hay foto todavía se usa el marcador de línea.
 export const photos = {
-  piamontAcceso: { src: "/piamont/frontal-acceso-piamont.webp", alt: "Acceso de Piamont al atardecer" },
-  piamontFachada: { src: "/piamont/fondo-fachada-piamont.webp", alt: "Fachada de Piamont en Valle del Campestre" },
-  piamontAereo: { src: "/piamont/aereo-piamont.webp", alt: "Vista aérea de San Pedro Garza García con la Sierra Madre" },
-  copeliaCiudad: { src: "/copelia/render-ciudad-copelia.webp", alt: "Copelia en el skyline de Valle Oriente" },
-  copeliaFachada: { src: "/copelia/render-fachada-copelia.webp", alt: "Fachada de Copelia", position: "70% center" },
-  copeliaTerraza: { src: "/copelia/amenidades-terraza-copelia.webp", alt: "Terraza de Copelia con vista a Valle Oriente" },
-  copeliaDepto: { src: "/copelia/sala-comedor-departamento-copelia.webp", alt: "Sala comedor de un departamento en Copelia" },
-  copeliaSalaEstar: { src: "/copelia/amenidades-sala-de-estar-copelia.webp", alt: "Sala de estar en las amenidades de Copelia", position: "60% center" },
-  piamontRooftop: { src: "/piamont/amenidades-rooftop-piamont.webp", alt: "Rooftop de Piamont" },
-  piamontPiscina: { src: "/piamont/amenidades-piscina-piamont.webp", alt: "Piscina de Piamont" },
-  ameliaTorre: { src: "/amelia/amelia-render.webp", alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
+  piamontAcceso: { src: piamontAccesoSrc, alt: "Acceso de Piamont al atardecer" },
+  piamontFachada: { src: piamontFachadaSrc, alt: "Fachada de Piamont en Valle del Campestre" },
+  piamontAereo: { src: piamontAereoSrc, alt: "Vista aérea de San Pedro Garza García con la Sierra Madre" },
+  copeliaCiudad: { src: copeliaCiudadSrc, alt: "Copelia en el skyline de Valle Oriente" },
+  copeliaFachada: { src: copeliaFachadaSrc, alt: "Fachada de Copelia", position: "70% center" },
+  copeliaTerraza: { src: copeliaTerrazaSrc, alt: "Terraza de Copelia con vista a Valle Oriente" },
+  copeliaDepto: { src: copeliaDeptoSrc, alt: "Sala comedor de un departamento en Copelia" },
+  copeliaSalaEstar: { src: copeliaSalaEstarSrc, alt: "Sala de estar en las amenidades de Copelia", position: "60% center" },
+  piamontRooftop: { src: piamontRooftopSrc, alt: "Rooftop de Piamont" },
+  piamontPiscina: { src: piamontPiscinaSrc, alt: "Piscina de Piamont" },
+  ameliaTorre: { src: ameliaTorreSrc, alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
 };
 
 

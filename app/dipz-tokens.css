@@ -35,8 +35,8 @@
   --radius-sm: 4px;
   --radius-pill: 999px;
 
-  /* Familias (requieren las variables de next/font en <html>) */
-  --dipz-font-display: var(--font-commuters), var(--font-arimo), "Helvetica Neue", Arial, sans-serif;
+  /* Familias (requieren las variables de next/font en <html> y el kit de Adobe Fonts para Commuters) */
+  --dipz-font-display: "commuters-sans", var(--font-arimo), "Helvetica Neue", Arial, sans-serif;
   --dipz-font-sans: var(--font-arimo), "Helvetica Neue", Arial, sans-serif;
   --dipz-font-serif: var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
 }
