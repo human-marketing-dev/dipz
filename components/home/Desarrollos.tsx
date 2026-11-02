@@ -35,7 +35,7 @@ export function Desarrollos() {
             id={p.id}
             className="group relative flex h-[88dvh] items-end overflow-hidden bg-negro-profundo md:sticky md:top-0 md:h-[100dvh]"
           >
-            <a href="#" className="absolute inset-0 z-10 focus-visible:outline-2 focus-visible:-outline-offset-8 focus-visible:outline-focus" aria-label={`Ver ${p.name}`} />
+            <a href={`/desarrollos/${p.id}`} className="absolute inset-0 z-10 focus-visible:outline-2 focus-visible:-outline-offset-8 focus-visible:outline-focus" aria-label={`Ver ${p.name}`} />
             <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-dipz)] group-hover:scale-105">
               <Media photo={p.photo} fit={[{ media: "(min-width: 768px)", vw: 66, vh: 100 }, { vw: 100, vh: 88 }]} label={`Fachada de ${p.name}`} drawing={p.drawing} tone={i === 1 ? "dark" : "graphite"} className="size-full" captionClassName="top-24 right-6 md:right-12" />
             </div>

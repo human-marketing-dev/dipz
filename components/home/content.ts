@@ -145,7 +145,7 @@ export const desarrollos = {
   title: "Desarrollos activos",
   intro:
     "Tres proyectos en construcción y comercialización, en las zonas de mayor valor del área metropolitana de Monterrey.",
-  link: { label: "Ver todos los desarrollos", href: "#" },
+  link: { label: "Ver todos los desarrollos", href: "/desarrollos" },
   projects: [
     {
       id: "piamont",
@@ -279,8 +279,8 @@ export const cierre = {
 };
 
 export const nav = [
-  { label: "Desarrollos", href: "#desarrollos" },
-  { label: "Marcas", href: "#marcas" },
-  { label: "Zero Gravity", href: "#zero-gravity" },
-  { label: "Perspectivas", href: "#perspectivas" },
+  { label: "Desarrollos", href: "/desarrollos" },
+  { label: "Marcas", href: "/#marcas" },
+  { label: "Zero Gravity", href: "/#zero-gravity" },
+  { label: "Perspectivas", href: "/#perspectivas" },
 ];

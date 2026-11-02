@@ -48,7 +48,7 @@ export function Nav() {
     <>
       <header className="frame fixed inset-x-0 top-0 z-50 pt-6">
         <div className="grid grid-cols-2 items-center md:grid-cols-6 md:gap-x-6">
-          <a href="#inicio" aria-label="DIPZ, inicio" className="justify-self-start">
+          <a href="/" aria-label="DIPZ, inicio" className="justify-self-start">
             <Image src={logo} alt="DIPZ" width={2640} height={1097} preload className="h-7 w-auto md:h-8" />
           </a>
 
@@ -72,7 +72,7 @@ export function Nav() {
             >
               {open ? "Cerrar" : "Menú"}
             </button>
-            <a href="#desarrollos" className={`${shell} md:hidden ${pill[theme]} ${open ? "invisible" : ""}`}>
+            <a href="/desarrollos" className={`${shell} md:hidden ${pill[theme]} ${open ? "invisible" : ""}`}>
               Desarrollos
             </a>
           </div>
