@@ -61,7 +61,7 @@ export function Nav() {
           </nav>
 
           <div className="flex justify-self-end gap-0.5">
-            <a href="#contacto" className={`${shell} hidden md:inline-flex ${theme === "dark" ? "bg-accent text-ink-inverse hover:bg-blanco-calido hover:text-ink" : "bg-negro-profundo text-ink-inverse hover:bg-accent"}`}>
+            <a href="/contacto" className={`${shell} hidden md:inline-flex ${theme === "dark" ? "bg-accent text-ink-inverse hover:bg-blanco-calido hover:text-ink" : "bg-negro-profundo text-ink-inverse hover:bg-accent"}`}>
               Contacto
             </a>
             <button
@@ -84,7 +84,7 @@ export function Nav() {
         className={`frame fixed inset-0 z-40 flex flex-col justify-end bg-surface pb-10 transition-opacity duration-500 md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         <ul className="border-t border-line">
-          {[...nav, { label: "Contacto", href: "#contacto" }].map((item) => (
+          {[...nav, { label: "Contacto", href: "/contacto" }].map((item) => (
             <li key={item.href} className="border-b border-line">
               <a href={item.href} onClick={() => setOpen(false)} className="flex items-center justify-between py-5 type-h2">
                 {item.label}

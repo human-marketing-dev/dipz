@@ -4,12 +4,12 @@ import { cierre, desarrollos, nav, unidades } from "./content";
 const columns = [
   { title: "Desarrollos", links: desarrollos.projects.map((p) => ({ label: p.name, href: `/desarrollos/${p.id}` })) },
   { title: "Marcas", links: unidades.brands.map((b) => ({ label: b.name, href: "/#marcas" })) },
-  { title: "Grupo", links: [...nav.slice(2), { label: "Contacto", href: "#contacto" }] },
+  { title: "Grupo", links: [...nav.slice(2), { label: "Contacto", href: "/contacto" }] },
   {
     title: "Contacto",
     links: [
       { label: cierre.phone, href: "tel:+528119841517" },
-      { label: "Showroom en San Pedro", href: "#contacto" },
+      { label: "Showroom en San Pedro", href: "/contacto" },
       { label: "Redes por confirmar", href: "#" },
     ],
   },
