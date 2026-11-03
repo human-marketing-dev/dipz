@@ -12,7 +12,7 @@ export function Perspectivas() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   return (
-    <section id="perspectivas" data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
+    <section id="blog" data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
         <div className="md:col-span-2 md:border-r md:border-blanco-calido/20 md:pr-10">
           <Reveal as="p" className="type-eyebrow text-arena">

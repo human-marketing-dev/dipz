@@ -70,3 +70,15 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .progress-dipz { animation: none; }
 }
+
+/* Mensaje del chat de WhatsApp al aparecer */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

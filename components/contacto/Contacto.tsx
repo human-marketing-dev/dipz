@@ -6,8 +6,9 @@ import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { proyectos } from "@/components/desarrollos/data";
 import { cierre } from "@/components/home/content";
+import { SocialLinks } from "@/components/ui/Social";
 
-// Página de contacto. El correo, el horario del showroom y las redes siguen pendientes del cliente.
+// Página de contacto. El correo y el horario del showroom siguen pendientes del cliente.
 
 const POR_CONFIRMAR = "Por confirmar";
 
@@ -21,7 +22,7 @@ const intenciones = [
 const canales = [
   { label: "Teléfono", value: cierre.phone, href: "tel:+528119841517" },
   { label: "Correo", value: POR_CONFIRMAR },
-  { label: "Redes", value: POR_CONFIRMAR },
+  { label: "Redes", value: "redes" },
 ];
 
 const field =
@@ -52,7 +53,9 @@ export function ContactoHero() {
             <div key={c.label}>
               <dt className={fieldLabel}>{c.label}</dt>
               <dd className={`mt-1 type-h3 ${c.value === POR_CONFIRMAR ? "text-ink-muted" : ""}`}>
-                {c.href ? (
+                {c.value === "redes" ? (
+                  <SocialLinks className="mt-1" />
+                ) : c.href ? (
                   <a href={c.href} className="transition-colors duration-300 hover:text-accent">
                     {c.value}
                   </a>

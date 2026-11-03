@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollWords } from "@/components/ui/ScrollWords";
@@ -10,8 +11,17 @@ export function ZeroGravity() {
         <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
           {zg.eyebrow}
         </Reveal>
-        <Reveal as="h2" delay={0.1} className="mt-6 type-display-xl md:col-span-4 md:mt-0">
-          {zg.title}
+        {/* Logo de Zero Gravity a la izquierda del titular, a la altura de sus mayúsculas */}
+        <Reveal delay={0.1} className="mt-6 flex items-center gap-4 md:col-span-4 md:mt-0 md:gap-6">
+          <Image
+            src={zg.logo.src}
+            alt=""
+            width={zg.logo.width}
+            height={zg.logo.height}
+            sizes="160px"
+            className="h-[clamp(40px,6.4vw,120px)] w-auto shrink-0"
+          />
+          <h2 className="type-display-xl">{zg.title}</h2>
         </Reveal>
       </div>
 

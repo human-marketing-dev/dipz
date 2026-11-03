@@ -1,8 +1,9 @@
 import { DrawLine } from "@/components/ui/DrawLine";
 import { Reveal } from "@/components/ui/Reveal";
-import { modelo } from "./content";
+import { alcance as alcanceText, modelo } from "./content";
 
-export function Modelo() {
+// En el home lleva también el texto de Alcance (la sección del mapa salió del home).
+export function Modelo({ alcance = false }: { alcance?: boolean }) {
   return (
     <>
       <section data-nav="light" className="frame bg-surface py-16 md:py-30">
@@ -36,6 +37,17 @@ export function Modelo() {
             ))}
           </ol>
         </div>
+
+        {alcance && (
+          <div className="mt-16 border-t border-line pt-8 md:mt-30 md:grid md:grid-cols-6 md:gap-x-6 md:pt-10">
+            <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
+              {alcanceText.eyebrow}
+            </Reveal>
+            <Reveal as="p" delay={0.1} className="mt-6 max-w-[760px] type-body-lg text-ink md:col-span-4 md:mt-0">
+              {alcanceText.paragraph}
+            </Reveal>
+          </div>
+        )}
       </section>
 
     </>

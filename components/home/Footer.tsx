@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cierre, desarrollos, nav, unidades } from "./content";
+import { cierre, desarrollos, nav, redes, unidades } from "./content";
 
 const columns = [
   { title: "Desarrollos", links: desarrollos.projects.map((p) => ({ label: p.name, href: `/desarrollos/${p.id}` })) },
@@ -10,7 +10,7 @@ const columns = [
     links: [
       { label: cierre.phone, href: "tel:+528119841517" },
       { label: "Showroom en San Pedro", href: "/contacto" },
-      { label: "Redes por confirmar", href: "#" },
+      ...redes.map((r) => ({ label: r.name, href: r.href })),
     ],
   },
 ];
@@ -32,6 +32,7 @@ export function Footer() {
                   {/* Al pasar, la fila se llena y el texto se recorre */}
                   <a
                     href={l.href}
+                    {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
                     className="block px-2 py-3 type-small transition-[background-color,color,padding] duration-500 hover:bg-blanco-calido hover:pl-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blanco-calido"
                   >
                     {l.label}
