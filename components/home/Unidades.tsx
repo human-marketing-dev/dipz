@@ -22,7 +22,7 @@ function BrandBody({ b }: { b: Brand }) {
         ))}
       </ul>
       <div className="mt-8">
-        <ArrowLink href="#" variant="dark">
+        <ArrowLink href={`/unidades-de-negocio#${b.id}`} variant="dark">
           {b.link}
         </ArrowLink>
       </div>

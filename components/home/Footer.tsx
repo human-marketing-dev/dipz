@@ -3,8 +3,8 @@ import { cierre, desarrollos, nav, unidades } from "./content";
 
 const columns = [
   { title: "Desarrollos", links: desarrollos.projects.map((p) => ({ label: p.name, href: `/desarrollos/${p.id}` })) },
-  { title: "Marcas", links: unidades.brands.map((b) => ({ label: b.name, href: "/#marcas" })) },
-  { title: "Grupo", links: [...nav.slice(2), { label: "Contacto", href: "/contacto" }] },
+  { title: "Unidades", links: unidades.brands.map((b) => ({ label: b.name, href: `/unidades-de-negocio#${b.id}` })) },
+  { title: "Grupo", links: [...nav.filter((l) => l.href !== "/desarrollos"), { label: "Contacto", href: "/contacto" }] },
   {
     title: "Contacto",
     links: [
