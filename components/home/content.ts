@@ -277,6 +277,19 @@ export const cierre = {
 };
 
 // Menú del sitio. Contacto va aparte, como botón.
+export const redes = [
+  { name: "Instagram", handle: "@dipzmx", href: "https://www.instagram.com/dipzmx/" },
+  { name: "Facebook", handle: "dipzmx", href: "https://www.facebook.com/dipzmx/" },
+  { name: "LinkedIn", handle: "dipzmx", href: "https://www.linkedin.com/company/dipzmx/" },
+];
+
+// Botón flotante de WhatsApp: mismo número del teléfono de contacto.
+export const whatsapp = {
+  number: "528119841517",
+  greeting: "Hola, somos DIPZ. ¿Te interesa invertir, comprar para vivir u operar tu propiedad? Escríbenos y te atiende un asesor.",
+  message: "Hola, vengo del sitio de DIPZ y me gustaría recibir información.",
+};
+
 export const nav = [
   { label: "Nosotros", href: "/nosotros" },
   { label: "Zero Gravity", href: "/zero-gravity" },

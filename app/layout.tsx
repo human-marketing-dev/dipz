@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WhatsApp } from "@/components/ui/WhatsApp";
 import { fontVariables } from "./fonts";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-surface text-ink type-body antialiased">
         {children}
+        <WhatsApp />
       </body>
     </html>
   );

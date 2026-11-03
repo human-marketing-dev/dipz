@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Arrow } from "@/components/ui/ArrowLink";
+import { SocialLinks } from "@/components/ui/Social";
 import { cierre } from "./content";
 
 const field =
@@ -40,6 +41,10 @@ export function Cierre({
               <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Showroom</p>
               <p className="mt-1 type-small">{cierre.showroom}</p>
             </div>
+          </Reveal>
+          <Reveal delay={0.35} className="mt-10 max-w-[480px] border-t border-line pt-6">
+            <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Síguenos</p>
+            <SocialLinks className="mt-4" />
           </Reveal>
         </div>
 
