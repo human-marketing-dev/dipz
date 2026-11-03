@@ -75,7 +75,7 @@ export const zeroGravity = {
       text: "Administramos la propiedad, su ocupación y la experiencia de quien la habita, para que la inversión trabaje por sí sola.",
     },
   ],
-  link: { label: "Conocer la filosofía Zero Gravity", href: "#" },
+  link: { label: "Conocer la filosofía Zero Gravity", href: "/zero-gravity" },
 };
 
 export const unidades = {
@@ -85,6 +85,7 @@ export const unidades = {
     "Cada marca del grupo se especializa en una etapa o en un territorio. Juntas cubren el ciclo completo: desarrollar, invertir y operar.",
   brands: [
     {
+      id: "dipz-desarrollos",
       name: "DIPZ Desarrollos",
       tag: "México",
       title: "Desarrollamos el futuro de México.",
@@ -95,6 +96,7 @@ export const unidades = {
       photo: photos.piamontAereo as Photo | undefined,
     },
     {
+      id: "dipz-development",
       name: "DIPZ Development",
       tag: "Estados Unidos",
       title: "Bienes raíces sin fronteras.",
@@ -105,6 +107,7 @@ export const unidades = {
       photo: photos.piamontRooftop as Photo | undefined,
     },
     {
+      id: "amelia-living",
       name: "Amelia Living",
       tag: "Operación urbana",
       title: "Operamos propiedades. Creamos comunidad.",
@@ -115,6 +118,7 @@ export const unidades = {
       photo: photos.ameliaTorre as Photo | undefined,
     },
     {
+      id: "fresh-coco",
       name: "Fresh Coco",
       tag: "Hospitalidad y destinos",
       title: "Destinos que se viven de otra manera.",
@@ -278,9 +282,10 @@ export const cierre = {
   profiles: ["Inversionista", "Comprador", "Propietario"],
 };
 
+// Menú del sitio. Contacto va aparte, como botón.
 export const nav = [
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "Zero Gravity", href: "/zero-gravity" },
+  { label: "Unidades", href: "/unidades-de-negocio" },
   { label: "Desarrollos", href: "/desarrollos" },
-  { label: "Marcas", href: "/#marcas" },
-  { label: "Zero Gravity", href: "/#zero-gravity" },
-  { label: "Perspectivas", href: "/#perspectivas" },
 ];

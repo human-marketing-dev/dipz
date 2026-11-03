@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "./content";
 
@@ -16,6 +17,8 @@ const pill: Record<Theme, string> = {
 export function Nav() {
   const [theme, setTheme] = useState<Theme>("dark");
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
     const probe = () => {
@@ -54,7 +57,12 @@ export function Nav() {
 
           <nav aria-label="Principal" className="hidden gap-0.5 md:col-span-3 md:col-start-3 md:flex">
             {nav.map((item) => (
-              <a key={item.href} href={item.href} className={`${shell} ${pill[theme]}`}>
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`${shell} ${isCurrent(item.href) ? "bg-negro-profundo text-ink-inverse" : pill[theme]}`}
+              >
                 {item.label}
               </a>
             ))}
