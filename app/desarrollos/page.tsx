@@ -16,7 +16,7 @@ export default function DesarrollosPage() {
       <Nav />
       <main className="flex-1">
         <Indice />
-        <Cierre eyebrow="Asesoría" title="Encontremos el desarrollo para ti." />
+        <Cierre eyebrow="Asesoría" title="Solicita información de nuestros desarrollos." />
       </main>
       <Footer />
     </>

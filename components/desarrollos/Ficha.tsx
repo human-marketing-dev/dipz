@@ -95,7 +95,7 @@ export function Amenidades({ p }: { p: Proyecto }) {
             Amenidades
           </Reveal>
           <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
-            {p.amenidadesTotal} espacios para vivir el edificio
+            {p.amenidadesTotal} amenidades
           </Reveal>
         </div>
         {p.amenidades.length < p.amenidadesTotal && (

@@ -46,8 +46,7 @@ export function ZeroGravityHero() {
   );
 }
 
-// Dos columnas que se leen como un traspaso: a la izquierda lo que hacemos, a la derecha lo que
-// recibe la persona. La flecha marca el cambio de lado.
+// Dos columnas: a la izquierda de qué se encarga DIPZ, a la derecha lo que recibe el cliente.
 export function DosCaras() {
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
@@ -118,7 +117,7 @@ export function EnCadaUnidad() {
             </a>
             <dl className="mt-8 flex flex-col gap-5">
               <div>
-                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">DIPZ asume</dt>
+                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">DIPZ se encarga de</dt>
                 <dd className="mt-1 type-body text-ink-muted md:min-h-13">{u.asumimos}</dd>
               </div>
               <div className="border-t border-line pt-5">

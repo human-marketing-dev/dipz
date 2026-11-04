@@ -167,7 +167,7 @@ export function ContactoForm() {
               <input type="checkbox" name="privacidad" required className="mt-1 size-4 accent-[var(--accent)]" />
               <span>
                 Acepto el{" "}
-                <a href="#" className="underline underline-offset-4 hover:text-ink">
+                <a href="/aviso-de-privacidad" target="_blank" className="underline underline-offset-4 hover:text-ink">
                   aviso de privacidad
                 </a>
                 .

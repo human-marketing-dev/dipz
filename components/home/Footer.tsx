@@ -60,7 +60,10 @@ export function Footer() {
       <div className="mt-16 flex flex-col gap-2 border-t border-blanco-calido/30 pt-4 type-caption text-blanco-calido/80 md:mt-24 md:flex-row md:justify-between">
         <span>© 2026 DIPZ. Todos los derechos reservados.</span>
         <span className="tracking-[0.3em] uppercase">The future of real estate</span>
-        <a href="#" className="hover:text-blanco-calido">Aviso de privacidad</a>
+        <span className="flex gap-6">
+          <a href="/terminos-y-condiciones" className="hover:text-blanco-calido">Términos y condiciones</a>
+          <a href="/aviso-de-privacidad" className="hover:text-blanco-calido">Aviso de privacidad</a>
+        </span>
       </div>
     </footer>
   );
