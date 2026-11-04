@@ -56,16 +56,51 @@ export function Nav() {
           </a>
 
           <nav aria-label="Principal" className="hidden gap-0.5 md:col-span-3 md:col-start-3 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`${shell} ${isCurrent(item.href) ? "bg-negro-profundo text-ink-inverse" : pill[theme]}`}
-              >
-                {item.label}
-              </a>
-            ))}
+            {nav.map((item) => {
+              const link = (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`${shell} inline-flex items-center gap-1.5 ${isCurrent(item.href) ? "bg-negro-profundo text-ink-inverse" : pill[theme]}`}
+                >
+                  {item.label}
+                  {item.children && (
+                    <svg aria-hidden viewBox="0 0 10 6" className="h-1.5 w-2.5 transition-transform duration-500 group-hover:rotate-180 group-focus-within:rotate-180">
+                      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  )}
+                </a>
+              );
+              if (!item.children) return link;
+              // Submenú: se abre con hover o al llegar con el teclado (focus-within).
+              return (
+                <div key={item.href} className="group relative">
+                  {link}
+                  <div className="invisible absolute top-full left-0 pt-2 opacity-0 transition-[opacity,visibility] duration-300 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <ul className="min-w-[300px] rounded-sm border border-line bg-surface p-2 text-ink">
+                      {item.children.map((c) => (
+                        <li key={c.href}>
+                          <a
+                            href={c.href}
+                            aria-current={pathname === c.href ? "page" : undefined}
+                            className="flex items-baseline justify-between gap-6 rounded-sm px-4 py-3 transition-colors duration-300 hover:bg-surface-alt focus-visible:outline-2 focus-visible:outline-focus aria-[current=page]:bg-surface-alt"
+                          >
+                            <span className="type-label">{c.label}</span>
+                            <span className="type-caption text-ink-muted">{c.detail}</span>
+                          </a>
+                        </li>
+                      ))}
+                      <li className="mt-2 border-t border-line pt-2">
+                        <a href={item.href} className="block rounded-sm px-4 py-3 type-label text-ink-muted transition-colors duration-300 hover:bg-surface-alt hover:text-ink focus-visible:outline-2 focus-visible:outline-focus">
+                          Ver todos los desarrollos
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
           </nav>
 
           <div className="flex justify-self-end gap-0.5">
@@ -98,6 +133,18 @@ export function Nav() {
                 {item.label}
                 <span className="type-eyebrow text-ink-muted">Ir</span>
               </a>
+              {"children" in item && item.children && (
+                <ul className="-mt-2 pb-4">
+                  {item.children.map((c) => (
+                    <li key={c.href}>
+                      <a href={c.href} onClick={() => setOpen(false)} className="flex items-baseline justify-between py-2 type-body-lg">
+                        {c.label}
+                        <span className="type-caption text-ink-muted">{c.detail}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

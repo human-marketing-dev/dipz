@@ -2,7 +2,7 @@ import type { Photo } from "@/components/ui/Media";
 import { photos, type Drawing } from "@/components/home/content";
 
 // Textos de /unidades-de-negocio. Titulares, textos y capacidades de cada marca son los del home
-// (components/home/content.ts), que el cliente toma como referencia de tono (4 nov 2026).
+// (components/home/content.ts) reescritos el 4 nov 2026 (ronda 9) en tono corporativo y descriptivo.
 // Pendientes del cliente: si DIPZ Development ya opera o es una etapa por iniciar (si es por iniciar,
 // el texto pasa a futuro y no se nombran ciudades), si Fresh Coco ya opera y en qué destinos, y si
 // Amelia Santa Lucía es el primer desarrollo operado por Amelia Living. Las fotos son provisionales,
@@ -10,9 +10,9 @@ import { photos, type Drawing } from "@/components/home/content";
 
 export const hero = {
   eyebrow: "Unidades de negocio",
-  title: "Cuatro marcas. Un mismo criterio.",
+  title: "Desarrollo y operación inmobiliaria en México y Estados Unidos.",
   intro:
-    "Dos marcas desarrollan proyectos en México y Estados Unidos. Dos operan propiedades en la ciudad y en destinos turísticos. En conjunto cubren el ciclo completo de una propiedad.",
+    "DIPZ se organiza en cuatro unidades de negocio. Dos se dedican al desarrollo de proyectos en México y Estados Unidos; dos, a la administración de propiedades en zonas urbanas y destinos turísticos.",
 };
 
 export type Unidad = {
@@ -35,9 +35,9 @@ export const unidades: Unidad[] = [
     id: "dipz-desarrollos",
     name: "DIPZ Desarrollos",
     tag: "México",
-    title: "Desarrollamos el futuro de México",
+    title: "Desarrollo inmobiliario en México",
     paragraphs: [
-      "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en las ubicaciones de mayor valor del país. Veinte años de trayectoria respaldan cada decisión de inversión.",
+      "Identificamos oportunidades, estructuramos el capital y desarrollamos proyectos residenciales y comerciales en zonas de alta plusvalía del país. Más de 20 años de trayectoria respaldan cada decisión de inversión.",
     ],
     capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Generación de valor"],
     forWhom: "Inversionistas patrimoniales y compradores que buscan certeza en una zona consolidada.",
@@ -49,10 +49,10 @@ export const unidades: Unidad[] = [
     id: "dipz-development",
     name: "DIPZ Development",
     tag: "Estados Unidos",
-    title: "Bienes raíces sin fronteras",
+    title: "Desarrollo e inversión en Estados Unidos",
     paragraphs: [
-      "Desarrollamos e invertimos en ciudades estadounidenses de alto crecimiento, con la misma disciplina y el mismo criterio con el que construimos en México.",
-      "Para el inversionista mexicano, una puerta de entrada a ese mercado sin tener que construirla por su cuenta.",
+      "Desarrollamos e invertimos en ciudades de alto crecimiento en Estados Unidos, con los mismos procesos y criterios que aplicamos en México.",
+      "Para el inversionista mexicano, es una vía para participar en ese mercado con el respaldo de un equipo especializado.",
     ],
     capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
     forWhom: "Inversionistas mexicanos que buscan diversificar en dólares.",
@@ -65,10 +65,10 @@ export const unidades: Unidad[] = [
     id: "amelia-living",
     name: "Amelia Living",
     tag: "Operación urbana",
-    title: "Operamos propiedades. Creamos comunidad",
+    title: "Administración de propiedades en renta",
     paragraphs: [
-      "Administramos y operamos propiedades en renta integrando hospitalidad, tecnología y servicio profesional: huéspedes, mantenimiento, ocupación, cobranza y reportes.",
-      "El propietario sigue su inversión en tiempo real desde su aplicación; el residente encuentra una vida urbana resuelta.",
+      "Administramos y operamos propiedades en renta: atención a residentes y huéspedes, mantenimiento, ocupación, cobranza y reportes.",
+      "El propietario consulta el desempeño de su inversión en tiempo real a través de una aplicación. El residente cuenta con servicios y amenidades administrados de forma profesional.",
     ],
     capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
     forWhom: "Inversionistas de renta operada y residentes urbanos.",
@@ -82,9 +82,9 @@ export const unidades: Unidad[] = [
     id: "fresh-coco",
     name: "Fresh Coco",
     tag: "Hospitalidad y destinos",
-    title: "Destinos que se viven de otra manera",
+    title: "Operación en destinos turísticos",
     paragraphs: [
-      "Operamos propiedades en destinos turísticos, donde la hospitalidad, la naturaleza y la experiencia se unen para crear estancias memorables y activos que producen durante todo el año.",
+      "Operamos propiedades en destinos turísticos bajo un modelo de hospitalidad profesional, orientado a mantener la ocupación y los ingresos durante todo el año.",
     ],
     capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
     forWhom: "Inversionistas en destino turístico y huéspedes.",
@@ -96,11 +96,11 @@ export const unidades: Unidad[] = [
 ];
 
 export const conexion = {
-  eyebrow: "Cómo se conectan",
+  eyebrow: "Integración",
   title: "Desarrollo y operación en un mismo grupo",
   paragraph:
-    "Un proyecto puede iniciar con DIPZ como terreno y continuar con el grupo como propiedad en operación. Esa continuidad permite sostener la calidad y el valor del activo.",
-  root: { name: "DIPZ", role: "Criterio común" },
+    "Un proyecto puede iniciar con DIPZ en la adquisición del terreno y continuar con las unidades de operación del grupo una vez entregado. Esta integración permite mantener la calidad y el valor del inmueble a largo plazo.",
+  root: { name: "DIPZ", role: "Grupo" },
   groups: [
     { role: "Desarrollo", ids: ["dipz-desarrollos", "dipz-development"] },
     { role: "Operación", ids: ["amelia-living", "fresh-coco"] },

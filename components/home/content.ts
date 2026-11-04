@@ -293,5 +293,10 @@ export const nav = [
   { label: "Nosotros", href: "/nosotros" },
   { label: "Zero Gravity", href: "/zero-gravity" },
   { label: "Unidades", href: "/unidades-de-negocio" },
-  { label: "Desarrollos", href: "/desarrollos" },
+  {
+    label: "Desarrollos",
+    href: "/desarrollos",
+    // Submenú: los desarrollos activos, en el mismo orden del portafolio.
+    children: desarrollos.projects.map((d) => ({ label: d.name, href: `/desarrollos/${d.id}`, detail: d.zone })),
+  },
 ];

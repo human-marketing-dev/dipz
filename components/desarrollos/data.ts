@@ -15,7 +15,8 @@ import copeliaJuegosSrc from "@/public/copelia/amenidades-sala-de-juegos-copelia
 
 // Contenido de /desarrollos y de cada /desarrollos/[slug]. Lo que dice "Por confirmar" sigue
 // pendiente del cliente: estatus por proyecto, fechas de entrega, plantas, m² por tipología y
-// puntos cercanos. Las frases de concepto se escribieron a partir de la ficha de cada proyecto.
+// puntos cercanos. Titular y texto de cada ficha son descriptivos (ronda 9, 4 nov 2026); el home
+// conserva sus propios textos.
 
 export const POR_CONFIRMAR = "Por confirmar";
 
@@ -60,8 +61,8 @@ export const proyectos: Proyecto[] = [
     status: "En construcción y comercialización",
     entrega: POR_CONFIRMAR,
     surface: "105 a 386 m²",
-    statement: "La herencia italiana frente a las montañas de San Pedro.",
-    text: piamont.text,
+    statement: "Desarrollo residencial y comercial en Valle del Campestre.",
+    text: "Proyecto de arquitectura de inspiración italiana en Valle del Campestre, San Pedro Garza García. Departamentos de 105 a 386 m², con speakeasy, rooftop, alberca y siete locales comerciales.",
     facts: piamont.facts,
     drawing: piamont.drawing,
     heroPhoto: photos.piamontAcceso,
@@ -100,8 +101,8 @@ export const proyectos: Proyecto[] = [
     status: "En construcción y comercialización",
     entrega: POR_CONFIRMAR,
     surface: "170 a 565 m²",
-    statement: "38 residencias en el corazón de Valle Oriente.",
-    text: copelia.text,
+    statement: "Torre residencial de 38 departamentos en Valle Oriente.",
+    text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 170 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
     facts: copelia.facts,
     drawing: copelia.drawing,
     heroPhoto: photos.copeliaCiudad,
@@ -133,7 +134,7 @@ export const proyectos: Proyecto[] = [
     status: "En construcción y comercialización",
     entrega: POR_CONFIRMAR,
     surface: "43 a 74 m²",
-    statement: "Frente al Paseo Santa Lucía, con la operación resuelta.",
+    statement: "Torre de departamentos frente al Paseo Santa Lucía, operada por Amelia Living.",
     text: amelia.text,
     facts: amelia.facts,
     drawing: amelia.drawing,
