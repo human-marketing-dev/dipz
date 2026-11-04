@@ -1,6 +1,7 @@
 import { photos } from "@/components/home/content";
 
-// Textos de /zero-gravity, del doc "DIPZ · Estructura, copys y SEO del sitio" (noviembre 2026).
+// Textos de /zero-gravity. Partieron del doc "DIPZ · Estructura, copys y SEO del sitio" y se ajustaron el
+// 4 nov 2026 al registro del home: institucional, en frases declarativas y sin metáforas.
 // "Cómo trabajamos" reutiliza el bloque del home (components/home/Modelo.tsx), que se queda también
 // en el home por decisión del 3 de noviembre de 2026. El caso completo de Amelia Santa Lucía queda fuera.
 
@@ -8,64 +9,65 @@ export const hero = {
   eyebrow: "Nuestra filosofía",
   title: "Zero Gravity",
   intro:
-    "Desarrollar, invertir y administrar exigen tiempo, conocimiento y operación constante. Esa parte la asumimos nosotros.",
+    "Desarrollar un proyecto, estructurar una inversión y administrar una propiedad exigen tiempo, conocimiento y operación constante. En DIPZ asumimos esa parte.",
   photo: { ...photos.piamontRooftop, alt: "Rooftop de Piamont abierto al cielo de San Pedro Garza García" },
 };
 
 export const caras = {
-  eyebrow: "Las dos caras",
-  title: "Lo que asumimos, lo que recibes",
-  quote: "Zero Gravity no significa que el trabajo desaparezca. Significa que cambia de lado.",
-  headers: ["Lo que asumimos", "Lo que recibes"],
+  eyebrow: "El modelo",
+  title: "Lo que asume DIPZ y lo que recibe el cliente",
+  intro:
+    "Zero Gravity es la forma en que el grupo distribuye el trabajo: DIPZ asume las etapas que exigen especialización y el cliente recibe sus resultados.",
+  headers: ["DIPZ asume", "El cliente recibe"],
   rows: [
-    ["Encontrar la tierra y estructurar el capital", "Acceso a proyectos en ubicaciones que sostienen su valor"],
-    ["Diseñar, construir y cumplir plazos", "Una propiedad lista para habitar o para producir"],
-    ["Administrar huéspedes, mantenimiento y cobranza", "Rendimiento y reportes, sin tener que operar"],
-    ["Conocer otro mercado y su estructura legal", "Inversión en Estados Unidos sin construir esa capacidad por tu cuenta"],
+    ["Identificación de la tierra y estructuración del capital", "Acceso a proyectos en ubicaciones de alto valor"],
+    ["Diseño, construcción y cumplimiento de plazos", "Una propiedad lista para habitar o para generar rentas"],
+    ["Administración de huéspedes, mantenimiento y cobranza", "Rendimientos y reportes periódicos, sin intervenir en la operación"],
+    ["Conocimiento del mercado y del marco legal en Estados Unidos", "Inversión en Estados Unidos con el respaldo de un equipo especializado"],
   ],
 };
 
 export const enCadaUnidad = {
-  eyebrow: "En cada unidad",
-  title: "Una misma idea en cuatro terrenos",
+  eyebrow: "Unidades de negocio",
+  title: "Zero Gravity en cada unidad",
   units: [
     {
       id: "dipz-desarrollos",
       name: "DIPZ Desarrollos",
       tag: "México",
-      asumimos: "La complejidad de originar un proyecto en México.",
-      recibes: "Patrimonio en una zona consolidada.",
+      asumimos: "La originación y el desarrollo de proyectos en México.",
+      recibes: "Patrimonio en zonas consolidadas.",
     },
     {
       id: "dipz-development",
       name: "DIPZ Development",
       tag: "Estados Unidos",
-      asumimos: "La barrera de invertir fuera del país.",
-      recibes: "Participación en mercados de alto crecimiento.",
+      asumimos: "La estructuración de inversiones en Estados Unidos.",
+      recibes: "Diversificación en un mercado de alto crecimiento.",
     },
     {
       id: "amelia-living",
       name: "Amelia Living",
       tag: "Ciudad",
-      asumimos: "La operación diaria de tu propiedad en renta.",
-      recibes: "Tu inversión a la vista, en tiempo real.",
+      asumimos: "La operación diaria de propiedades en renta.",
+      recibes: "Ingresos y reportes en tiempo real.",
     },
     {
       id: "fresh-coco",
       name: "Fresh Coco",
       tag: "Destino",
-      asumimos: "La operación de tu propiedad en destino.",
-      recibes: "Ingresos todo el año.",
+      asumimos: "La operación de propiedades en destinos turísticos.",
+      recibes: "Ingresos durante todo el año.",
     },
   ],
-  link: { label: "Conocer las unidades", href: "/unidades-de-negocio" },
+  link: { label: "Conocer las unidades de negocio", href: "/unidades-de-negocio" },
 };
 
 export const loQueNoEs = {
-  eyebrow: "Lo que no es",
-  title: "Ligero no significa frágil",
+  eyebrow: "Respaldo",
+  title: "Una filosofía respaldada por la trayectoria",
   paragraph:
-    "Zero Gravity convive con veinte años de trayectoria y con proyectos pensados para durar. No es una promesa de que invertir sea fácil, sino de que la parte difícil la hace quien sabe hacerla.",
+    "Zero Gravity se sostiene en más de 20 años de experiencia y en proyectos diseñados para conservar su valor. Cada etapa del proceso la resuelve el equipo con la especialización que requiere.",
 };
 
 export const cierre = {

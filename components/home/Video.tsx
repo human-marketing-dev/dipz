@@ -2,12 +2,12 @@ import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { video } from "./content";
 
-// Video institucional, del margen al margen en 16:9. Sin ID de YouTube muestra el marcador con el
+// Video institucional a todo lo ancho de la pantalla, en 16:9. Sin ID de YouTube muestra el marcador con el
 // botón de reproducir; con ID, el reproductor de YouTube sin cookies.
 export function Video() {
   return (
-    <section data-nav="dark" aria-label={video.eyebrow} className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
-      <div className="md:grid md:grid-cols-6 md:gap-x-6">
+    <section data-nav="dark" aria-label={video.eyebrow} className="bg-surface-inverse pt-16 text-ink-inverse md:pt-30">
+      <div className="frame md:grid md:grid-cols-6 md:gap-x-6">
         <Reveal as="p" className="type-eyebrow text-arena md:col-span-2">
           {video.eyebrow}
         </Reveal>
@@ -16,7 +16,7 @@ export function Video() {
         </Reveal>
       </div>
 
-      <Reveal delay={0.2} className="relative mt-10 aspect-video md:mt-16">
+      <Reveal delay={0.2} className="relative mt-10 aspect-video w-full md:mt-16">
         {video.youtubeId ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}

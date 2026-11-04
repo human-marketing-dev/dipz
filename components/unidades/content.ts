@@ -1,7 +1,8 @@
 import type { Photo } from "@/components/ui/Media";
 import { photos, type Drawing } from "@/components/home/content";
 
-// Textos de /unidades-de-negocio, del doc "DIPZ · Estructura, copys y SEO del sitio" (noviembre 2026).
+// Textos de /unidades-de-negocio. Titulares, textos y capacidades de cada marca son los del home
+// (components/home/content.ts), que el cliente toma como referencia de tono (4 nov 2026).
 // Pendientes del cliente: si DIPZ Development ya opera o es una etapa por iniciar (si es por iniciar,
 // el texto pasa a futuro y no se nombran ciudades), si Fresh Coco ya opera y en qué destinos, y si
 // Amelia Santa Lucía es el primer desarrollo operado por Amelia Living. Las fotos son provisionales,
@@ -11,7 +12,7 @@ export const hero = {
   eyebrow: "Unidades de negocio",
   title: "Cuatro marcas. Un mismo criterio.",
   intro:
-    "Dos marcas desarrollan el lugar, en México y en Estados Unidos. Dos operan la experiencia, en la ciudad y en el destino. Juntas cubren el ciclo completo de una propiedad.",
+    "Dos marcas desarrollan proyectos en México y Estados Unidos. Dos operan propiedades en la ciudad y en destinos turísticos. En conjunto cubren el ciclo completo de una propiedad.",
 };
 
 export type Unidad = {
@@ -34,7 +35,7 @@ export const unidades: Unidad[] = [
     id: "dipz-desarrollos",
     name: "DIPZ Desarrollos",
     tag: "México",
-    title: "Desarrollamos en México",
+    title: "Desarrollamos el futuro de México",
     paragraphs: [
       "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en las ubicaciones de mayor valor del país. Veinte años de trayectoria respaldan cada decisión de inversión.",
     ],
@@ -48,10 +49,10 @@ export const unidades: Unidad[] = [
     id: "dipz-development",
     name: "DIPZ Development",
     tag: "Estados Unidos",
-    title: "Invertir en Estados Unidos, sin empezar de cero",
+    title: "Bienes raíces sin fronteras",
     paragraphs: [
-      "Desarrollamos e invertimos en ciudades estadounidenses de alto crecimiento, con el mismo criterio con el que construimos en México.",
-      "Para el inversionista mexicano es una forma de diversificar fuera del país sin tener que conocer el mercado, la estructura legal ni la operación a distancia.",
+      "Desarrollamos e invertimos en ciudades estadounidenses de alto crecimiento, con la misma disciplina y el mismo criterio con el que construimos en México.",
+      "Para el inversionista mexicano, una puerta de entrada a ese mercado sin tener que construirla por su cuenta.",
     ],
     capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
     forWhom: "Inversionistas mexicanos que buscan diversificar en dólares.",
@@ -64,15 +65,15 @@ export const unidades: Unidad[] = [
     id: "amelia-living",
     name: "Amelia Living",
     tag: "Operación urbana",
-    title: "Operamos tu propiedad en renta",
+    title: "Operamos propiedades. Creamos comunidad",
     paragraphs: [
-      "Administramos y operamos propiedades en renta integrando hospitalidad, tecnología y servicio profesional. Nos encargamos de huéspedes, mantenimiento, ocupación, cobranza y reportes.",
+      "Administramos y operamos propiedades en renta integrando hospitalidad, tecnología y servicio profesional: huéspedes, mantenimiento, ocupación, cobranza y reportes.",
       "El propietario sigue su inversión en tiempo real desde su aplicación; el residente encuentra una vida urbana resuelta.",
     ],
     capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
     forWhom: "Inversionistas de renta operada y residentes urbanos.",
     cta: { label: "Operar mi propiedad", href: "/contacto#formulario" },
-    note: "Amelia Living es la marca que opera. Amelia Santa Lucía es el primer desarrollo que opera.",
+    note: "Amelia Living es la marca operadora. Amelia Santa Lucía es el primer desarrollo que opera.",
     pending: "Por confirmar que es el primero",
     photo: photos.ameliaTorre,
     drawing: "interior",
@@ -81,10 +82,9 @@ export const unidades: Unidad[] = [
     id: "fresh-coco",
     name: "Fresh Coco",
     tag: "Hospitalidad y destinos",
-    title: "Tu propiedad en destino, operada",
+    title: "Destinos que se viven de otra manera",
     paragraphs: [
-      "Operamos propiedades en destinos turísticos con el mismo modelo que en la ciudad.",
-      "El dueño tiene un activo que genera ingresos durante todo el año sin administrarlo a distancia; el huésped, una estancia que recuerda.",
+      "Operamos propiedades en destinos turísticos, donde la hospitalidad, la naturaleza y la experiencia se unen para crear estancias memorables y activos que producen durante todo el año.",
     ],
     capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
     forWhom: "Inversionistas en destino turístico y huéspedes.",
@@ -97,12 +97,12 @@ export const unidades: Unidad[] = [
 
 export const conexion = {
   eyebrow: "Cómo se conectan",
-  title: "Desarrollar el lugar, operar la experiencia",
+  title: "Desarrollo y operación en un mismo grupo",
   paragraph:
-    "Un proyecto puede empezar con nosotros como terreno y seguir con nosotros como propiedad en operación. Esa continuidad es la que permite que el valor se sostenga.",
-  root: { name: "DIPZ", role: "El criterio común" },
+    "Un proyecto puede iniciar con DIPZ como terreno y continuar con el grupo como propiedad en operación. Esa continuidad permite sostener la calidad y el valor del activo.",
+  root: { name: "DIPZ", role: "Criterio común" },
   groups: [
-    { role: "Desarrollan el lugar", ids: ["dipz-desarrollos", "dipz-development"] },
-    { role: "Operan la experiencia", ids: ["amelia-living", "fresh-coco"] },
+    { role: "Desarrollo", ids: ["dipz-desarrollos", "dipz-development"] },
+    { role: "Operación", ids: ["amelia-living", "fresh-coco"] },
   ],
 };

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
@@ -22,8 +23,18 @@ export function ZeroGravityHero() {
             <Reveal as="p" className="type-eyebrow text-arena">
               {hero.eyebrow}
             </Reveal>
-            <Reveal as="h1" delay={0.1} className="mt-6 type-display-xl">
-              {hero.title}
+            {/* Icono de Zero Gravity a la izquierda del titular, como en el home */}
+            <Reveal delay={0.1} className="mt-6 flex items-center gap-4 md:gap-6">
+              <Image
+                src="/brand/zero-gravity-logo-blanco.webp"
+                alt=""
+                width={1200}
+                height={960}
+                sizes="160px"
+                preload
+                className="h-[clamp(40px,6.4vw,120px)] w-auto shrink-0"
+              />
+              <h1 className="type-display-xl">{hero.title}</h1>
             </Reveal>
           </div>
           <Reveal as="p" delay={0.2} className="mt-6 max-w-[420px] type-body-lg text-arena md:col-span-2 md:mt-0">
@@ -48,8 +59,8 @@ export function DosCaras() {
           <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:mt-0 md:type-h1">
             {caras.title}
           </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-8 max-w-[720px] type-quote text-ink-muted">
-            {caras.quote}
+          <Reveal as="p" delay={0.2} className="mt-6 max-w-[560px] type-body-lg text-ink-muted">
+            {caras.intro}
           </Reveal>
         </div>
       </div>
@@ -107,11 +118,11 @@ export function EnCadaUnidad() {
             </a>
             <dl className="mt-8 flex flex-col gap-5">
               <div>
-                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">Asumimos</dt>
+                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">DIPZ asume</dt>
                 <dd className="mt-1 type-body text-ink-muted md:min-h-13">{u.asumimos}</dd>
               </div>
               <div className="border-t border-line pt-5">
-                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">Recibes</dt>
+                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">El cliente recibe</dt>
                 <dd className="mt-1 type-body">{u.recibes}</dd>
               </div>
             </dl>

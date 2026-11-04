@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollWords } from "@/components/ui/ScrollWords";
 import { zeroGravity as zg } from "./content";
@@ -38,11 +37,6 @@ export function ZeroGravity() {
             </Reveal>
           ))}
         </ol>
-        <div className="mt-12">
-          <ArrowLink href={zg.link.href} variant="text">
-            {zg.link.label}
-          </ArrowLink>
-        </div>
       </div>
     </section>
   );

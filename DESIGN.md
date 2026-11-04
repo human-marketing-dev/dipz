@@ -54,6 +54,8 @@ Para Tailwind v3: usa `tailwind.config.v3.ts` como `tailwind.config.ts`, y en `d
 | `line` | `border-line` | `gris-grafito` #514D47 | Bordes de 1px y divisores |
 | `focus` | `outline-focus` | `verde-salvia` #687665 | Anillo de foco |
 
+Colores externos: `whatsapp` (#25D366), `whatsapp-dark` (#075E54) y `whatsapp-chat` (#ECE5DD) existen solo para el botón flotante de WhatsApp y su chat (`components/ui/WhatsApp.tsx`), que imitan la apariencia de WhatsApp a petición del cliente (colores, esquinas redondeadas y sombra propios de la app). Es la única excepción a las reglas de color y forma de este archivo.
+
 Reglas:
 - Usa los tokens de rol (`surface`, `ink`, `accent`…) en los componentes. Los nombres de paleta (`bg-terracota`, `bg-arena`…) también existen, pero son para bloques decorativos.
 - `verde-salvia` es el acento (octubre 2026, antes `terracota`): un acento por vista, nunca como fondo de grandes áreas de texto.
