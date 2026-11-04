@@ -9,6 +9,11 @@
   --verde-salvia: #687665;
   --terracota: #9d5129;
 
+  /* Colores de WhatsApp: solo para el botón flotante y su chat (noviembre 2026) */
+  --whatsapp: #25d366;
+  --whatsapp-dark: #075e54;
+  --whatsapp-chat: #ece5dd;
+
   /* Roles */
   --surface: var(--blanco-calido);
   --surface-alt: var(--arena);
@@ -49,6 +54,9 @@
   --color-blanco-calido: var(--blanco-calido);
   --color-verde-salvia: var(--verde-salvia);
   --color-terracota: var(--terracota);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-dark: var(--whatsapp-dark);
+  --color-whatsapp-chat: var(--whatsapp-chat);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
   --color-surface-inverse: var(--surface-inverse);

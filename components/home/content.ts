@@ -83,11 +83,10 @@ export const zeroGravity = {
     {
       n: "03",
       name: "Valores",
-      text: "La ubicación va primero, construimos para que dure, seguimos después de entregar y hablamos con datos.",
+      text: "Ubicación, calidad constructiva, continuidad después de la entrega e información clara para cada inversionista.",
     },
   ],
   logo: { src: "/brand/zero-gravity-logo.webp", width: 1200, height: 960 },
-  link: { label: "Conocer la filosofía Zero Gravity", href: "/zero-gravity" },
 };
 
 export const unidades = {
