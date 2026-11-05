@@ -294,4 +294,5 @@ export const nav = [
     // Submenú: los desarrollos activos, en el mismo orden del portafolio.
     children: desarrollos.projects.map((d) => ({ label: d.name, href: `/desarrollos/${d.id}`, detail: d.zone })),
   },
+  { label: "Blog", href: "/blog" },
 ];

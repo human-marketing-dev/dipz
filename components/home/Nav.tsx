@@ -44,18 +44,18 @@ export function Nav() {
     document.documentElement.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  const shell = `rounded-pill px-4 py-2.5 type-label transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus`;
+  const shell = `whitespace-nowrap rounded-pill px-4 py-2.5 type-label transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus`;
   const logo = theme === "dark" && !open ? "/brand/dipz-wordmark-blanco.png" : "/brand/dipz-wordmark-negro.png";
 
   return (
     <>
       <header className="frame fixed inset-x-0 top-0 z-50 pt-6">
-        <div className="grid grid-cols-2 items-center md:grid-cols-6 md:gap-x-6">
+        <div className="flex items-center justify-between xl:grid xl:grid-cols-6 xl:gap-x-6">
           <a href="/" aria-label="DIPZ, inicio" className="justify-self-start">
             <Image src={logo} alt="DIPZ" width={2640} height={1097} preload className="h-7 w-auto md:h-8" />
           </a>
 
-          <nav aria-label="Principal" className="hidden gap-0.5 md:col-span-3 md:col-start-3 md:flex">
+          <nav aria-label="Principal" className="hidden gap-0.5 xl:col-span-3 xl:col-start-3 xl:flex">
             {nav.map((item) => {
               const link = (
                 <a
@@ -111,11 +111,11 @@ export function Nav() {
               type="button"
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
-              className={`${shell} md:hidden ${open ? "bg-negro-profundo text-ink-inverse" : pill[theme]}`}
+              className={`${shell} xl:hidden ${open ? "bg-negro-profundo text-ink-inverse" : pill[theme]}`}
             >
               {open ? "Cerrar" : "Menú"}
             </button>
-            <a href="/desarrollos" className={`${shell} md:hidden ${pill[theme]} ${open ? "invisible" : ""}`}>
+            <a href="/desarrollos" className={`${shell} xl:hidden ${pill[theme]} ${open ? "invisible" : ""}`}>
               Desarrollos
             </a>
           </div>
@@ -124,7 +124,7 @@ export function Nav() {
 
       {/* Menú móvil a pantalla completa */}
       <div
-        className={`frame fixed inset-0 z-40 flex flex-col justify-end bg-surface pb-10 transition-opacity duration-500 md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`frame fixed inset-0 z-40 flex flex-col justify-end bg-surface pb-10 transition-opacity duration-500 xl:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         <ul className="border-t border-line">
           {[...nav, { label: "Contacto", href: "/contacto" }].map((item) => (
