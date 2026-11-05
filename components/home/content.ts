@@ -254,13 +254,8 @@ export const perspectivas = {
   title: "Ideas sobre el futuro de los bienes raíces",
   intro:
     "Análisis, criterios de inversión y lecturas del mercado inmobiliario, desde la experiencia de quienes desarrollan y operan.",
-  link: { label: "Ver todas las publicaciones", href: "#" },
-  // Publicaciones de ejemplo: la estrategia editorial se define en la etapa de contenidos.
-  posts: [
-    { date: "Octubre 2026", category: "Inversión", title: "Publicación de ejemplo: cómo se estructura una inversión inmobiliaria en preventa", drawing: "street" as Drawing, photo: photos.piamontAcceso },
-    { date: "Septiembre 2026", category: "Mercado", title: "Publicación de ejemplo: San Pedro y Valle Oriente, lectura del mercado residencial", drawing: "tower" as Drawing, photo: photos.copeliaCiudad },
-    { date: "Agosto 2026", category: "Operación", title: "Publicación de ejemplo: renta administrada, qué recibe el propietario", drawing: "interior" as Drawing, photo: photos.ameliaTorre },
-  ],
+  link: { label: "Ver todas las publicaciones", href: "/blog" },
+  // Las publicaciones viven en components/blog/posts.ts (el home muestra las tres más recientes).
 };
 
 export const cierre = {

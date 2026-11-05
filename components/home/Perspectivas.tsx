@@ -4,7 +4,10 @@ import { useRef, useState } from "react";
 import { ArrowLink, Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
+import { posts } from "@/components/blog/posts";
 import { perspectivas } from "./content";
+
+const recientes = [...posts].sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, 3);
 
 export function Perspectivas() {
   const listRef = useRef<HTMLUListElement>(null);
@@ -40,9 +43,9 @@ export function Perspectivas() {
           }}
           onMouseLeave={() => setHover(null)}
         >
-          {perspectivas.posts.map((p, i) => (
+          {recientes.map((p, i) => (
             <li key={p.title} className="border-b border-blanco-calido/20" onMouseEnter={() => setHover(i)}>
-              <a href="#" className="group grid gap-4 py-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus md:grid-cols-4 md:gap-6 md:py-10">
+              <a href={`/blog/${p.slug}`} className="group grid gap-4 py-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus md:grid-cols-4 md:gap-6 md:py-10">
                 <span className="type-eyebrow text-arena md:col-span-1">
                   {p.date}
                   <span className="mt-2 block text-gris-grafito">{p.category}</span>
@@ -63,7 +66,7 @@ export function Perspectivas() {
             className={`pointer-events-none absolute top-0 left-0 hidden w-64 transition-opacity duration-300 md:block ${hover === null ? "opacity-0" : "opacity-100"}`}
             style={{ transform: `translate(${pos.x + 24}px, ${pos.y - 80}px)` }}
           >
-            {perspectivas.posts.map((p, i) => (
+            {recientes.map((p, i) => (
               <Media
                 key={p.title}
                 photo={p.photo}

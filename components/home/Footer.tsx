@@ -4,7 +4,7 @@ import { cierre, desarrollos, nav, redes, unidades } from "./content";
 const columns = [
   { title: "Desarrollos", links: desarrollos.projects.map((p) => ({ label: p.name, href: `/desarrollos/${p.id}` })) },
   { title: "Unidades", links: unidades.brands.map((b) => ({ label: b.name, href: `/unidades-de-negocio#${b.id}` })) },
-  { title: "Grupo", links: [...nav.filter((l) => l.href !== "/desarrollos"), { label: "Contacto", href: "/contacto" }] },
+  { title: "Grupo", links: [...nav.filter((l) => l.href !== "/desarrollos"), { label: "Blog", href: "/blog" }, { label: "Contacto", href: "/contacto" }] },
   {
     title: "Contacto",
     links: [
