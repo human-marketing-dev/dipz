@@ -2,7 +2,7 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { conexion, hero, unidades, type Unidad } from "./content";
+import { hero, unidades, type Unidad } from "./content";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -110,63 +110,6 @@ export function UnidadSection({ u, n }: { u: Unidad; n: number }) {
           </Reveal>
         </div>
       </div>
-    </section>
-  );
-}
-
-// Diagrama: DIPZ arriba como criterio común, las dos ramas debajo. Líneas de 1px, como un plano.
-export function Conexion() {
-  const byId = Object.fromEntries(unidades.map((u) => [u.id, u]));
-  const line = "bg-blanco-calido/30";
-  return (
-    <section data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
-      <div className="md:grid md:grid-cols-6 md:gap-x-6">
-        <Reveal as="p" className="type-eyebrow text-arena md:col-span-2">
-          {conexion.eyebrow}
-        </Reveal>
-        <div className="md:col-span-4">
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:mt-0 md:type-h1">
-            {conexion.title}
-          </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-6 max-w-[560px] type-body-lg text-arena">
-            {conexion.paragraph}
-          </Reveal>
-        </div>
-      </div>
-
-      <Reveal delay={0.3} className="mt-16 md:mt-24">
-        <div className="mx-auto w-fit rounded-pill border border-blanco-calido/60 px-10 py-5 text-center">
-          <p className="type-h2">{conexion.root.name}</p>
-          <p className="mt-1 type-caption tracking-[0.2em] text-arena uppercase">{conexion.root.role}</p>
-        </div>
-        <div className={`mx-auto h-12 w-px ${line}`} aria-hidden />
-        {/* Travesaño entre los centros de las dos ramas */}
-        <div className="relative hidden md:block" aria-hidden>
-          <div className={`absolute top-0 right-[calc(25%-6px)] left-[calc(25%-6px)] h-px ${line}`} />
-        </div>
-
-        <div className="grid gap-12 md:grid-cols-2 md:gap-6">
-          {conexion.groups.map((g) => (
-            <div key={g.role}>
-              <div className={`mx-auto hidden h-12 w-px md:block ${line}`} aria-hidden />
-              <p className="text-center type-caption tracking-[0.2em] text-arena uppercase">{g.role}</p>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {g.ids.map((id) => (
-                  <li key={id}>
-                    <a
-                      href={`#${id}`}
-                      className="flex h-full flex-col justify-between gap-4 rounded-sm sm:gap-8 border border-blanco-calido/30 p-5 transition-colors duration-500 hover:bg-blanco-calido hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus md:p-6"
-                    >
-                      <span className="type-caption tracking-[0.2em] text-arena uppercase">{byId[id].tag}</span>
-                      <span className="type-h3">{byId[id].name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Reveal>
     </section>
   );
 }

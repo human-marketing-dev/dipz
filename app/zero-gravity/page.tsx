@@ -19,10 +19,7 @@ export default function ZeroGravityPage() {
       <main className="flex-1">
         <ZeroGravityHero />
         <DosCaras />
-        {/* Cómo trabajamos: el mismo bloque del home */}
-        <div className="frame bg-surface" aria-hidden>
-          <div className="border-t border-line" />
-        </div>
+        {/* Cómo trabajamos: los pasos del home con título y texto propios */}
         <Modelo title={proceso.title} paragraph={proceso.paragraph} />
         <EnCadaUnidad />
         <LoQueNoEs />

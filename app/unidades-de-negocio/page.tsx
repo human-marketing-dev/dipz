@@ -3,7 +3,7 @@ import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 import { unidades } from "@/components/unidades/content";
-import { Conexion, UnidadSection, UnidadesHero } from "@/components/unidades/Unidades";
+import { UnidadSection, UnidadesHero } from "@/components/unidades/Unidades";
 
 export const metadata: Metadata = {
   title: "Unidades de negocio: desarrollo y operación",
@@ -22,7 +22,6 @@ export default function UnidadesPage() {
         {unidades.map((u, i) => (
           <UnidadSection key={u.id} u={u} n={i + 1} />
         ))}
-        <Conexion />
         <Cierre />
       </main>
       <Footer />
