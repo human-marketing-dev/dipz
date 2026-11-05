@@ -69,7 +69,7 @@ export function Criterio() {
 
       <ol className="mt-12 border-t border-line md:mt-20">
         {criterio.rules.map((r, i) => (
-          <Reveal as="li" key={r.name} delay={i * 0.08} className="group grid gap-4 border-b border-line py-8 md:grid-cols-6 md:gap-6 md:py-10">
+          <Reveal as="li" key={r.name} delay={i * 0.08} className="group grid gap-4 border-b border-line py-8 md:min-h-[176px] md:grid-cols-6 md:items-center md:gap-6 md:py-10">
             <span className="type-eyebrow text-ink-muted">0{i + 1}</span>
             <h3 className="type-h2 md:col-span-3">{r.name}</h3>
             <p className="max-w-[420px] type-body text-ink-muted md:col-span-2">{r.text}</p>
