@@ -94,15 +94,3 @@ export const unidades: Unidad[] = [
     drawing: "landscape",
   },
 ];
-
-export const conexion = {
-  eyebrow: "Integración",
-  title: "Desarrollo y operación en un mismo grupo",
-  paragraph:
-    "Un proyecto puede iniciar con DIPZ en la adquisición del terreno y continuar con las unidades de operación del grupo una vez entregado. Esta integración permite mantener la calidad y el valor del inmueble a largo plazo.",
-  root: { name: "DIPZ", role: "Grupo" },
-  groups: [
-    { role: "Desarrollo", ids: ["dipz-desarrollos", "dipz-development"] },
-    { role: "Operación", ids: ["amelia-living", "fresh-coco"] },
-  ],
-};
