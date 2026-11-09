@@ -21,7 +21,7 @@ export default function Home() {
         <Video />
         <ZeroGravity />
         <Unidades />
-        <Modelo alcance photos />
+        <Modelo alcance />
         <Desarrollos />
         <Rutas />
         <Perspectivas />

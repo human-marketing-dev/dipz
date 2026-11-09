@@ -13,10 +13,9 @@ import ameliaTorreSrc from "@/public/amelia/amelia-render.webp";
 import ameliaDronSrc from "@/public/amelia/vista-dron-amelia.webp";
 import ameliaAccesoSrc from "@/public/amelia/amelia-render-acceso.webp";
 import ameliaFachadaSrc from "@/public/amelia/amelia-fachada-render.webp";
-import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
-import modeloDocumentosSrc from "@/public/modelo/revision-de-documentos.webp";
-import modeloLlavesSrc from "@/public/modelo/entrega-de-llaves.webp";
-import modeloCasaSrc from "@/public/modelo/pareja-en-casa.webp";
+import rutasDocumentosSrc from "@/public/rutas/revision-de-documentos.webp";
+import rutasCasaSrc from "@/public/rutas/pareja-en-casa.webp";
+import rutasLlavesSrc from "@/public/rutas/entrega-de-llaves.webp";
 
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
@@ -158,30 +157,10 @@ export const modelo = {
   paragraph:
     "Acompañamos cada proyecto desde que es una oportunidad hasta que es una propiedad en operación. Esa continuidad es lo que permite que la calidad se sostenga, que el activo produzca desde el primer día y que el propietario tenga un solo interlocutor en todo el proceso.",
   steps: [
-    {
-      n: "01",
-      name: "Originamos",
-      text: "Analizamos la zona, adquirimos la tierra y estructuramos el capital.",
-      photo: { src: modeloDocumentosSrc, alt: "Dos personas revisan un documento en una escalera de oficina", position: "center 55%" },
-    },
-    {
-      n: "02",
-      name: "Desarrollamos",
-      text: "Diseñamos y construimos el proyecto.",
-      photo: { src: piamontPatioSrc, alt: "Patio central de Piamont" },
-    },
-    {
-      n: "03",
-      name: "Entregamos",
-      text: "El propietario recibe una propiedad lista para habitar o para producir.",
-      photo: { src: modeloLlavesSrc, alt: "Una mano sostiene las llaves frente a un edificio de departamentos", position: "center 60%" },
-    },
-    {
-      n: "04",
-      name: "Operamos",
-      text: "Amelia Living y Fresh Coco se hacen cargo de la operación, la ocupación y la experiencia.",
-      photo: { src: modeloCasaSrc, alt: "Una pareja en el sillón de su departamento", position: "center 30%" },
-    },
+    { n: "01", name: "Originamos", text: "Analizamos la zona, adquirimos la tierra y estructuramos el capital." },
+    { n: "02", name: "Desarrollamos", text: "Diseñamos y construimos el proyecto." },
+    { n: "03", name: "Entregamos", text: "El propietario recibe una propiedad lista para habitar o para producir." },
+    { n: "04", name: "Operamos", text: "Amelia Living y Fresh Coco se hacen cargo de la operación, la ocupación y la experiencia." },
   ],
 };
 
@@ -258,7 +237,7 @@ export const rutas = {
       text: "Conoce cómo estructuramos cada oportunidad y qué modelos de inversión ofrecemos en México y en Estados Unidos.",
       link: "Hablar con un asesor",
       drawing: "street" as Drawing,
-      photo: photos.copeliaTerraza as Photo | undefined,
+      photo: { src: rutasDocumentosSrc, alt: "Dos personas revisan un documento de inversión", position: "center 55%" } as Photo | undefined,
     },
     {
       n: "02",
@@ -266,7 +245,7 @@ export const rutas = {
       text: "Explora los desarrollos disponibles y encuentra el que corresponde a tu forma de vivir.",
       link: "Ver desarrollos",
       drawing: "interior" as Drawing,
-      photo: photos.copeliaDepto as Photo | undefined,
+      photo: { src: rutasCasaSrc, alt: "Una pareja en el sillón de su departamento", position: "center 30%" } as Photo | undefined,
     },
     {
       n: "03",
@@ -274,7 +253,7 @@ export const rutas = {
       text: "Si ya tienes una propiedad en renta, Amelia Living puede operarla para que produzca sin que tengas que administrarla.",
       link: "Conocer el modelo",
       drawing: "slab" as Drawing,
-      photo: photos.copeliaSalaEstar as Photo | undefined,
+      photo: { src: rutasLlavesSrc, alt: "Una mano sostiene las llaves frente a un edificio de departamentos", position: "center 60%" } as Photo | undefined,
     },
   ],
 };
