@@ -75,7 +75,7 @@ export const unidades: Unidad[] = [
     cta: { label: "Operar mi propiedad", href: "/contacto#formulario" },
     note: "Amelia Living es la marca operadora. Amelia Santa Lucía es el primer desarrollo que opera.",
     pending: "Por confirmar que es el primero",
-    photo: photos.ameliaTorre,
+    photo: photos.ameliaFachada,
     drawing: "interior",
   },
   {

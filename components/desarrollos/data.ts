@@ -12,6 +12,7 @@ import copeliaAsadoresSrc from "@/public/copelia/amenidades-area-de-asadores-cop
 import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
 import copeliaJuegosSrc from "@/public/copelia/amenidades-sala-de-juegos-copelia.webp";
+import ameliaLocalesSrc from "@/public/amelia/amelia-locales-render.webp";
 
 // Contenido de /desarrollos y de cada /desarrollos/[slug]. Lo que dice "Por confirmar" sigue
 // pendiente del cliente: estatus por proyecto, fechas de entrega, plantas, m² por tipología y
@@ -138,9 +139,15 @@ export const proyectos: Proyecto[] = [
     text: amelia.text,
     facts: amelia.facts,
     drawing: amelia.drawing,
-    heroPhoto: photos.ameliaTorre,
-    cover: photos.ameliaTorre,
-    gallery: [photos.ameliaTorre],
+    heroPhoto: photos.ameliaDron,
+    cover: photos.ameliaAcceso,
+    gallery: [
+      photos.ameliaDron,
+      photos.ameliaFachada,
+      photos.ameliaAcceso,
+      p(ameliaLocalesSrc, "Locales comerciales en la planta baja de Amelia Santa Lucía"),
+      photos.ameliaTorre,
+    ],
     amenidades: [],
     amenidadesTotal: 17,
     tipologias: [

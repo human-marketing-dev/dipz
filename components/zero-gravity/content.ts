@@ -1,4 +1,4 @@
-import { photos } from "@/components/home/content";
+import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-copelia.webp";
 
 // Textos de /zero-gravity. Partieron del doc "DIPZ · Estructura, copys y SEO del sitio" y se ajustaron el
 // 4 nov 2026 al registro del home y de nuevo el 4 nov (ronda 9) a un tono corporativo. Se evita
@@ -11,7 +11,7 @@ export const hero = {
   title: "Zero Gravity",
   intro:
     "Zero Gravity es el modelo de trabajo de DIPZ. El grupo se encarga del desarrollo, la estructuración de la inversión y la administración de cada propiedad, para que el cliente reciba los resultados sin intervenir en la operación.",
-  photo: { ...photos.piamontRooftop, alt: "Rooftop de Piamont abierto al cielo de San Pedro Garza García" },
+  photo: { src: copeliaAlbercaSrc, alt: "Alberca de Copelia abierta a la Sierra Madre y al cielo de Valle Oriente" },
 };
 
 export const caras = {

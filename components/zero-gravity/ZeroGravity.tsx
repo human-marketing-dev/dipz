@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ScrollWords } from "@/components/ui/ScrollWords";
 import { caras, enCadaUnidad, hero, loQueNoEs } from "./content";
 
-// Héroe a pantalla completa sobre el rooftop de Piamont: el cielo abierto es la imagen de la idea.
+// Héroe a pantalla completa sobre la alberca de Copelia: el cielo abierto es la imagen de la idea.
 export function ZeroGravityHero() {
   return (
     <section
@@ -13,7 +13,7 @@ export function ZeroGravityHero() {
       className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden bg-surface-inverse text-ink-inverse md:min-h-[760px]"
     >
       <div className="absolute inset-0">
-        <Media photo={hero.photo} preload label="Rooftop de Piamont" drawing="landscape" tone="graphite" className="size-full" showCaption={false} />
+        <Media photo={hero.photo} fit={[{ media: "(min-width: 768px)", vw: 100, vh: 84 }, { vw: 100, vh: 100 }]} preload label="Alberca de Copelia" drawing="landscape" tone="graphite" className="size-full" showCaption={false} />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/40 to-negro-profundo/20" />
 

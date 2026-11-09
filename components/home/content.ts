@@ -10,6 +10,13 @@ import copeliaSalaEstarSrc from "@/public/copelia/amenidades-sala-de-estar-copel
 import piamontRooftopSrc from "@/public/piamont/amenidades-rooftop-piamont.webp";
 import piamontPiscinaSrc from "@/public/piamont/amenidades-piscina-piamont.webp";
 import ameliaTorreSrc from "@/public/amelia/amelia-render.webp";
+import ameliaDronSrc from "@/public/amelia/vista-dron-amelia.webp";
+import ameliaAccesoSrc from "@/public/amelia/amelia-render-acceso.webp";
+import ameliaFachadaSrc from "@/public/amelia/amelia-fachada-render.webp";
+import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
+import modeloDocumentosSrc from "@/public/modelo/revision-de-documentos.webp";
+import modeloLlavesSrc from "@/public/modelo/entrega-de-llaves.webp";
+import modeloCasaSrc from "@/public/modelo/pareja-en-casa.webp";
 
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
@@ -29,7 +36,10 @@ export const photos = {
   copeliaSalaEstar: { src: copeliaSalaEstarSrc, alt: "Sala de estar en las amenidades de Copelia", position: "60% center" },
   piamontRooftop: { src: piamontRooftopSrc, alt: "Rooftop de Piamont" },
   piamontPiscina: { src: piamontPiscinaSrc, alt: "Piscina de Piamont" },
-  ameliaTorre: { src: ameliaTorreSrc, alt: "Torre Amelia Santa Lucía en el centro de Monterrey", position: "center 30%" },
+  ameliaTorre: { src: ameliaTorreSrc, alt: "Torre Amelia Santa Lucía en el centro de Monterrey" },
+  ameliaDron: { src: ameliaDronSrc, alt: "Vista aérea de Amelia Santa Lucía con el Cerro de la Silla", position: "center 60%" },
+  ameliaAcceso: { src: ameliaAccesoSrc, alt: "Acceso de Amelia Santa Lucía a nivel de calle" },
+  ameliaFachada: { src: ameliaFachadaSrc, alt: "Torre Amelia Santa Lucía junto al Paseo Santa Lucía al atardecer" },
 };
 
 
@@ -38,7 +48,7 @@ export const photos = {
 export const video = {
   eyebrow: "Video institucional",
   title: "Conoce DIPZ",
-  youtubeId: "",
+  youtubeId: "C-1Kwj7d6Uo",
 };
 
 export const hero = {
@@ -126,7 +136,7 @@ export const unidades = {
       capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
       link: "Conocer Amelia Living",
       drawing: "interior" as Drawing,
-      photo: photos.ameliaTorre as Photo | undefined,
+      photo: photos.ameliaFachada as Photo | undefined,
     },
     {
       id: "fresh-coco",
@@ -148,10 +158,30 @@ export const modelo = {
   paragraph:
     "Acompañamos cada proyecto desde que es una oportunidad hasta que es una propiedad en operación. Esa continuidad es lo que permite que la calidad se sostenga, que el activo produzca desde el primer día y que el propietario tenga un solo interlocutor en todo el proceso.",
   steps: [
-    { n: "01", name: "Originamos", text: "Analizamos la zona, adquirimos la tierra y estructuramos el capital." },
-    { n: "02", name: "Desarrollamos", text: "Diseñamos y construimos el proyecto." },
-    { n: "03", name: "Entregamos", text: "El propietario recibe una propiedad lista para habitar o para producir." },
-    { n: "04", name: "Operamos", text: "Amelia Living y Fresh Coco se hacen cargo de la operación, la ocupación y la experiencia." },
+    {
+      n: "01",
+      name: "Originamos",
+      text: "Analizamos la zona, adquirimos la tierra y estructuramos el capital.",
+      photo: { src: modeloDocumentosSrc, alt: "Dos personas revisan un documento en una escalera de oficina", position: "center 55%" },
+    },
+    {
+      n: "02",
+      name: "Desarrollamos",
+      text: "Diseñamos y construimos el proyecto.",
+      photo: { src: piamontPatioSrc, alt: "Patio central de Piamont" },
+    },
+    {
+      n: "03",
+      name: "Entregamos",
+      text: "El propietario recibe una propiedad lista para habitar o para producir.",
+      photo: { src: modeloLlavesSrc, alt: "Una mano sostiene las llaves frente a un edificio de departamentos", position: "center 60%" },
+    },
+    {
+      n: "04",
+      name: "Operamos",
+      text: "Amelia Living y Fresh Coco se hacen cargo de la operación, la ocupación y la experiencia.",
+      photo: { src: modeloCasaSrc, alt: "Una pareja en el sillón de su departamento", position: "center 30%" },
+    },
   ],
 };
 
@@ -204,8 +234,8 @@ export const desarrollos = {
         { label: "Operación", value: "Amelia Living" },
       ],
       drawing: "street" as Drawing,
-      heroPhoto: photos.ameliaTorre,
-      photo: photos.ameliaTorre,
+      heroPhoto: photos.ameliaDron,
+      photo: photos.ameliaAcceso,
     },
   ],
 };
