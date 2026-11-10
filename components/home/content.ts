@@ -196,10 +196,10 @@ export const desarrollos = {
       name: "Copelia",
       location: "Valle Oriente, San Pedro Garza García",
       zone: "Valle Oriente",
-      text: "Torre residencial de 38 departamentos en el corazón de Valle Oriente. Residencias de 170 a 565 metros cuadrados, con diez amenidades y tipologías de dos y tres recámaras.",
+      text: "Torre residencial de 38 departamentos en el corazón de Valle Oriente. Residencias de 168 a 565 metros cuadrados, con diez amenidades y tipologías de dos y tres recámaras.",
       facts: [
         { label: "Departamentos", value: "38" },
-        { label: "Superficies", value: "170 a 565 m²" },
+        { label: "Superficies", value: "168 a 565 m²" },
         { label: "Amenidades", value: "10" },
       ],
       drawing: "tower" as Drawing,
