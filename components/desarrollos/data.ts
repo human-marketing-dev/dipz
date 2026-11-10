@@ -38,10 +38,12 @@ export type Amenidad = { name: string; photo?: Photo };
 export type Tipologia = {
   name: string;
   area: string;
+  // Ubicación del departamento en la planta (p. ej. "Departamento superior izquierda").
+  subtitle?: string;
   detail?: string;
   features?: string[];
   // Una o más plantas (el penthouse tiene dos niveles); label nombra el nivel.
-  plantas?: { photo: Photo; label?: string }[];
+  plantas?: { photo: Photo; label?: string; description?: string }[];
 };
 
 export type Proyecto = {
@@ -164,13 +166,15 @@ export const proyectos: Proyecto[] = [
       {
         name: "Tipo A",
         area: "168.18 m²",
-        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de lavado"],
+        subtitle: "Departamento superior izquierda",
+        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de lavado", "Terraza"],
         plantas: [{ photo: p(copeliaTipoASrc, "Planta del departamento Tipo A de Copelia") }],
       },
       {
         name: "Tipo B",
         area: "206.80 m²",
-        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de servicio", "Cuarto de TV"],
+        subtitle: "Departamento superior derecha",
+        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de servicio", "Cuarto de TV", "Terraza"],
         plantas: [{ photo: p(copeliaTipoBSrc, "Planta del departamento Tipo B de Copelia") }],
       },
       {
@@ -200,6 +204,7 @@ export const proyectos: Proyecto[] = [
           {
             photo: p(copeliaPh16Src, "Planta del roof top del penthouse de Copelia, nivel 16"),
             label: "Roof top · Nivel 16",
+            description: "Roof top privado de los penthouses.",
           },
         ],
       },
