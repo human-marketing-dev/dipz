@@ -86,9 +86,12 @@ export function TipologiasTabs({ tipologias }: { tipologias: Tipologia[] }) {
                     className="h-auto max-h-[620px] w-full object-contain object-left transition-opacity duration-500 hover:opacity-85"
                   />
                 </a>
-                {pl.label && (
-                  <figcaption className="mt-3 type-caption tracking-[0.2em] text-ink-muted uppercase">
-                    {pl.label}
+                {(pl.label || pl.description) && (
+                  <figcaption className="mt-3">
+                    {pl.label && (
+                      <span className="block type-caption tracking-[0.2em] text-ink-muted uppercase">{pl.label}</span>
+                    )}
+                    {pl.description && <span className="mt-1 block type-small">{pl.description}</span>}
                   </figcaption>
                 )}
               </figure>
@@ -100,6 +103,7 @@ export function TipologiasTabs({ tipologias }: { tipologias: Tipologia[] }) {
 
         <div className="md:col-span-2 md:pl-6">
           <h3 className="type-h2">{t.name}</h3>
+          {t.subtitle && <p className="mt-3 type-small text-ink-muted">{t.subtitle}</p>}
           <dl className="mt-6 border-t border-line pt-4">
             <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">Superficie</dt>
             <dd className={`mt-1 type-body-lg ${pendiente(t.area)}`}>{t.area}</dd>
@@ -121,6 +125,9 @@ export function TipologiasTabs({ tipologias }: { tipologias: Tipologia[] }) {
           <ArrowLink href="#contacto" variant="dark" className="mt-8">
             Solicitar información
           </ArrowLink>
+          <p className="mt-8 type-caption text-ink-muted">
+            Planos ilustrativos de referencia. Distribuciones sujetas a cambio.
+          </p>
         </div>
       </div>
     </div>
