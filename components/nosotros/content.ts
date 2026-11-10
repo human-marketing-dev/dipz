@@ -28,30 +28,6 @@ export const grupo = {
   photo: photos.copeliaCiudad,
 };
 
-export const criterio = {
-  eyebrow: "Nuestro criterio",
-  title: "Principios de inversión",
-  intro: "Cuatro principios que orientan las decisiones de todas las unidades de negocio del grupo.",
-  rules: [
-    {
-      name: "Ubicación",
-      text: "Cada proyecto parte de un análisis de la zona: demanda, crecimiento y potencial de plusvalía.",
-    },
-    {
-      name: "Calidad constructiva",
-      text: "Materiales y procesos constructivos se seleccionan en función del desempeño del inmueble a largo plazo.",
-    },
-    {
-      name: "Continuidad",
-      text: "Las unidades de operación del grupo administran la propiedad después de la entrega, con un solo interlocutor para el cliente.",
-    },
-    {
-      name: "Información",
-      text: "Cada inversionista recibe información financiera, plazos de obra y reportes periódicos.",
-    },
-  ],
-};
-
 export const marcas = {
   eyebrow: "Estructura del grupo",
   title: "Unidades de negocio",

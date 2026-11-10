@@ -2,7 +2,7 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { criterio, grupo, hero, marcas } from "./content";
+import { grupo, hero, marcas } from "./content";
 
 export function NosotrosHero() {
   return (
@@ -45,38 +45,6 @@ export function Grupo() {
           ))}
         </ol>
       </div>
-    </section>
-  );
-}
-
-// Índice de reglas: número, regla en grande y su explicación en el último tercio.
-export function Criterio() {
-  return (
-    <section data-nav="sand" className="frame bg-surface-alt py-16 md:py-30">
-      <div className="md:grid md:grid-cols-6 md:gap-x-6">
-        <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
-          {criterio.eyebrow}
-        </Reveal>
-        <div className="md:col-span-4">
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:mt-0 md:type-h1">
-            {criterio.title}
-          </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-6 max-w-[480px] type-body-lg text-ink-muted">
-            {criterio.intro}
-          </Reveal>
-        </div>
-      </div>
-
-      <ol className="mt-12 border-t border-line md:mt-20">
-        {criterio.rules.map((r, i) => (
-          <Reveal as="li" key={r.name} delay={i * 0.08} className="group grid gap-4 border-b border-line py-8 md:min-h-[176px] md:grid-cols-6 md:items-center md:gap-6 md:py-10">
-            <span className="type-eyebrow text-ink-muted">0{i + 1}</span>
-            <h3 className="type-h2 md:col-span-3">{r.name}</h3>
-            <p className="max-w-[420px] type-body text-ink-muted md:col-span-2">{r.text}</p>
-          </Reveal>
-        ))}
-      </ol>
-      <p className="mt-6 type-caption text-ink-muted">Criterios sujetos a validación</p>
     </section>
   );
 }
