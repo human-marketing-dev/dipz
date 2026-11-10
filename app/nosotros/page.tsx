@@ -4,7 +4,7 @@ import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 import { Respaldo } from "@/components/home/Respaldo";
 import { cierre } from "@/components/nosotros/content";
-import { Criterio, Grupo, Marcas, NosotrosHero } from "@/components/nosotros/Nosotros";
+import { Grupo, Marcas, NosotrosHero } from "@/components/nosotros/Nosotros";
 
 export const metadata: Metadata = {
   title: "Nosotros: grupo inmobiliario con más de 20 años de trayectoria",
@@ -21,7 +21,6 @@ export default function NosotrosPage() {
         <NosotrosHero />
         <Grupo />
         <Respaldo />
-        <Criterio />
         <Marcas />
         <Cierre eyebrow={cierre.eyebrow} title={cierre.title} />
       </main>

@@ -1,8 +1,9 @@
-import { Arrow } from "@/components/ui/ArrowLink";
+import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { POR_CONFIRMAR, type Proyecto } from "./data";
+import { projectTones } from "@/components/ui/projectTone";
 
 // Secciones de la página de cada desarrollo, en el orden en que aparecen.
 
@@ -197,34 +198,52 @@ export function Tipologias({ p }: { p: Proyecto }) {
   );
 }
 
+// Ubicación en el color del proyecto (terracota, verde o azul talco), como en el home.
 export function Ubicacion({ p }: { p: Proyecto }) {
+  const t = projectTones[p.color];
   return (
-    <section data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
+    <section data-nav={t.link === "dark" ? "sand" : "dark"} className={`frame py-16 md:py-30 ${t.bg} ${t.body}`}>
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
         <div className="md:col-span-2">
-          <Reveal as="p" className="type-eyebrow text-arena">
+          <Reveal as="p" className={`type-eyebrow ${t.eyebrow}`}>
             Ubicación
           </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
+          <Reveal as="h2" delay={0.1} className={`mt-6 type-h2 md:type-h1 ${t.title}`}>
             {p.zone}
           </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-6 type-body-lg text-arena">
+          <Reveal as="p" delay={0.2} className="mt-6 type-body-lg">
             {p.location}
           </Reveal>
 
           <Reveal delay={0.3} className="mt-10">
-            <p className="type-caption tracking-[0.2em] text-arena uppercase">Cerca de</p>
-            <ul className="mt-3 border-t border-blanco-calido/25">
+            <p className={`type-caption tracking-[0.2em] uppercase ${t.eyebrow}`}>Cerca de</p>
+            <ul className={`mt-3 border-t ${t.line}`}>
               {p.cercanos.map((c, i) => (
-                <li key={i} className={`border-b border-blanco-calido/25 py-3 type-small ${c === POR_CONFIRMAR ? "text-arena" : ""}`}>
+                <li key={i} className={`border-b py-3 type-small ${t.line} ${c === POR_CONFIRMAR ? t.eyebrow : ""}`}>
                   {c}
                 </li>
               ))}
             </ul>
           </Reveal>
+
+          <Reveal delay={0.4} className="mt-10">
+            <ArrowLink href={p.mapa.url} variant={t.link}>
+              Cómo llegar
+            </ArrowLink>
+          </Reveal>
         </div>
         <Reveal delay={0.2} className="mt-12 md:col-span-4 md:mt-0">
-          <Placeholder label="Mapa de ubicación por integrar" drawing="street" tone="dark" className="aspect-[16/10]" />
+          {p.mapa.lat != null && p.mapa.lng != null ? (
+            <iframe
+              src={`https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&hl=es&output=embed`}
+              title={`Mapa de ubicación de ${p.name}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="aspect-[16/10] w-full border-0 bg-surface-alt"
+            />
+          ) : (
+            <Placeholder label="Mapa de ubicación por integrar" drawing="street" tone="dark" className="aspect-[16/10]" />
+          )}
         </Reveal>
       </div>
     </section>

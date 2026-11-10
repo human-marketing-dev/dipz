@@ -1,5 +1,5 @@
 import type { Photo } from "@/components/ui/Media";
-import { desarrollos as home, photos, type Drawing } from "@/components/home/content";
+import { desarrollos as home, photos, type Drawing, type ProjectColor } from "@/components/home/content";
 import piamontAcabadosSrc from "@/public/piamont/acabados-piamont.webp";
 import piamontMontanasSrc from "@/public/piamont/fondo-montañas-piamont.webp";
 import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
@@ -27,6 +27,7 @@ export type Amenidad = { name: string; photo?: Photo };
 
 export type Proyecto = {
   slug: string;
+  color: ProjectColor;
   name: string;
   location: string;
   zone: string;
@@ -46,6 +47,9 @@ export type Proyecto = {
   amenidadesTotal: number;
   tipologias: { name: string; area: string; detail: string }[];
   cercanos: string[];
+  // Ubicación en Google Maps: el link que comparte el cliente (botón "Cómo llegar") y, si se tienen,
+  // las coordenadas para el mapa embebido. Sin coordenadas se muestra el marcador del mapa.
+  mapa: { url: string; lat?: number; lng?: number };
 };
 
 const p = (src: Photo["src"], alt: string, position?: string): Photo => ({ src, alt, position });
@@ -54,6 +58,7 @@ const [piamont, copelia, amelia] = home.projects;
 export const proyectos: Proyecto[] = [
   {
     slug: piamont.id,
+    color: piamont.color,
     name: piamont.name,
     location: piamont.location,
     zone: piamont.zone,
@@ -91,9 +96,11 @@ export const proyectos: Proyecto[] = [
       { name: "Tipología C", area: "386 m²", detail: POR_CONFIRMAR },
     ],
     cercanos: [POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/Eigaa2Tb8HLdygun8", lat: 25.6400237, lng: -100.3612533 },
   },
   {
     slug: copelia.id,
+    color: copelia.color,
     name: copelia.name,
     location: copelia.location,
     zone: copelia.zone,
@@ -124,9 +131,11 @@ export const proyectos: Proyecto[] = [
       { name: "Tres recámaras", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
     ],
     cercanos: [POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/odRcEyE4brmi4Es46", lat: 25.6523329, lng: -100.3361708 },
   },
   {
     slug: amelia.id,
+    color: amelia.color,
     name: amelia.name,
     location: amelia.location,
     zone: amelia.zone,
@@ -155,6 +164,7 @@ export const proyectos: Proyecto[] = [
       { name: "Tipología B", area: "74 m²", detail: POR_CONFIRMAR },
     ],
     cercanos: ["Paseo Santa Lucía", POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/1bLaK2jsysK7e3Le9", lat: 25.6710279, lng: -100.3031354 },
   },
 ];
 

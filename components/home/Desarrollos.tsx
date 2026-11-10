@@ -4,15 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { desarrollos, type ProjectColor } from "./content";
+import { projectTones as tones } from "@/components/ui/projectTone";
+import { desarrollos } from "./content";
 
-// Fondo y texto de la columna fija según el proyecto que está en pantalla: texto blanco sobre
-// terracota y verde, negro sobre azul talco (el blanco no se lee sobre un fondo tan claro).
-const tones: Record<ProjectColor, { bg: string; eyebrow: string; title: string; body: string; link: "light" | "dark" }> = {
-  terracota: { bg: "bg-terracota", eyebrow: "text-blanco-calido/80", title: "text-blanco-calido", body: "text-blanco-calido", link: "light" },
-  "verde-salvia": { bg: "bg-verde-salvia", eyebrow: "text-blanco-calido/80", title: "text-blanco-calido", body: "text-blanco-calido", link: "light" },
-  "azul-talco": { bg: "bg-azul-talco", eyebrow: "text-negro-profundo/70", title: "text-negro-profundo", body: "text-negro-profundo", link: "dark" },
-};
 
 export function Desarrollos() {
   const total = desarrollos.projects.length;
