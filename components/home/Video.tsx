@@ -2,7 +2,7 @@ import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { video } from "./content";
 
-// Video institucional a todo lo ancho de la pantalla, en 16:9. Sin ID de YouTube muestra el marcador con el
+// Video institucional a todo lo ancho de la pantalla: 16:9 en móvil, 21:9 (más bajo) desde tablet. Sin ID de YouTube muestra el marcador con el
 // botón de reproducir; con ID, el reproductor de YouTube sin cookies.
 export function Video() {
   return (
@@ -16,7 +16,7 @@ export function Video() {
         </Reveal>
       </div>
 
-      <Reveal delay={0.2} className="relative mt-10 aspect-video w-full md:mt-16">
+      <Reveal delay={0.2} className="relative mt-10 aspect-video w-full md:mt-16 md:aspect-[21/9]">
         {video.youtubeId ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
