@@ -1,5 +1,5 @@
 import type { Photo } from "@/components/ui/Media";
-import { desarrollos as home, photos, type Drawing } from "@/components/home/content";
+import { desarrollos as home, photos, type Drawing, type ProjectColor } from "@/components/home/content";
 import piamontAcabadosSrc from "@/public/piamont/acabados-piamont.webp";
 import piamontMontanasSrc from "@/public/piamont/fondo-montañas-piamont.webp";
 import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
@@ -27,6 +27,7 @@ export type Amenidad = { name: string; photo?: Photo };
 
 export type Proyecto = {
   slug: string;
+  color: ProjectColor;
   name: string;
   location: string;
   zone: string;
@@ -54,6 +55,7 @@ const [piamont, copelia, amelia] = home.projects;
 export const proyectos: Proyecto[] = [
   {
     slug: piamont.id,
+    color: piamont.color,
     name: piamont.name,
     location: piamont.location,
     zone: piamont.zone,
@@ -94,6 +96,7 @@ export const proyectos: Proyecto[] = [
   },
   {
     slug: copelia.id,
+    color: copelia.color,
     name: copelia.name,
     location: copelia.location,
     zone: copelia.zone,
@@ -127,6 +130,7 @@ export const proyectos: Proyecto[] = [
   },
   {
     slug: amelia.id,
+    color: amelia.color,
     name: amelia.name,
     location: amelia.location,
     zone: amelia.zone,
