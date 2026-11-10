@@ -1,4 +1,4 @@
-import { Arrow } from "@/components/ui/ArrowLink";
+import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
@@ -225,9 +225,25 @@ export function Ubicacion({ p }: { p: Proyecto }) {
               ))}
             </ul>
           </Reveal>
+
+          <Reveal delay={0.4} className="mt-10">
+            <ArrowLink href={p.mapa.url} variant={t.link}>
+              Cómo llegar
+            </ArrowLink>
+          </Reveal>
         </div>
         <Reveal delay={0.2} className="mt-12 md:col-span-4 md:mt-0">
-          <Placeholder label="Mapa de ubicación por integrar" drawing="street" tone="dark" className="aspect-[16/10]" />
+          {p.mapa.lat != null && p.mapa.lng != null ? (
+            <iframe
+              src={`https://maps.google.com/maps?q=${p.mapa.lat},${p.mapa.lng}&z=16&hl=es&output=embed`}
+              title={`Mapa de ubicación de ${p.name}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="aspect-[16/10] w-full border-0 bg-surface-alt"
+            />
+          ) : (
+            <Placeholder label="Mapa de ubicación por integrar" drawing="street" tone="dark" className="aspect-[16/10]" />
+          )}
         </Reveal>
       </div>
     </section>

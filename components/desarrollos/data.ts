@@ -47,6 +47,9 @@ export type Proyecto = {
   amenidadesTotal: number;
   tipologias: { name: string; area: string; detail: string }[];
   cercanos: string[];
+  // Ubicación en Google Maps: el link que comparte el cliente (botón "Cómo llegar") y, si se tienen,
+  // las coordenadas para el mapa embebido. Sin coordenadas se muestra el marcador del mapa.
+  mapa: { url: string; lat?: number; lng?: number };
 };
 
 const p = (src: Photo["src"], alt: string, position?: string): Photo => ({ src, alt, position });
@@ -93,6 +96,7 @@ export const proyectos: Proyecto[] = [
       { name: "Tipología C", area: "386 m²", detail: POR_CONFIRMAR },
     ],
     cercanos: [POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/Eigaa2Tb8HLdygun8", lat: 25.6400237, lng: -100.3612533 },
   },
   {
     slug: copelia.id,
@@ -127,6 +131,7 @@ export const proyectos: Proyecto[] = [
       { name: "Tres recámaras", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
     ],
     cercanos: [POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/odRcEyE4brmi4Es46", lat: 25.6523329, lng: -100.3361708 },
   },
   {
     slug: amelia.id,
@@ -159,6 +164,7 @@ export const proyectos: Proyecto[] = [
       { name: "Tipología B", area: "74 m²", detail: POR_CONFIRMAR },
     ],
     cercanos: ["Paseo Santa Lucía", POR_CONFIRMAR],
+    mapa: { url: "https://maps.app.goo.gl/1bLaK2jsysK7e3Le9", lat: 25.6710279, lng: -100.3031354 },
   },
 ];
 
