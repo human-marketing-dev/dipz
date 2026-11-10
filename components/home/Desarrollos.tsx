@@ -1,14 +1,46 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { desarrollos } from "./content";
+import { desarrollos, type ProjectColor } from "./content";
+
+// Fondo de la columna fija según el proyecto que está en pantalla.
+const bg: Record<ProjectColor, string> = {
+  terracota: "bg-terracota",
+  "verde-salvia": "bg-verde-salvia",
+  "azul-talco": "bg-azul-talco",
+};
 
 export function Desarrollos() {
   const total = desarrollos.projects.length;
+  const panels = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  // El proyecto activo es el último panel cuya parte superior ya pasó la mitad de la pantalla.
+  useEffect(() => {
+    const update = () => {
+      const items = panels.current?.querySelectorAll("article");
+      if (!items) return;
+      let current = 0;
+      items.forEach((el, i) => {
+        if (el.getBoundingClientRect().top <= window.innerHeight / 2) current = i;
+      });
+      setActive(current);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
   return (
     <section id="desarrollos" data-nav="dark" className="bg-surface-inverse text-ink-inverse md:grid md:grid-cols-[calc(var(--margin)+(100vw-2*var(--margin)+24px)/3)_1fr]">
       {/* Introducción fija, del margen al riel 1/3 */}
-      <div className="pl-[var(--margin)] pr-6 pt-16 pb-12 md:sticky md:top-0 md:flex md:h-[100dvh] md:flex-col md:justify-between md:pt-40 md:pb-16">
+      <div className={`pl-[var(--margin)] pr-6 pt-16 pb-12 transition-colors duration-700 ease-[var(--ease-dipz)] ${bg[desarrollos.projects[active].color]} md:sticky md:top-0 md:flex md:h-[100dvh] md:flex-col md:justify-between md:pt-40 md:pb-16`}>
         <div>
           <Reveal as="p" className="type-eyebrow text-arena">
             {desarrollos.eyebrow}
@@ -28,7 +60,7 @@ export function Desarrollos() {
       </div>
 
       {/* Paneles a sangre que se apilan al hacer scroll */}
-      <div>
+      <div ref={panels}>
         {desarrollos.projects.map((p, i) => (
           <article
             key={p.id}
