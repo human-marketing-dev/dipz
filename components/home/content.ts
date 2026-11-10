@@ -103,7 +103,7 @@ export const zeroGravity = {
 
 export const unidades = {
   eyebrow: "Nuestras marcas",
-  title: "Desarrollo en México y Estados Unidos. Operación en ciudad y en destino turístico.",
+  title: "Desarrollo y operación en México y Estados Unidos.",
   intro:
     "Cada marca del grupo se especializa en una etapa o en un territorio. Juntas cubren el ciclo completo: desarrollar, invertir y operar.",
   brands: [
