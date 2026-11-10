@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Placeholder } from "@/components/ui/Placeholder";
@@ -22,7 +23,15 @@ export function FichaHero({ p }: { p: Proyecto }) {
       className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden bg-surface-inverse text-ink-inverse md:min-h-[760px]"
     >
       <div className="absolute inset-0">
-        <Media photo={p.heroPhoto} preload label={`Render de ${p.name}`} drawing={p.drawing} tone="graphite" className="size-full" showCaption={false} />
+        <Media
+          photo={p.heroPhoto}
+          preload
+          label={`Render de ${p.name}`}
+          drawing={p.drawing}
+          tone="graphite"
+          className="size-full"
+          showCaption={false}
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/45 to-negro-profundo/30" />
 
@@ -47,7 +56,9 @@ export function FichaHero({ p }: { p: Proyecto }) {
             {ficha.map((f) => (
               <div key={f.label}>
                 <dt className="type-caption tracking-[0.2em] text-arena uppercase">{f.label}</dt>
-                <dd className={`mt-1 type-small ${f.value === POR_CONFIRMAR ? "text-arena" : "text-blanco-calido"}`}>{f.value}</dd>
+                <dd className={`mt-1 type-small ${f.value === POR_CONFIRMAR ? "text-arena" : "text-blanco-calido"}`}>
+                  {f.value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -133,7 +144,13 @@ export function Amenidades({ p }: { p: Proyecto }) {
       ) : (
         <Reveal delay={0.2} className="mt-12 grid gap-6 md:mt-20 md:grid-cols-3">
           {Array.from({ length: 3 }, (_, i) => (
-            <Placeholder key={i} label="Amenidad por confirmar" drawing="interior" tone="sand" className="aspect-[4/3]" />
+            <Placeholder
+              key={i}
+              label="Amenidad por confirmar"
+              drawing="interior"
+              tone="sand"
+              className="aspect-[4/3]"
+            />
           ))}
         </Reveal>
       )}
@@ -141,7 +158,12 @@ export function Amenidades({ p }: { p: Proyecto }) {
   );
 }
 
+const numeros = ["", "Una", "Dos", "Tres", "Cuatro", "Cinco", "Seis"];
+
+// Índice de tipologías: número, planta grande (clic para verla completa) y, a la derecha, superficie,
+// distribución y el botón para pedir información. El penthouse muestra sus dos niveles.
 export function Tipologias({ p }: { p: Proyecto }) {
+  const n = p.tipologias.length;
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -153,45 +175,77 @@ export function Tipologias({ p }: { p: Proyecto }) {
             De {p.surface}
           </Reveal>
           <Reveal as="p" delay={0.2} className="mt-6 max-w-[480px] type-body-lg text-ink-muted">
-            Plantas, superficies por tipología y disponibilidad por confirmar. Un asesor te comparte la información
-            actualizada.
+            {numeros[n] ?? n} {n === 1 ? "tipología" : "tipologías"}. Un asesor te comparte disponibilidad y precios
+            actualizados.
           </Reveal>
         </div>
       </div>
 
-      {/* Índice de tipologías: planta a la izquierda, datos a la derecha, con regla entre filas */}
       <ol className="mt-12 border-t border-line md:mt-20">
         {p.tipologias.map((t, i) => (
-          <li key={t.name} className="border-b border-line">
-            <a
-              href="#contacto"
-              className="group grid gap-6 py-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus md:grid-cols-6 md:items-center md:py-10"
-            >
-              <span className="type-eyebrow text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
-              <Placeholder label={`Planta ${t.name}`} drawing="interior" tone="sand" className="aspect-[4/3] md:col-span-2" />
-              <span className="md:col-span-2 md:pl-6">
-                <span className="block type-h2 transition-colors duration-500 md:group-hover:text-accent">{t.name}</span>
-                <span className="mt-4 grid grid-cols-2 gap-6 border-t border-line pt-4">
-                  <span>
-                    <span className="block type-caption tracking-[0.2em] text-ink-muted uppercase">Superficie</span>
-                    <span className={`mt-1 block type-small ${pendiente(t.area)}`}>{t.area}</span>
-                  </span>
-                  <span>
-                    <span className="block type-caption tracking-[0.2em] text-ink-muted uppercase">Distribución</span>
-                    <span className={`mt-1 block type-small ${pendiente(t.detail)}`}>{t.detail}</span>
-                  </span>
-                </span>
-              </span>
-              <span className="flex md:justify-end">
-                <span className="inline-flex items-center gap-4 rounded-pill border border-line py-2 pr-2 pl-6 type-label whitespace-nowrap transition-colors duration-500 group-hover:border-negro-profundo group-hover:bg-negro-profundo group-hover:text-ink-inverse">
-                  Pedir planta
-                  <span className="grid size-10 place-items-center rounded-pill bg-negro-profundo text-ink-inverse transition-colors duration-500 group-hover:bg-accent">
-                    <Arrow className="arrow-nudge" />
-                  </span>
-                </span>
-              </span>
-            </a>
-          </li>
+          <Reveal
+            as="li"
+            key={t.name}
+            className="grid gap-8 border-b border-line py-10 md:grid-cols-6 md:gap-6 md:py-16"
+          >
+            <span className="type-eyebrow text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
+
+            <div className="flex flex-col gap-8 md:col-span-3">
+              {t.plantas?.length ? (
+                t.plantas.map((pl) => (
+                  <figure key={pl.photo.alt}>
+                    <a
+                      href={pl.photo.src.src}
+                      target="_blank"
+                      rel="noopener"
+                      className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+                    >
+                      <Image
+                        src={pl.photo.src}
+                        alt={pl.photo.alt}
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="h-auto max-h-[560px] w-full object-contain object-left transition-opacity duration-500 hover:opacity-85"
+                      />
+                    </a>
+                    {pl.label && (
+                      <figcaption className="mt-3 type-caption tracking-[0.2em] text-ink-muted uppercase">
+                        {pl.label}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))
+              ) : (
+                <Placeholder label={`Planta ${t.name}`} drawing="interior" tone="sand" className="aspect-[4/3]" />
+              )}
+            </div>
+
+            <div className="md:col-span-2 md:pl-6">
+              <h3 className="type-h2">{t.name}</h3>
+              <dl className="mt-6 border-t border-line pt-4">
+                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">Superficie</dt>
+                <dd className={`mt-1 type-body-lg ${pendiente(t.area)}`}>{t.area}</dd>
+              </dl>
+              <div className="mt-6">
+                <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Distribución</p>
+                {t.features?.length ? (
+                  <ul className="mt-3 border-t border-line">
+                    {t.features.map((f) => (
+                      <li key={f} className="border-b border-line py-3 type-small">
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className={`mt-1 type-small ${pendiente(t.detail ?? POR_CONFIRMAR)}`}>
+                    {t.detail ?? POR_CONFIRMAR}
+                  </p>
+                )}
+              </div>
+              <ArrowLink href="#contacto" variant="dark" className="mt-8">
+                Solicitar información
+              </ArrowLink>
+            </div>
+          </Reveal>
         ))}
       </ol>
     </section>
@@ -242,7 +296,12 @@ export function Ubicacion({ p }: { p: Proyecto }) {
               className="aspect-[16/10] w-full border-0 bg-surface-alt"
             />
           ) : (
-            <Placeholder label="Mapa de ubicación por integrar" drawing="street" tone="dark" className="aspect-[16/10]" />
+            <Placeholder
+              label="Mapa de ubicación por integrar"
+              drawing="street"
+              tone="dark"
+              className="aspect-[16/10]"
+            />
           )}
         </Reveal>
       </div>
@@ -259,7 +318,14 @@ export function Siguiente({ p }: { p: Proyecto }) {
       className="group relative flex h-[60dvh] items-end overflow-hidden bg-negro-profundo text-ink-inverse focus-visible:outline-2 focus-visible:-outline-offset-8 focus-visible:outline-focus md:h-[70dvh]"
     >
       <div className="absolute inset-0 transition-transform duration-1000 ease-[var(--ease-dipz)] group-hover:scale-105">
-        <Media photo={p.cover} label={p.name} drawing={p.drawing} tone="graphite" className="size-full" showCaption={false} />
+        <Media
+          photo={p.cover}
+          label={p.name}
+          drawing={p.drawing}
+          tone="graphite"
+          className="size-full"
+          showCaption={false}
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-negro-profundo/85 via-negro-profundo/40 to-negro-profundo/20 transition-colors duration-700 group-hover:bg-negro-profundo/30" />
       <div className="frame relative w-full pb-10 md:pb-16">

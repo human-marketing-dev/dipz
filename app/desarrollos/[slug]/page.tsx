@@ -17,9 +17,6 @@ export async function generateMetadata({ params }: PageProps<"/desarrollos/[slug
   return { title: p.name, description: p.text };
 }
 
-// Tipologías oculta hasta tener plantas y m² reales por tipología; cambiar a true para mostrarla.
-const MOSTRAR_TIPOLOGIAS = false;
-
 export default async function DesarrolloPage({ params }: PageProps<"/desarrollos/[slug]">) {
   const { slug } = await params;
   const p = getProyecto(slug);
@@ -34,7 +31,7 @@ export default async function DesarrolloPage({ params }: PageProps<"/desarrollos
         <Concepto p={p} />
         {p.gallery.length > 1 && <Galeria photos={p.gallery} name={p.name} />}
         <Amenidades p={p} />
-        {MOSTRAR_TIPOLOGIAS && <Tipologias p={p} />}
+        {p.mostrarTipologias && <Tipologias p={p} />}
         <Ubicacion p={p} />
         <Cierre eyebrow={`Me interesa ${p.name}`} title={`Agenda una visita a ${p.name}.`} interes={p.name} />
         <Siguiente p={next} />

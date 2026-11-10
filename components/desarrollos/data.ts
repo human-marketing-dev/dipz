@@ -13,6 +13,11 @@ import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
 import copeliaJuegosSrc from "@/public/copelia/amenidades-sala-de-juegos-copelia.webp";
 import ameliaLocalesSrc from "@/public/amelia/amelia-locales-render.webp";
+import copeliaTipoASrc from "@/public/copelia/plantas/planta-tipo-a-copelia.webp";
+import copeliaTipoBSrc from "@/public/copelia/plantas/planta-tipo-b-copelia.webp";
+import copeliaTipoCSrc from "@/public/copelia/plantas/planta-tipo-c-copelia.webp";
+import copeliaPh15Src from "@/public/copelia/plantas/planta-penthouse-nivel-15-copelia.webp";
+import copeliaPh16Src from "@/public/copelia/plantas/planta-penthouse-roof-top-nivel-16-copelia.webp";
 
 // Contenido de /desarrollos y de cada /desarrollos/[slug]. Lo que dice "Por confirmar" sigue
 // pendiente del cliente: estatus por proyecto, fechas de entrega, plantas, m² por tipología y
@@ -24,6 +29,15 @@ export const POR_CONFIRMAR = "Por confirmar";
 export type Perfil = "vivir" | "invertir";
 
 export type Amenidad = { name: string; photo?: Photo };
+
+export type Tipologia = {
+  name: string;
+  area: string;
+  detail?: string;
+  features?: string[];
+  // Una o más plantas (el penthouse tiene dos niveles); label nombra el nivel.
+  plantas?: { photo: Photo; label?: string }[];
+};
 
 export type Proyecto = {
   slug: string;
@@ -45,7 +59,9 @@ export type Proyecto = {
   gallery: Photo[];
   amenidades: Amenidad[];
   amenidadesTotal: number;
-  tipologias: { name: string; area: string; detail: string }[];
+  // La sección Tipologías solo se muestra en los proyectos con plantas reales (mostrarTipologias).
+  mostrarTipologias?: boolean;
+  tipologias: Tipologia[];
   cercanos: string[];
   // Ubicación en Google Maps: el link que comparte el cliente (botón "Cómo llegar") y, si se tienen,
   // las coordenadas para el mapa embebido. Sin coordenadas se muestra el marcador del mapa.
@@ -108,9 +124,9 @@ export const proyectos: Proyecto[] = [
     tipo: "Torre residencial",
     status: "En construcción y comercialización",
     entrega: POR_CONFIRMAR,
-    surface: "170 a 565 m²",
+    surface: "168 a 565 m²",
     statement: "Torre residencial de 38 departamentos en Valle Oriente.",
-    text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 170 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
+    text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 168 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
     facts: copelia.facts,
     drawing: copelia.drawing,
     heroPhoto: photos.copeliaCiudad,
@@ -126,9 +142,50 @@ export const proyectos: Proyecto[] = [
       { name: "Sala de estar", photo: photos.copeliaSalaEstar },
     ],
     amenidadesTotal: 10,
+    mostrarTipologias: true,
     tipologias: [
-      { name: "Dos recámaras", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
-      { name: "Tres recámaras", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
+      {
+        name: "Tipo A",
+        area: "168.18 m²",
+        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de lavado"],
+        plantas: [{ photo: p(copeliaTipoASrc, "Planta del departamento Tipo A de Copelia") }],
+      },
+      {
+        name: "Tipo B",
+        area: "206.80 m²",
+        features: ["2 habitaciones con baño-vestidor", "Medio baño", "Cuarto de servicio", "Cuarto de TV"],
+        plantas: [{ photo: p(copeliaTipoBSrc, "Planta del departamento Tipo B de Copelia") }],
+      },
+      {
+        name: "Tipo C",
+        area: "376 m²",
+        features: [
+          "3 habitaciones con baño-vestidor",
+          "Lavandería",
+          "Área de trabajo",
+          "Cuarto de servicio",
+          "Área de TV",
+        ],
+        plantas: [{ photo: p(copeliaTipoCSrc, "Planta del departamento Tipo C de Copelia") }],
+      },
+      {
+        name: "Penthouse",
+        area: "565 m²",
+        features: [
+          "Penthouse con roof top",
+          "3 habitaciones con baño-vestidor",
+          "Medio baño",
+          "Cuarto de servicio",
+          "Cuarto de lavado",
+        ],
+        plantas: [
+          { photo: p(copeliaPh15Src, "Planta del penthouse de Copelia, nivel 15"), label: "Nivel 15" },
+          {
+            photo: p(copeliaPh16Src, "Planta del roof top del penthouse de Copelia, nivel 16"),
+            label: "Roof top · Nivel 16",
+          },
+        ],
+      },
     ],
     cercanos: [
       "Deportivo San Agustín",
@@ -174,7 +231,17 @@ export const proyectos: Proyecto[] = [
       { name: "Tipología A", area: "43 m²", detail: POR_CONFIRMAR },
       { name: "Tipología B", area: "74 m²", detail: POR_CONFIRMAR },
     ],
-    cercanos: ["Paseo Santa Lucía", POR_CONFIRMAR],
+    cercanos: [
+      "Paseo Santa Lucía",
+      "Barrio Antiguo",
+      "Museo de Historia Mexicana",
+      "Museo del Noreste (MUNE)",
+      "Macroplaza",
+      "MARCO",
+      "Parque Fundidora",
+      "Cintermex",
+      "Arena Monterrey",
+    ],
     mapa: { url: "https://maps.app.goo.gl/1bLaK2jsysK7e3Le9", lat: 25.6710279, lng: -100.3031354 },
   },
 ];
