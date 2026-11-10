@@ -57,16 +57,17 @@ export function UnidadSection({ u, n }: { u: Unidad; n: number }) {
         </Reveal>
 
         <div className={`mt-10 flex flex-col md:col-span-3 md:mt-0 ${alt ? "md:order-1 md:pr-10" : "md:pl-10"}`}>
+          {/* La marca es lo protagonista; su descripción va debajo como subtítulo */}
           <Reveal className="flex items-center justify-between border-b border-line pb-4">
-            <span className="type-eyebrow text-ink-muted">{u.name}</span>
+            <span className="type-eyebrow text-ink-muted">{u.tag}</span>
             <span className="type-eyebrow text-ink-muted">
               {pad(n)} / {pad(unidades.length)}
             </span>
           </Reveal>
-          <Reveal as="p" delay={0.05} className="mt-8 type-caption tracking-[0.2em] text-ink-muted uppercase">
-            {u.tag}
+          <Reveal as="h2" delay={0.1} className="mt-8 type-h2 md:type-h1">
+            {u.name}
           </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-4 type-h2 md:type-h1">
+          <Reveal as="p" delay={0.15} className="mt-4 type-h3 text-ink-muted">
             {u.title}
           </Reveal>
           <Reveal delay={0.2} className="mt-8 flex max-w-[520px] flex-col gap-4">
