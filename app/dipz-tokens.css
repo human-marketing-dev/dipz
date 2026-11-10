@@ -8,6 +8,7 @@
   --blanco-calido: #f2f0eb;
   --verde-salvia: #687665;
   --terracota: #9d5129;
+  --azul-talco: #94b5de; /* acento de Amelia Santa Lucía (noviembre 2026) */
 
   /* Colores de WhatsApp: solo para el botón flotante y su chat (noviembre 2026) */
   --whatsapp: #25d366;
@@ -54,6 +55,7 @@
   --color-blanco-calido: var(--blanco-calido);
   --color-verde-salvia: var(--verde-salvia);
   --color-terracota: var(--terracota);
+  --color-azul-talco: var(--azul-talco);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-dark: var(--whatsapp-dark);
   --color-whatsapp-chat: var(--whatsapp-chat);

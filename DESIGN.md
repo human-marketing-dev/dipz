@@ -51,6 +51,7 @@ Para Tailwind v3: usa `tailwind.config.v3.ts` como `tailwind.config.ts`, y en `d
 | `ink-inverse` | `text-ink-inverse` | `blanco-calido` #F2F0EB | Texto sobre `surface-inverse` y sobre `accent` |
 | `accent` | `bg-accent` / `text-accent` | `verde-salvia` #687665 | Botón primario, enlaces, foco |
 | `accent-alt` | `bg-accent-alt` | `terracota` #9D5129 | Acento secundario puntual |
+| — | `bg-azul-talco` | `azul-talco` #94B5DE | Color de proyecto (Amelia Santa Lucía) |
 | `line` | `border-line` | `gris-grafito` #514D47 | Bordes de 1px y divisores |
 | `focus` | `outline-focus` | `verde-salvia` #687665 | Anillo de foco |
 
@@ -60,7 +61,7 @@ Reglas:
 - Usa los tokens de rol (`surface`, `ink`, `accent`…) en los componentes. Los nombres de paleta (`bg-terracota`, `bg-arena`…) también existen, pero son para bloques decorativos.
 - `verde-salvia` es el acento (octubre 2026, antes `terracota`): un acento por vista, nunca como fondo de grandes áreas de texto.
 - Todos los títulos en Commuters van en MAYÚSCULAS.
-- `verde-salvia` no se combina con `terracota` en el mismo componente.
+- `verde-salvia` no se combina con `terracota` en el mismo componente. Excepción: en la sección Desarrollos del home cada proyecto tiene su color (Piamont `terracota`, Copelia `verde-salvia`, Amelia Santa Lucía `azul-talco`) y el fondo de la columna fija cambia de uno a otro al hacer scroll (noviembre 2026).
 - Contraste: `verde-salvia` sobre `blanco-calido` (4.2:1) y `terracota` sobre `arena` (3.2:1) solo para texto de 24px o más.
 - Nunca negro puro (`#000`) ni blanco puro (`#fff`).
 

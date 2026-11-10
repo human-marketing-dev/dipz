@@ -20,6 +20,9 @@ import rutasLlavesSrc from "@/public/rutas/entrega-de-llaves.webp";
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
 
+// Color de cada desarrollo: fondo de la columna fija en la sección Desarrollos del home.
+export type ProjectColor = "terracota" | "verde-salvia" | "azul-talco";
+
 export type Drawing = "tower" | "slab" | "interior" | "landscape" | "street";
 
 // Fotos en /public (renders de cada desarrollo), importadas para que Media conozca sus medidas.
@@ -173,6 +176,7 @@ export const desarrollos = {
   projects: [
     {
       id: "piamont",
+      color: "terracota" as ProjectColor,
       name: "Piamont",
       location: "Valle del Campestre, San Pedro Garza García",
       zone: "San Pedro",
@@ -188,6 +192,7 @@ export const desarrollos = {
     },
     {
       id: "copelia",
+      color: "verde-salvia" as ProjectColor,
       name: "Copelia",
       location: "Valle Oriente, San Pedro Garza García",
       zone: "Valle Oriente",
@@ -203,6 +208,7 @@ export const desarrollos = {
     },
     {
       id: "amelia-santa-lucia",
+      color: "azul-talco" as ProjectColor,
       name: "Amelia Santa Lucía",
       location: "Centro de Monterrey",
       zone: "Centro",
