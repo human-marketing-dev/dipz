@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | DIPZ",
   },
   description:
-    "Desarrollamos y operamos proyectos inmobiliarios en México y Estados Unidos. Más de 20 años creando patrimonio para quienes invierten y para quienes habitan.",
+    "Desarrollamos y operamos proyectos inmobiliarios en México y Estados Unidos. Más de 20 años y 400,000 m² construidos. Piamont, Copelia y Amelia Santa Lucía.",
   icons: {
     icon: "/brand/dipz-monograma-negro.png",
   },

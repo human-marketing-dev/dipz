@@ -21,9 +21,9 @@ export const caras = {
     "En cada etapa, DIPZ se encarga de los procesos que requieren especialización técnica, financiera y operativa. El cliente recibe un patrimonio administrado de forma profesional.",
   headers: ["DIPZ se encarga de", "El cliente recibe"],
   rows: [
-    ["Identificación de la tierra y estructuración del capital", "Acceso a proyectos en ubicaciones de alto valor"],
+    ["Identificación de la tierra y estructuración del capital", "Acceso a proyectos en Valle del Campestre, Valle Oriente y el centro de Monterrey"],
     ["Diseño, construcción y cumplimiento de plazos", "Una propiedad lista para habitar o para generar rentas"],
-    ["Administración de huéspedes, mantenimiento y cobranza", "Rendimientos y reportes periódicos, sin intervenir en la operación"],
+    ["Administración de huéspedes, mantenimiento y cobranza", "Ingresos y reportes en tiempo real desde la aplicación de Amelia Living"],
     ["Conocimiento del mercado y del marco legal en Estados Unidos", "Inversión en Estados Unidos con el respaldo de un equipo especializado"],
   ],
 };
@@ -37,14 +37,14 @@ export const enCadaUnidad = {
       name: "DIPZ Desarrollos",
       tag: "México",
       asumimos: "Originación y desarrollo de proyectos en México.",
-      recibes: "Patrimonio en zonas consolidadas.",
+      recibes: "Departamentos en San Pedro Garza García y el centro de Monterrey.",
     },
     {
       id: "dipz-development",
       name: "DIPZ Development",
       tag: "Estados Unidos",
       asumimos: "Estructuración de inversiones en Estados Unidos.",
-      recibes: "Diversificación en un mercado de alto crecimiento.",
+      recibes: "Inversión en dólares con el mismo grupo que desarrolla en México.",
     },
     {
       id: "amelia-living",
@@ -69,14 +69,14 @@ export const enCadaUnidad = {
 export const proceso = {
   title: "Un proceso integral.",
   paragraph:
-    "DIPZ participa en cada proyecto desde la adquisición del terreno hasta la administración de la propiedad. Esta integración permite mantener la calidad del inmueble, iniciar la operación desde la entrega y ofrecer al propietario un solo interlocutor.",
+    "DIPZ participa en cada proyecto desde la adquisición del terreno hasta la administración de la propiedad. Esta integración permite iniciar la operación desde la entrega y ofrecer al propietario un solo interlocutor. Amelia Santa Lucía, por ejemplo, la desarrolla DIPZ y la opera Amelia Living.",
 };
 
 export const loQueNoEs = {
   eyebrow: "Respaldo",
   title: "Experiencia que respalda el modelo",
   paragraph:
-    "El modelo Zero Gravity se sustenta en más de 20 años de experiencia en el sector y en equipos especializados en cada etapa: desarrollo, inversión y administración.",
+    "El modelo Zero Gravity se sustenta en más de 20 años y más de 400,000 m² construidos en México, y en un grupo que desarrolla (DIPZ Desarrollos, DIPZ Development) y opera (Amelia Living, Fresh Coco).",
 };
 
 export const cierre = {
