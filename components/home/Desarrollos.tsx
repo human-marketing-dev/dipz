@@ -6,11 +6,12 @@ import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { desarrollos, type ProjectColor } from "./content";
 
-// Fondo de la columna fija según el proyecto que está en pantalla.
-const bg: Record<ProjectColor, string> = {
-  terracota: "bg-terracota",
-  "verde-salvia": "bg-verde-salvia",
-  "azul-talco": "bg-azul-talco",
+// Fondo y texto de la columna fija según el proyecto que está en pantalla: texto blanco sobre
+// terracota y verde, negro sobre azul talco (el blanco no se lee sobre un fondo tan claro).
+const tones: Record<ProjectColor, { bg: string; eyebrow: string; title: string; body: string; link: "light" | "dark" }> = {
+  terracota: { bg: "bg-terracota", eyebrow: "text-blanco-calido/80", title: "text-blanco-calido", body: "text-blanco-calido", link: "light" },
+  "verde-salvia": { bg: "bg-verde-salvia", eyebrow: "text-blanco-calido/80", title: "text-blanco-calido", body: "text-blanco-calido", link: "light" },
+  "azul-talco": { bg: "bg-azul-talco", eyebrow: "text-negro-profundo/70", title: "text-negro-profundo", body: "text-negro-profundo", link: "dark" },
 };
 
 export function Desarrollos() {
@@ -37,23 +38,26 @@ export function Desarrollos() {
       window.removeEventListener("resize", update);
     };
   }, []);
+  const tone = tones[desarrollos.projects[active].color];
+  const fade = "transition-colors duration-700 ease-[var(--ease-dipz)]";
+
   return (
     <section id="desarrollos" data-nav="dark" className="bg-surface-inverse text-ink-inverse md:grid md:grid-cols-[calc(var(--margin)+(100vw-2*var(--margin)+24px)/3)_1fr]">
       {/* Introducción fija, del margen al riel 1/3 */}
-      <div className={`pl-[var(--margin)] pr-6 pt-16 pb-12 transition-colors duration-700 ease-[var(--ease-dipz)] ${bg[desarrollos.projects[active].color]} md:sticky md:top-0 md:flex md:h-[100dvh] md:flex-col md:justify-between md:pt-40 md:pb-16`}>
+      <div className={`pl-[var(--margin)] pr-6 pt-16 pb-12 ${fade} ${tone.bg} md:sticky md:top-0 md:flex md:h-[100dvh] md:flex-col md:justify-between md:pt-40 md:pb-16`}>
         <div>
-          <Reveal as="p" className="type-eyebrow text-arena">
+          <Reveal as="p" className={`type-eyebrow ${fade} ${tone.eyebrow}`}>
             {desarrollos.eyebrow}
           </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
+          <Reveal as="h2" delay={0.1} className={`mt-6 type-h2 md:type-h1 ${fade} ${tone.title}`}>
             {desarrollos.title}
           </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-6 max-w-[360px] type-body-lg text-arena">
+          <Reveal as="p" delay={0.2} className={`mt-6 max-w-[360px] type-body-lg ${fade} ${tone.body}`}>
             {desarrollos.intro}
           </Reveal>
         </div>
         <Reveal delay={0.3} className="mt-10">
-          <ArrowLink href={desarrollos.link.href} variant="light">
+          <ArrowLink href={desarrollos.link.href} variant={tone.link}>
             {desarrollos.link.label}
           </ArrowLink>
         </Reveal>
