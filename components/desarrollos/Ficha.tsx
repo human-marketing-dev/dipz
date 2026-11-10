@@ -204,6 +204,7 @@ export function Tipologias({ p }: { p: Proyecto }) {
                         src={pl.photo.src}
                         alt={pl.photo.alt}
                         sizes="(min-width: 768px) 50vw, 100vw"
+                        style={{ maxWidth: pl.photo.src.width }} // sin agrandar plantas chicas más allá de su tamaño real
                         className="h-auto max-h-[560px] w-full object-contain object-left transition-opacity duration-500 hover:opacity-85"
                       />
                     </a>

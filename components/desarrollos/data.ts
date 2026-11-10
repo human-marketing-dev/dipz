@@ -13,6 +13,11 @@ import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
 import copeliaJuegosSrc from "@/public/copelia/amenidades-sala-de-juegos-copelia.webp";
 import ameliaLocalesSrc from "@/public/amelia/amelia-locales-render.webp";
+import ameliaTempoSrc from "@/public/amelia/plantas/planta-tempo-amelia.webp";
+import ameliaWonderSrc from "@/public/amelia/plantas/planta-wonder-amelia.webp";
+import ameliaJourneySrc from "@/public/amelia/plantas/planta-journey-amelia.webp";
+import ameliaNova1Src from "@/public/amelia/plantas/planta-nova-1-amelia.webp";
+import ameliaNova2Src from "@/public/amelia/plantas/planta-nova-2-amelia.webp";
 import copeliaTipoASrc from "@/public/copelia/plantas/planta-tipo-a-copelia.webp";
 import copeliaTipoBSrc from "@/public/copelia/plantas/planta-tipo-b-copelia.webp";
 import copeliaTipoCSrc from "@/public/copelia/plantas/planta-tipo-c-copelia.webp";
@@ -227,9 +232,38 @@ export const proyectos: Proyecto[] = [
     ],
     amenidades: [],
     amenidadesTotal: 17,
+    mostrarTipologias: true,
     tipologias: [
-      { name: "Tipología A", area: "43 m²", detail: POR_CONFIRMAR },
-      { name: "Tipología B", area: "74 m²", detail: POR_CONFIRMAR },
+      {
+        name: "Tempo",
+        area: "43 m²",
+        features: ["1 recámara", "1 baño completo", "1 cajón de estacionamiento", "Balcón"],
+        plantas: [{ photo: p(ameliaTempoSrc, "Planta del departamento Tempo de Amelia Santa Lucía") }],
+      },
+      {
+        name: "Wonder",
+        area: "46 m²",
+        features: ["2 recámaras", "1 baño completo", "1 cajón de estacionamiento", "Balcón"],
+        plantas: [{ photo: p(ameliaWonderSrc, "Planta del departamento Wonder de Amelia Santa Lucía") }],
+      },
+      {
+        name: "Journey",
+        area: "44.5 m²",
+        features: ["1 recámara", "1 baño completo", "Balcón"],
+        plantas: [{ photo: p(ameliaJourneySrc, "Planta del departamento Journey de Amelia Santa Lucía") }],
+      },
+      {
+        name: "Nova I",
+        area: "74 m²",
+        features: ["2 recámaras", "2 baños completos", "1 cajón de estacionamiento", "Balcón"],
+        plantas: [{ photo: p(ameliaNova1Src, "Planta del departamento Nova I de Amelia Santa Lucía") }],
+      },
+      {
+        name: "Nova II",
+        area: "74 m²",
+        features: ["2 recámaras", "2 baños completos", "1 cajón de estacionamiento", "Balcón"],
+        plantas: [{ photo: p(ameliaNova2Src, "Planta del departamento Nova II de Amelia Santa Lucía") }],
+      },
     ],
     cercanos: [
       "Paseo Santa Lucía",
