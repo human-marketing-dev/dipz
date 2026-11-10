@@ -4,6 +4,7 @@ import { Media } from "@/components/ui/Media";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { POR_CONFIRMAR, type Proyecto } from "./data";
+import { TipologiasTabs } from "./TipologiasTabs";
 import { projectTones } from "@/components/ui/projectTone";
 
 // Secciones de la página de cada desarrollo, en el orden en que aparecen.
@@ -160,8 +161,7 @@ export function Amenidades({ p }: { p: Proyecto }) {
 
 const numeros = ["", "Una", "Dos", "Tres", "Cuatro", "Cinco", "Seis"];
 
-// Índice de tipologías: número, planta grande (clic para verla completa) y, a la derecha, superficie,
-// distribución y el botón para pedir información. El penthouse muestra sus dos niveles.
+// Tipologías: encabezado con el rango de superficies y, debajo, una pestaña por tipología (TipologiasTabs).
 export function Tipologias({ p }: { p: Proyecto }) {
   const n = p.tipologias.length;
   return (
@@ -181,74 +181,7 @@ export function Tipologias({ p }: { p: Proyecto }) {
         </div>
       </div>
 
-      <ol className="mt-12 border-t border-line md:mt-20">
-        {p.tipologias.map((t, i) => (
-          <Reveal
-            as="li"
-            key={t.name}
-            className="grid gap-8 border-b border-line py-10 md:grid-cols-6 md:gap-6 md:py-16"
-          >
-            <span className="type-eyebrow text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
-
-            <div className="flex flex-col gap-8 md:col-span-3">
-              {t.plantas?.length ? (
-                t.plantas.map((pl) => (
-                  <figure key={pl.photo.alt}>
-                    <a
-                      href={pl.photo.src.src}
-                      target="_blank"
-                      rel="noopener"
-                      className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
-                    >
-                      <Image
-                        src={pl.photo.src}
-                        alt={pl.photo.alt}
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        style={{ maxWidth: pl.photo.src.width }} // sin agrandar plantas chicas más allá de su tamaño real
-                        className="h-auto max-h-[560px] w-full object-contain object-left transition-opacity duration-500 hover:opacity-85"
-                      />
-                    </a>
-                    {pl.label && (
-                      <figcaption className="mt-3 type-caption tracking-[0.2em] text-ink-muted uppercase">
-                        {pl.label}
-                      </figcaption>
-                    )}
-                  </figure>
-                ))
-              ) : (
-                <Placeholder label={`Planta ${t.name}`} drawing="interior" tone="sand" className="aspect-[4/3]" />
-              )}
-            </div>
-
-            <div className="md:col-span-2 md:pl-6">
-              <h3 className="type-h2">{t.name}</h3>
-              <dl className="mt-6 border-t border-line pt-4">
-                <dt className="type-caption tracking-[0.2em] text-ink-muted uppercase">Superficie</dt>
-                <dd className={`mt-1 type-body-lg ${pendiente(t.area)}`}>{t.area}</dd>
-              </dl>
-              <div className="mt-6">
-                <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Distribución</p>
-                {t.features?.length ? (
-                  <ul className="mt-3 border-t border-line">
-                    {t.features.map((f) => (
-                      <li key={f} className="border-b border-line py-3 type-small">
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className={`mt-1 type-small ${pendiente(t.detail ?? POR_CONFIRMAR)}`}>
-                    {t.detail ?? POR_CONFIRMAR}
-                  </p>
-                )}
-              </div>
-              <ArrowLink href="#contacto" variant="dark" className="mt-8">
-                Solicitar información
-              </ArrowLink>
-            </div>
-          </Reveal>
-        ))}
-      </ol>
+      <TipologiasTabs tipologias={p.tipologias} />
     </section>
   );
 }

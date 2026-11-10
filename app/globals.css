@@ -82,3 +82,9 @@ img {
     transform: none;
   }
 }
+
+/* Cambio de pestaña en Tipologías: la planta entra con un fundido breve */
+.tab-fade { animation: fade-up 0.5s var(--ease-dipz, ease) both; }
+@media (prefers-reduced-motion: reduce) {
+  .tab-fade { animation: none; }
+}
