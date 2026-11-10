@@ -27,7 +27,7 @@ export type Post = {
 
 export const blog = {
   eyebrow: "Blog",
-  title: "Ideas sobre el futuro de los bienes raíces",
+  title: "El mercado inmobiliario de Monterrey y San Pedro",
   intro:
     "Análisis, criterios de inversión y lecturas del mercado inmobiliario, desde la experiencia de quienes desarrollan y operan.",
 };

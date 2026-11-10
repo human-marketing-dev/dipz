@@ -57,7 +57,7 @@ export const hero = {
   eyebrow: "Grupo inmobiliario",
   title: "Elevamos la forma de vivir y de invertir.",
   subtitle:
-    "Más de 20 años creando proyectos que generan valor para quienes invierten y elevan la vida de quienes los habitan.",
+    "Más de 20 años y 400,000 m² construidos en México. Hoy desarrollamos Piamont y Copelia en San Pedro Garza García y Amelia Santa Lucía en el centro de Monterrey.",
   primary: { label: "Ver desarrollos", href: "#desarrollos" },
   secondary: { label: "Invertir con DIPZ", href: "#rutas" },
 };
@@ -85,17 +85,17 @@ export const zeroGravity = {
     {
       n: "01",
       name: "Misión",
-      text: "Desarrollar y operar proyectos inmobiliarios que generen valor para quienes invierten y eleven la vida de quienes los habitan.",
+      text: "Desarrollar vivienda y comercio en México y Estados Unidos, y operar esas propiedades después de la entrega a través de Amelia Living y Fresh Coco.",
     },
     {
       n: "02",
       name: "Visión",
-      text: "Que cada propiedad que desarrollamos siga generando valor muchos años después de su entrega, en México y en Estados Unidos.",
+      text: "Acompañar al inversionista desde la compra hasta la operación de su propiedad, con un solo interlocutor, en México y en Estados Unidos.",
     },
     {
       n: "03",
       name: "Valores",
-      text: "Ubicación, calidad constructiva, continuidad después de la entrega e información clara para cada inversionista.",
+      text: "Ubicación: solo desarrollamos en zonas que conocemos, como San Pedro y el centro de Monterrey. Continuidad: el mismo grupo desarrolla y opera. Transparencia: el propietario ve el desempeño de su propiedad en tiempo real.",
     },
   ],
   logo: { src: "/brand/zero-gravity-logo.webp", width: 1200, height: 960 },
@@ -103,7 +103,7 @@ export const zeroGravity = {
 
 export const unidades = {
   eyebrow: "Nuestras marcas",
-  title: "Distintas marcas. Un mismo propósito.",
+  title: "Desarrollo en México y Estados Unidos. Operación en ciudad y en destino turístico.",
   intro:
     "Cada marca del grupo se especializa en una etapa o en un territorio. Juntas cubren el ciclo completo: desarrollar, invertir y operar.",
   brands: [
@@ -111,9 +111,9 @@ export const unidades = {
       id: "dipz-desarrollos",
       name: "DIPZ Desarrollos",
       tag: "México",
-      title: "Desarrollamos el futuro de México.",
-      text: "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en las ubicaciones de mayor valor del país. Veinte años de trayectoria respaldan cada decisión de inversión.",
-      capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Generación de valor"],
+      title: "Desarrollo residencial y comercial en San Pedro y Monterrey.",
+      text: "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en Valle del Campestre, Valle Oriente y el centro de Monterrey. Más de 400,000 m² construidos en México.",
+      capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Comercialización"],
       link: "Conocer DIPZ Desarrollos",
       drawing: "street" as Drawing,
       photo: photos.piamontAereo as Photo | undefined,
@@ -122,9 +122,9 @@ export const unidades = {
       id: "dipz-development",
       name: "DIPZ Development",
       tag: "Estados Unidos",
-      title: "Bienes raíces sin fronteras.",
-      text: "Desarrollamos e invertimos en ciudades estadounidenses de alto crecimiento, con la misma disciplina y el mismo criterio con el que construimos en México. Para el inversionista mexicano, una puerta de entrada a ese mercado sin tener que construirla por su cuenta.",
-      capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
+      title: "Desarrollo e inversión en Estados Unidos.",
+      text: "Desarrollamos e invertimos en Estados Unidos con el mismo modelo que aplicamos en México: un solo interlocutor desde la inversión hasta la operación. Para el inversionista mexicano, una puerta de entrada a ese mercado sin tener que construirla por su cuenta.",
+      capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Estructuración para inversionistas mexicanos"],
       link: "Conocer DIPZ Development",
       drawing: "slab" as Drawing,
       photo: photos.piamontRooftop as Photo | undefined,
@@ -133,7 +133,7 @@ export const unidades = {
       id: "amelia-living",
       name: "Amelia Living",
       tag: "Operación urbana",
-      title: "Operamos propiedades. Creamos comunidad.",
+      title: "Renta operada con reportes en tiempo real para el propietario.",
       text: "Administramos y operamos propiedades en renta integrando hospitalidad, tecnología y servicio profesional. El propietario sigue su inversión en tiempo real desde su aplicación; el residente encuentra una vida urbana resuelta.",
       capabilities: ["Administración de propiedades", "Comunidad y cowork", "Wellness y experiencias", "Concierge y servicios"],
       link: "Conocer Amelia Living",
@@ -144,8 +144,8 @@ export const unidades = {
       id: "fresh-coco",
       name: "Fresh Coco",
       tag: "Hospitalidad y destinos",
-      title: "Destinos que se viven de otra manera.",
-      text: "Operamos propiedades en destinos turísticos, donde la hospitalidad, la naturaleza y la experiencia se unen para crear estancias memorables y activos que producen durante todo el año.",
+      title: "Operación de propiedades en destinos turísticos.",
+      text: "Operamos propiedades en destinos turísticos para que generen ingresos por renta sin que el propietario tenga que administrarlas.",
       capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
       link: "Conocer Fresh Coco",
       drawing: "landscape" as Drawing,
@@ -158,7 +158,7 @@ export const modelo = {
   eyebrow: "Cómo trabajamos",
   title: "Un ciclo que no se interrumpe.",
   paragraph:
-    "Acompañamos cada proyecto desde que es una oportunidad hasta que es una propiedad en operación. Esa continuidad es lo que permite que la calidad se sostenga, que el activo produzca desde el primer día y que el propietario tenga un solo interlocutor en todo el proceso.",
+    "Acompañamos cada proyecto desde que es una oportunidad hasta que es una propiedad en operación. Esa continuidad permite que el activo produzca desde el primer día y que el propietario tenga un solo interlocutor en todo el proceso. Amelia Santa Lucía, por ejemplo, la desarrolla DIPZ y la opera Amelia Living.",
   steps: [
     { n: "01", name: "Originamos", text: "Analizamos la zona, adquirimos la tierra y estructuramos el capital." },
     { n: "02", name: "Desarrollamos", text: "Diseñamos y construimos el proyecto." },
@@ -171,7 +171,7 @@ export const desarrollos = {
   eyebrow: "Portafolio",
   title: "Desarrollos activos",
   intro:
-    "Tres proyectos en construcción y comercialización, en las zonas de mayor valor del área metropolitana de Monterrey.",
+    "Tres proyectos en construcción y comercialización, en Valle del Campestre, Valle Oriente y el centro de Monterrey.",
   link: { label: "Ver todos los desarrollos", href: "/desarrollos" },
   projects: [
     {
@@ -180,7 +180,7 @@ export const desarrollos = {
       name: "Piamont",
       location: "Valle del Campestre, San Pedro Garza García",
       zone: "San Pedro",
-      text: "Residencias donde la herencia italiana y las montañas de San Pedro se encuentran. Departamentos de 105 a 386 metros cuadrados, con speakeasy, rooftop, alberca y siete locales comerciales.",
+      text: "Arquitectura de inspiración italiana frente a la Sierra Madre, en Valle del Campestre. Departamentos de 105 a 386 metros cuadrados, con speakeasy, rooftop, alberca y siete locales comerciales.",
       facts: [
         { label: "Superficies", value: "105 a 386 m²" },
         { label: "Amenidades", value: "Speakeasy, rooftop, alberca" },
@@ -248,7 +248,7 @@ export const rutas = {
     {
       n: "02",
       name: "Vivir",
-      text: "Explora los desarrollos disponibles y encuentra el que corresponde a tu forma de vivir.",
+      text: "Departamentos desde 43 m² en el centro de Monterrey hasta 565 m² en Valle Oriente.",
       link: "Ver desarrollos",
       drawing: "interior" as Drawing,
       photo: { src: rutasCasaSrc, alt: "Una pareja en el sillón de su departamento", position: "center 30%" } as Photo | undefined,
@@ -266,7 +266,7 @@ export const rutas = {
 
 export const perspectivas = {
   eyebrow: "Blog",
-  title: "Ideas sobre el futuro de los bienes raíces",
+  title: "El mercado inmobiliario de Monterrey y San Pedro",
   intro:
     "Análisis, criterios de inversión y lecturas del mercado inmobiliario, desde la experiencia de quienes desarrollan y operan.",
   link: { label: "Ver todas las publicaciones", href: "/blog" },
@@ -275,9 +275,9 @@ export const perspectivas = {
 
 export const cierre = {
   eyebrow: "Trabajemos juntos",
-  title: "Desarrollemos algo grande juntos.",
+  title: "Agenda una cita en nuestro showroom de San Pedro.",
   paragraph:
-    "Ya sea que busques invertir, desarrollar o expandir tu patrimonio, nos daría mucho gusto acompañarte en cada etapa del proceso.",
+    "Un asesor te atiende para invertir, comprar o poner en renta tu propiedad.",
   primary: "Contáctanos",
   secondary: "Agendar una reunión",
   phone: "+52 81 1984 1517",

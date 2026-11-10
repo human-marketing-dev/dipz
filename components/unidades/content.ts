@@ -37,9 +37,9 @@ export const unidades: Unidad[] = [
     tag: "México",
     title: "Desarrollo inmobiliario en México",
     paragraphs: [
-      "Identificamos oportunidades, estructuramos el capital y desarrollamos proyectos residenciales y comerciales en zonas de alta plusvalía del país. Más de 20 años de trayectoria respaldan cada decisión de inversión.",
+      "Identificamos oportunidades, estructuramos el capital y desarrollamos proyectos residenciales y comerciales en Valle del Campestre, Valle Oriente y el centro de Monterrey. Su portafolio actual: Piamont, Copelia y Amelia Santa Lucía.",
     ],
-    capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Generación de valor"],
+    capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Comercialización"],
     forWhom: "Inversionistas patrimoniales y compradores que buscan certeza en una zona consolidada.",
     cta: { label: "Ver desarrollos", href: "/desarrollos" },
     photo: photos.piamontFachada,
@@ -51,10 +51,10 @@ export const unidades: Unidad[] = [
     tag: "Estados Unidos",
     title: "Desarrollo e inversión en Estados Unidos",
     paragraphs: [
-      "Desarrollamos e invertimos en ciudades de alto crecimiento en Estados Unidos, con los mismos procesos y criterios que aplicamos en México.",
+      "Desarrollamos e invertimos en Estados Unidos con el mismo modelo que DIPZ aplica en México: un solo interlocutor desde la inversión hasta la operación de la propiedad.",
       "Para el inversionista mexicano, es una vía para participar en ese mercado con el respaldo de un equipo especializado.",
     ],
-    capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Valor a largo plazo"],
+    capabilities: ["Adquisición de tierra", "Desarrollo y diseño", "Inversión y capital", "Estructuración para inversionistas mexicanos"],
     forWhom: "Inversionistas mexicanos que buscan diversificar en dólares.",
     cta: { label: "Hablar con un asesor", href: "/contacto#formulario" },
     pending: "Estatus de operación por confirmar",
@@ -84,7 +84,7 @@ export const unidades: Unidad[] = [
     tag: "Hospitalidad y destinos",
     title: "Operación en destinos turísticos",
     paragraphs: [
-      "Operamos propiedades en destinos turísticos bajo un modelo de hospitalidad profesional, orientado a mantener la ocupación y los ingresos durante todo el año.",
+      "Operamos propiedades en renta en destinos turísticos para que generen ingresos sin que el propietario tenga que administrarlas.",
     ],
     capabilities: ["Hospitalidad y estancias", "Destinos turísticos", "Experiencias y retreats", "F&B y lifestyle"],
     forWhom: "Inversionistas en destino turístico y huéspedes.",
