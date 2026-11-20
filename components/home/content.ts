@@ -50,7 +50,7 @@ export const photos = {
 export const video = {
   eyebrow: "Video institucional",
   title: "Conoce DIPZ",
-  youtubeId: "C-1Kwj7d6Uo",
+  youtubeId: "83vlUwvMlGg",
 };
 
 export const hero = {
