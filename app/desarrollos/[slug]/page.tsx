@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Amenidades, Concepto, FichaHero, Siguiente, Tipologias, Ubicacion } from "@/components/desarrollos/Ficha";
+import { Amenidades, Concepto, FichaHero, Siguiente, Ubicacion } from "@/components/desarrollos/Ficha";
 import { Galeria } from "@/components/desarrollos/Galeria";
 import { getProyecto, proyectos } from "@/components/desarrollos/data";
 import { Cierre } from "@/components/home/Cierre";
@@ -31,7 +31,6 @@ export default async function DesarrolloPage({ params }: PageProps<"/desarrollos
         <Concepto p={p} />
         {p.gallery.length > 1 && <Galeria photos={p.gallery} name={p.name} />}
         <Amenidades p={p} />
-        {p.mostrarTipologias && <Tipologias p={p} />}
         <Ubicacion p={p} />
         <Cierre eyebrow={`Me interesa ${p.name}`} title={`Agenda una visita a ${p.name}.`} interes={p.name} />
         <Siguiente p={next} />
