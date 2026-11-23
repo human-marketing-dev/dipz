@@ -6,7 +6,7 @@ import copeliaCiudadSrc from "@/public/copelia/render-ciudad-copelia.webp";
 import copeliaFachadaSrc from "@/public/copelia/render-fachada-copelia.webp";
 import copeliaTerrazaSrc from "@/public/copelia/amenidades-terraza-copelia.webp";
 import copeliaDeptoSrc from "@/public/copelia/sala-comedor-departamento-copelia.webp";
-import copeliaSalaEstarSrc from "@/public/copelia/amenidades-sala-de-estar-copelia.webp";
+import copeliaSalaPrivadaSrc from "@/public/copelia/amenidades-sala-privada-copelia.webp";
 import piamontRooftopSrc from "@/public/piamont/amenidades-rooftop-piamont.webp";
 import piamontPiscinaSrc from "@/public/piamont/amenidades-piscina-piamont.webp";
 import ameliaTorreSrc from "@/public/amelia/amelia-render.webp";
@@ -35,7 +35,7 @@ export const photos = {
   copeliaFachada: { src: copeliaFachadaSrc, alt: "Fachada de Copelia", position: "70% center" },
   copeliaTerraza: { src: copeliaTerrazaSrc, alt: "Terraza de Copelia con vista a Valle Oriente" },
   copeliaDepto: { src: copeliaDeptoSrc, alt: "Sala comedor de un departamento en Copelia" },
-  copeliaSalaEstar: { src: copeliaSalaEstarSrc, alt: "Sala de estar en las amenidades de Copelia", position: "60% center" },
+  copeliaSalaPrivada: { src: copeliaSalaPrivadaSrc, alt: "Sala privada en las amenidades de Copelia", position: "center 65%" },
   piamontRooftop: { src: piamontRooftopSrc, alt: "Rooftop de Piamont" },
   piamontPiscina: { src: piamontPiscinaSrc, alt: "Piscina de Piamont" },
   ameliaTorre: { src: ameliaTorreSrc, alt: "Torre Amelia Santa Lucía en el centro de Monterrey" },

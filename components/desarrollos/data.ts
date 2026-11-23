@@ -7,7 +7,13 @@ import piamontBarSrc from "@/public/piamont/amenidades-bar-piamont.webp";
 import piamontDogParkSrc from "@/public/piamont/amenidades-dog-park-piamont.webp";
 import piamontParqueSrc from "@/public/piamont/amenidades-parque-piamont.webp";
 import piamontYogaSrc from "@/public/piamont/amenidades-yoga-deck-piamont.webp";
-import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-copelia.webp";
+import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-asoleaderos-copelia.webp";
+import copeliaGolfSrc from "@/public/copelia/amenidades-simulador-de-golf-copelia.webp";
+import copeliaAereaSrc from "@/public/copelia/vista-aerea-frontal-copelia.webp";
+import copeliaAtardecerSrc from "@/public/copelia/exterior-atardecer-copelia.webp";
+import copeliaNocheSrc from "@/public/copelia/exterior-noche-copelia.webp";
+import copeliaLobbySrc from "@/public/copelia/lobby-copelia.webp";
+import copeliaLobbyOficinasSrc from "@/public/copelia/lobby-oficinas-copelia.webp";
 import copeliaAsadoresSrc from "@/public/copelia/amenidades-area-de-asadores-copelia.webp";
 import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
@@ -166,17 +172,27 @@ export const proyectos: Proyecto[] = [
     text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 168 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
     facts: [...copelia.facts, { label: "Tipologías", value: "A, B, C y Penthouse" }],
     drawing: copelia.drawing,
-    heroPhoto: photos.copeliaCiudad,
+    heroPhoto: p(copeliaAereaSrc, "Vista aérea de Copelia en Valle Oriente, con la Sierra Madre al fondo"),
     cover: photos.copeliaFachada,
-    gallery: [photos.copeliaCiudad, photos.copeliaFachada, photos.copeliaDepto, photos.copeliaTerraza],
+    gallery: [
+      p(copeliaAereaSrc, "Vista aérea de Copelia en Valle Oriente"),
+      p(copeliaAtardecerSrc, "Copelia al atardecer"),
+      p(copeliaNocheSrc, "Copelia de noche, frente a Valle Oriente"),
+      photos.copeliaFachada,
+      p(copeliaLobbySrc, "Lobby de Copelia"),
+      p(copeliaLobbyOficinasSrc, "Lobby de oficinas de Copelia"),
+      photos.copeliaDepto,
+      photos.copeliaTerraza,
+    ],
     amenidades: [
-      { name: "Alberca", photo: p(copeliaAlbercaSrc, "Alberca de Copelia") },
+      { name: "Alberca", photo: p(copeliaAlbercaSrc, "Alberca y asoleaderos de Copelia") },
       { name: "Terraza", photo: photos.copeliaTerraza },
       { name: "Gimnasio", photo: p(copeliaGymSrc, "Gimnasio de Copelia") },
       { name: "Jardín", photo: p(copeliaJardinSrc, "Jardín de Copelia") },
       { name: "Área de asadores", photo: p(copeliaAsadoresSrc, "Área de asadores de Copelia") },
       { name: "Sala de juegos", photo: p(copeliaJuegosSrc, "Sala de juegos de Copelia") },
-      { name: "Sala de estar", photo: photos.copeliaSalaEstar },
+      { name: "Sala privada", photo: photos.copeliaSalaPrivada },
+      { name: "Simulador de golf", photo: p(copeliaGolfSrc, "Simulador de golf de Copelia") },
     ],
     amenidadesTotal: 10,
     mostrarTipologias: true,
