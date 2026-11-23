@@ -134,7 +134,6 @@ export const proyectos: Proyecto[] = [
       p(piamontAcabadosSrc, "Acabados de un departamento en Piamont"),
       p(piamontLobbySrc, "Lobby de Piamont con recepción"),
       p(piamontLobbyElevadoresSrc, "Vestíbulo de elevadores en el lobby de Piamont"),
-      p(piamontRooftopAlbercaSrc, "Alberca del rooftop de Piamont al atardecer"),
       p(piamontRooftopComedorSrc, "Comedor del rooftop de Piamont con vista a la ciudad"),
       p(piamontRooftopSalaSrc, "Sala exterior del rooftop de Piamont"),
       p(piamontTerrazaLoungeSrc, "Terraza de Piamont con área de descanso"),
@@ -144,7 +143,7 @@ export const proyectos: Proyecto[] = [
     amenidades: [
       { name: "Speakeasy", photo: p(piamontSpeakeasySrc, "Barra del speakeasy de Piamont") },
       { name: "Rooftop", photo: p(piamontRooftopSrc, "Rooftop de Piamont con asador y vista a la Sierra Madre") },
-      { name: "Alberca", photo: photos.piamontPiscina },
+      { name: "Alberca", photo: p(piamontRooftopAlbercaSrc, "Alberca del rooftop de Piamont al atardecer") },
       { name: "Jardín central", photo: p(piamontJardinSrc, "Jardín central de Piamont") },
       { name: "Terraza", photo: p(piamontTerrazaSrc, "Terraza de Piamont con vista a la Sierra Madre") },
       { name: "Yoga deck", photo: p(piamontYogaSrc, "Yoga deck de Piamont") },
