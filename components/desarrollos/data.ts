@@ -66,7 +66,10 @@ export type Proyecto = {
   gallery: Photo[];
   amenidades: Amenidad[];
   amenidadesTotal: number;
-  // La sección Tipologías solo se muestra en los proyectos con plantas reales (mostrarTipologias).
+  // La sección Tipologías se retiró de las fichas (20 nov 2026). Los datos se conservan (m² por
+  // tipología, plantas); el rango de superficies y los nombres de tipologías se muestran en la ficha
+  // rápida del hero y en los datos de Concepto. Para volver a mostrarla basta con renderizar
+  // <Tipologias> en app/desarrollos/[slug]/page.tsx para los proyectos con mostrarTipologias.
   mostrarTipologias?: boolean;
   tipologias: Tipologia[];
   cercanos: string[];
@@ -146,7 +149,7 @@ export const proyectos: Proyecto[] = [
     surface: "168 a 565 m²",
     statement: "Torre residencial de 38 departamentos en Valle Oriente.",
     text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 168 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
-    facts: copelia.facts,
+    facts: [...copelia.facts, { label: "Tipologías", value: "A, B, C y Penthouse" }],
     drawing: copelia.drawing,
     heroPhoto: photos.copeliaCiudad,
     cover: photos.copeliaFachada,
@@ -236,7 +239,7 @@ export const proyectos: Proyecto[] = [
     surface: "43 a 74 m²",
     statement: "Torre de departamentos frente al Paseo Santa Lucía, operada por Amelia Living.",
     text: amelia.text,
-    facts: amelia.facts,
+    facts: [...amelia.facts, { label: "Tipologías", value: "Tempo, Wonder, Journey y Nova" }],
     drawing: amelia.drawing,
     heroPhoto: photos.ameliaDron,
     cover: photos.ameliaAcceso,
