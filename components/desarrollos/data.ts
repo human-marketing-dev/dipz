@@ -13,6 +13,21 @@ import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
 import copeliaJuegosSrc from "@/public/copelia/amenidades-sala-de-juegos-copelia.webp";
 import ameliaLocalesSrc from "@/public/amelia/amelia-locales-render.webp";
+import ameliaA0Src from "@/public/amelia/amenidades-art-lab-amelia.webp";
+import ameliaA1Src from "@/public/amelia/amenidades-co-work-amelia.webp";
+import ameliaA2Src from "@/public/amelia/amenidades-fit-happens-gimnasio-amelia.webp";
+import ameliaA3Src from "@/public/amelia/amenidades-house-of-amelia-amelia.webp";
+import ameliaA4Src from "@/public/amelia/amenidades-in-too-deep-alberca-amelia.webp";
+import ameliaA5Src from "@/public/amelia/amenidades-reset-studio-amelia.webp";
+import ameliaA6Src from "@/public/amelia/amenidades-sound-lab-amelia.webp";
+import ameliaA7Src from "@/public/amelia/amenidades-suite-dreams-amelia.webp";
+import ameliaA8Src from "@/public/amelia/amenidades-the-kickoff-amelia.webp";
+import ameliaA9Src from "@/public/amelia/amenidades-the-meat-up-asadores-amelia.webp";
+import ameliaLobbySrc from "@/public/amelia/lobby-principal-amelia.webp";
+import ameliaLobby2Src from "@/public/amelia/lobby-secundario-amelia.webp";
+import ameliaHouseComedorSrc from "@/public/amelia/house-of-amelia-comedor-amelia.webp";
+import ameliaKickoffSalaSrc from "@/public/amelia/the-kickoff-sala-amelia.webp";
+import ameliaSuiteVestidorSrc from "@/public/amelia/suite-dreams-vestidor-amelia.webp";
 import ameliaTempoSrc from "@/public/amelia/plantas/planta-tempo-amelia.webp";
 import ameliaWonderSrc from "@/public/amelia/plantas/planta-wonder-amelia.webp";
 import ameliaJourneySrc from "@/public/amelia/plantas/planta-journey-amelia.webp";
@@ -33,7 +48,7 @@ export const POR_CONFIRMAR = "Por confirmar";
 
 export type Perfil = "vivir" | "invertir";
 
-export type Amenidad = { name: string; photo?: Photo };
+export type Amenidad = { name: string; description?: string; photo?: Photo };
 
 export type Tipologia = {
   name: string;
@@ -249,8 +264,66 @@ export const proyectos: Proyecto[] = [
       photos.ameliaAcceso,
       p(ameliaLocalesSrc, "Locales comerciales en la planta baja de Amelia Santa Lucía"),
       photos.ameliaTorre,
+      p(ameliaLobbySrc, "Lobby principal de Amelia Santa Lucía"),
+      p(ameliaLobby2Src, "Lobby secundario con recepción y estacionamiento de bicicletas"),
+      p(ameliaHouseComedorSrc, "Comedor de House of Amelia con vista a la ciudad"),
+      p(ameliaKickoffSalaSrc, "Sala de estar de The Kickoff"),
+      p(ameliaSuiteVestidorSrc, "Vestidor y área de trabajo de Suite Dreams"),
     ],
-    amenidades: [],
+    // Descripciones redactadas a partir de los renders; House of Amelia, Sound Lab, Suite Dreams y
+    // The Kickoff son supuestos por validar con el cliente.
+    amenidades: [
+      {
+        name: "House of Amelia",
+        description: "Salón de usos múltiples con cocina equipada y mesa para reuniones y eventos.",
+        photo: p(ameliaA3Src, "Salón House of Amelia con cocina y barra en Amelia Santa Lucía"),
+      },
+      {
+        name: "In Too Deep",
+        description: "Terraza con alberca y camastros, con vista a la ciudad.",
+        photo: p(ameliaA4Src, "Terraza con alberca In Too Deep en Amelia Santa Lucía"),
+      },
+      {
+        name: "The Meat Up",
+        description: "Terraza con asadores y mesas al aire libre.",
+        photo: p(ameliaA9Src, "Terraza con asadores The Meat Up en Amelia Santa Lucía"),
+      },
+      {
+        name: "Fit Happens",
+        description: "Gimnasio con equipo de cardio y pesas.",
+        photo: p(ameliaA2Src, "Gimnasio Fit Happens en Amelia Santa Lucía"),
+      },
+      {
+        name: "Reset Studio",
+        description: "Estudio para clases de yoga y pilates.",
+        photo: p(ameliaA5Src, "Estudio de yoga y pilates Reset Studio en Amelia Santa Lucía"),
+      },
+      {
+        name: "Co-Work",
+        description: "Espacio de trabajo compartido con salas y escritorios.",
+        photo: p(ameliaA1Src, "Espacio de trabajo Co-Work en Amelia Santa Lucía"),
+      },
+      {
+        name: "Sound Lab",
+        description: "Estudio para grabación de podcast y música.",
+        photo: p(ameliaA6Src, "Estudio de grabación Sound Lab en Amelia Santa Lucía"),
+      },
+      {
+        name: "Art Lab",
+        description: "Taller para actividades de arte y manualidades.",
+        photo: p(ameliaA0Src, "Taller de arte Art Lab en Amelia Santa Lucía"),
+      },
+      {
+        name: "The Kickoff",
+        description: "Área social con barra, pantalla y mesas.",
+        photo: p(ameliaA8Src, "Área social The Kickoff con barra y mesas en Amelia Santa Lucía"),
+      },
+      {
+        name: "Suite Dreams",
+        description: "Suite para huéspedes de los residentes.",
+        photo: p(ameliaA7Src, "Recámara de Suite Dreams en Amelia Santa Lucía"),
+      },
+    ],
     amenidadesTotal: 17,
     mostrarTipologias: true,
     tipologias: [

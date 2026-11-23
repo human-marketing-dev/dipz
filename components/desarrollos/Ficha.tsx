@@ -139,6 +139,7 @@ export function Amenidades({ p }: { p: Proyecto }) {
                 <h3 className="type-h3">{a.name}</h3>
                 <span className="type-eyebrow text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
               </div>
+              {a.description && <p className="mt-4 type-small text-ink-muted">{a.description}</p>}
             </Reveal>
           ))}
         </ul>
