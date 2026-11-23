@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Reproductor de YouTube con portada propia. El reproductor de YouTube elige una miniatura chica
-// y la estira, por eso se veía pixeleada. Aquí se muestra la miniatura en máxima resolución
-// (maxresdefault, 1280×720) y el reproductor se carga al dar clic, ya reproduciendo.
-// Si el video no tiene miniatura en máxima resolución, YouTube responde con una imagen gris de
-// 120×90; en ese caso se cambia a sddefault (640×480) y luego a hqdefault.
+// Reproductor de YouTube con portada propia; el reproductor se carga al dar clic, ya reproduciendo.
+// Portada: primero la imagen nuestra (video.portada en content.ts, p. ej. /video/portada.webp,
+// idealmente 2560×1440 o más). Si ese archivo no existe, se usa la miniatura de YouTube en la mayor
+// resolución disponible: maxresdefault (1280×720), sddefault (640×480) o hqdefault. Cuando YouTube no
+// tiene una calidad responde con una imagen gris de 120×90, y se pasa a la siguiente.
 const calidades = ["maxresdefault", "sddefault", "hqdefault"];
 
-export function VideoPlayer({ id, title }: { id: string; title: string }) {
+export function VideoPlayer({ id, title, portada }: { id: string; title: string; portada?: string }) {
   const [playing, setPlaying] = useState(false);
   const [q, setQ] = useState(0);
+  const img = useRef<HTMLImageElement>(null);
+
+  // Si la imagen falló (o llegó la gris de 120×90) antes de que React se conectara, onError/onLoad no se
+  // dispara: se revisa al montar.
+  useEffect(() => {
+    const el = img.current;
+    if (el?.complete && el.naturalWidth <= 120) setQ((n) => (n === 0 ? 1 : n));
+  }, []);
 
   if (playing) {
     return (
@@ -25,7 +33,8 @@ export function VideoPlayer({ id, title }: { id: string; title: string }) {
     );
   }
 
-  const siguiente = () => setQ((n) => Math.min(n + 1, calidades.length - 1));
+  const fuentes = [...(portada ? [portada] : []), ...calidades.map((c) => `https://i.ytimg.com/vi/${id}/${c}.jpg`)];
+  const siguiente = () => setQ((n) => Math.min(n + 1, fuentes.length - 1));
 
   return (
     <button
@@ -34,10 +43,11 @@ export function VideoPlayer({ id, title }: { id: string; title: string }) {
       aria-label={`Reproducir: ${title}`}
       className="group absolute inset-0 size-full cursor-pointer overflow-hidden bg-negro-profundo focus-visible:outline-2 focus-visible:-outline-offset-8 focus-visible:outline-focus"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element -- imagen externa de YouTube, sin optimizar */}
+      {/* eslint-disable-next-line @next/next/no-img-element -- con respaldo a imágenes externas de YouTube */}
       <img
-        key={calidades[q]}
-        src={`https://i.ytimg.com/vi/${id}/${calidades[q]}.jpg`}
+        ref={img}
+        key={fuentes[q]}
+        src={fuentes[q]}
         alt=""
         loading="lazy"
         onLoad={(e) => e.currentTarget.naturalWidth <= 120 && siguiente()}

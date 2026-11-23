@@ -25,7 +25,11 @@ export function Video() {
           className={`relative mx-auto aspect-video w-full ${video.anchoCompleto ? "" : "md:max-w-[calc(70svh*16/9)]"}`}
         >
           {video.youtubeId ? (
-            <VideoPlayer id={video.youtubeId} title={`${video.title}, video institucional`} />
+            <VideoPlayer
+              id={video.youtubeId}
+              title={`${video.title}, video institucional`}
+              portada={video.portada}
+            />
           ) : (
             <>
               <Placeholder

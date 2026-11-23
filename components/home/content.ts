@@ -53,6 +53,8 @@ export const video = {
   youtubeId: "83vlUwvMlGg",
   // true: el video ocupa todo el ancho de la pantalla. false: dentro del marco, máximo 70% del alto.
   anchoCompleto: true,
+  // Portada propia del video (en /public). Mientras no exista el archivo se usa la miniatura de YouTube.
+  portada: "/video/portada.webp",
 };
 
 export const hero = {
