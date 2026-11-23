@@ -51,7 +51,7 @@ export function Galeria({ photos, name }: { photos: Photo[]; name: string }) {
             Galería
           </Reveal>
           <p className="type-eyebrow text-ink-muted" aria-hidden>
-            0{current + 1} / 0{photos.length}
+            {String(current + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export function Galeria({ photos, name }: { photos: Photo[]; name: string }) {
                   <Media photo={ph} sizes="(min-width: 768px) 75vw, 90vw" label={ph.alt} className="size-full" />
                 </div>
                 <figcaption className="mt-3 flex gap-3 type-caption text-ink-muted">
-                  <span>0{i + 1}</span>
+                  <span>{String(i + 1).padStart(2, "0")}</span>
                   <span>{ph.alt}</span>
                 </figcaption>
               </figure>
