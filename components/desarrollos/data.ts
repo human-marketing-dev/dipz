@@ -1,10 +1,6 @@
 import type { Photo } from "@/components/ui/Media";
 import { desarrollos as home, photos, type Drawing, type ProjectColor } from "@/components/home/content";
-import piamontAcabadosSrc from "@/public/piamont/acabados-piamont.webp";
-import piamontMontanasSrc from "@/public/piamont/fondo-montañas-piamont.webp";
-import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
 import piamontSpeakeasySrc from "@/public/piamont/amenidades-speakeasy-piamont.webp";
-import piamontSpeakeasyCavaSrc from "@/public/piamont/speakeasy-cava-piamont.webp";
 import piamontSpeakeasySalonSrc from "@/public/piamont/speakeasy-salon-piamont.webp";
 import piamontRooftopSrc from "@/public/piamont/amenidades-rooftop-asador-piamont.webp";
 import piamontRooftopComedorSrc from "@/public/piamont/rooftop-comedor-piamont.webp";
@@ -15,9 +11,6 @@ import piamontTerrazaSrc from "@/public/piamont/amenidades-terraza-piamont.webp"
 import piamontTerrazaLoungeSrc from "@/public/piamont/terraza-lounge-piamont.webp";
 import piamontLobbySrc from "@/public/piamont/lobby-recepcion-piamont.webp";
 import piamontLobbyElevadoresSrc from "@/public/piamont/lobby-elevadores-piamont.webp";
-import piamontDogParkSrc from "@/public/piamont/amenidades-dog-park-piamont.webp";
-import piamontParqueSrc from "@/public/piamont/amenidades-parque-piamont.webp";
-import piamontYogaSrc from "@/public/piamont/amenidades-yoga-deck-piamont.webp";
 import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-asoleaderos-copelia.webp";
 import copeliaGolfSrc from "@/public/copelia/amenidades-simulador-de-golf-copelia.webp";
 import copeliaAereaSrc from "@/public/copelia/vista-aerea-frontal-copelia.webp";
@@ -147,18 +140,14 @@ export const proyectos: Proyecto[] = [
     cover: photos.piamontFachada,
     gallery: [
       photos.piamontAcceso,
-      p(piamontMontanasSrc, "Piamont con la Sierra Madre al fondo"),
       photos.piamontFachada,
-      p(piamontPatioSrc, "Patio central de Piamont"),
       photos.piamontAereo,
-      p(piamontAcabadosSrc, "Acabados de un departamento en Piamont"),
       p(piamontLobbySrc, "Lobby de Piamont con recepción"),
       p(piamontLobbyElevadoresSrc, "Vestíbulo de elevadores en el lobby de Piamont"),
       p(piamontRooftopComedorSrc, "Comedor del rooftop de Piamont con vista a la ciudad"),
       p(piamontRooftopSalaSrc, "Sala exterior del rooftop de Piamont"),
       p(piamontTerrazaLoungeSrc, "Terraza de Piamont con área de descanso"),
       p(piamontSpeakeasySalonSrc, "Salón del speakeasy de Piamont"),
-      p(piamontSpeakeasyCavaSrc, "Cava del speakeasy de Piamont"),
     ],
     amenidades: [
       { name: "Speakeasy", photo: p(piamontSpeakeasySrc, "Barra del speakeasy de Piamont") },
@@ -166,11 +155,8 @@ export const proyectos: Proyecto[] = [
       { name: "Alberca", photo: p(piamontRooftopAlbercaSrc, "Alberca del rooftop de Piamont al atardecer") },
       { name: "Jardín central", photo: p(piamontJardinSrc, "Jardín central de Piamont") },
       { name: "Terraza", photo: p(piamontTerrazaSrc, "Terraza de Piamont con vista a la Sierra Madre") },
-      { name: "Yoga deck", photo: p(piamontYogaSrc, "Yoga deck de Piamont") },
-      { name: "Parque", photo: p(piamontParqueSrc, "Parque de Piamont") },
-      { name: "Dog park", photo: p(piamontDogParkSrc, "Dog park de Piamont") },
     ],
-    amenidadesTotal: 8,
+    amenidadesTotal: 5,
     tipologias: [
       { name: "Tipología A", area: "105 m²", detail: POR_CONFIRMAR },
       { name: "Tipología B", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
