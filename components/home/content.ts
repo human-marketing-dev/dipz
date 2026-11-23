@@ -13,9 +13,9 @@ import ameliaTorreSrc from "@/public/amelia/amelia-render.webp";
 import ameliaDronSrc from "@/public/amelia/vista-dron-amelia.webp";
 import ameliaAccesoSrc from "@/public/amelia/amelia-render-acceso.webp";
 import ameliaFachadaSrc from "@/public/amelia/amelia-fachada-render.webp";
-import rutasDocumentosSrc from "@/public/rutas/revision-de-documentos.webp";
-import rutasCasaSrc from "@/public/rutas/pareja-en-casa.webp";
-import rutasLlavesSrc from "@/public/rutas/entrega-de-llaves.webp";
+import rutasInvertirSrc from "@/public/rutas/asesores-de-inversion.webp";
+import rutasVivirSrc from "@/public/rutas/pareja-en-sala.webp";
+import rutasOperarSrc from "@/public/rutas/revision-de-planos.webp";
 
 // Textos del home, tomados de "Textos de la página de inicio DIPZ" (Human Marketing, octubre 2026).
 // Las cifras, ciudades y publicaciones marcadas como pendientes siguen sujetas a confirmación del cliente.
@@ -247,7 +247,7 @@ export const rutas = {
       text: "Conoce cómo estructuramos cada oportunidad y qué modelos de inversión ofrecemos en México y en Estados Unidos.",
       link: "Hablar con un asesor",
       drawing: "street" as Drawing,
-      photo: { src: rutasDocumentosSrc, alt: "Dos personas revisan un documento de inversión", position: "center 55%" } as Photo | undefined,
+      photo: { src: rutasInvertirSrc, alt: "Tres asesores conversan sobre una inversión con una tableta en la mano", position: "82% center" } as Photo | undefined,
     },
     {
       n: "02",
@@ -255,7 +255,7 @@ export const rutas = {
       text: "Departamentos desde 43 m² en el centro de Monterrey hasta 565 m² en Valle Oriente.",
       link: "Ver desarrollos",
       drawing: "interior" as Drawing,
-      photo: { src: rutasCasaSrc, alt: "Una pareja en el sillón de su departamento", position: "center 30%" } as Photo | undefined,
+      photo: { src: rutasVivirSrc, alt: "Una pareja sonríe en el sillón de la sala de su departamento", position: "center 30%" } as Photo | undefined,
     },
     {
       n: "03",
@@ -263,7 +263,7 @@ export const rutas = {
       text: "Si ya tienes una propiedad en renta, Amelia Living puede operarla para que produzca sin que tengas que administrarla.",
       link: "Conocer el modelo",
       drawing: "slab" as Drawing,
-      photo: { src: rutasLlavesSrc, alt: "Una mano sostiene las llaves frente a un edificio de departamentos", position: "center 60%" } as Photo | undefined,
+      photo: { src: rutasOperarSrc, alt: "Dos mujeres revisan planos junto a maquetas de casas", position: "center 22%" } as Photo | undefined,
     },
   ],
 };
