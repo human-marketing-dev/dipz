@@ -31,6 +31,9 @@ export default async function DesarrolloPage({ params }: PageProps<"/desarrollos
         <Concepto p={p} />
         {p.gallery.length > 1 && <Galeria photos={p.gallery} name={p.name} />}
         <Amenidades p={p} />
+        {p.interiores && p.interiores.length > 1 && (
+          <Galeria photos={p.interiores} name={p.name} title="Interiores" />
+        )}
         <Ubicacion p={p} />
         <Cierre eyebrow={`Me interesa ${p.name}`} title={`Agenda una visita a ${p.name}.`} interes={p.name} />
         <Siguiente p={next} />

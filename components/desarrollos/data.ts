@@ -14,6 +14,20 @@ import copeliaAtardecerSrc from "@/public/copelia/exterior-atardecer-copelia.web
 import copeliaNocheSrc from "@/public/copelia/exterior-noche-copelia.webp";
 import copeliaLobbySrc from "@/public/copelia/lobby-copelia.webp";
 import copeliaLobbyOficinasSrc from "@/public/copelia/lobby-oficinas-copelia.webp";
+import copeliaIntAreaSocialSrc from "@/public/copelia/interiores/interior-area-social-copelia.webp";
+import copeliaIntSalaComedorSrc from "@/public/copelia/interiores/interior-sala-comedor-copelia.webp";
+import copeliaIntSalaComedor2Src from "@/public/copelia/interiores/interior-sala-comedor-2-copelia.webp";
+import copeliaIntSalaComedor3Src from "@/public/copelia/interiores/interior-sala-comedor-3-copelia.webp";
+import copeliaIntSalaTvSrc from "@/public/copelia/interiores/interior-sala-tv-copelia.webp";
+import copeliaIntCocinaBarSrc from "@/public/copelia/interiores/interior-cocina-bar-copelia.webp";
+import copeliaIntBarSrc from "@/public/copelia/interiores/interior-bar-copelia.webp";
+import copeliaIntTerrazaDeptoSrc from "@/public/copelia/interiores/interior-terraza-copelia.webp";
+import copeliaIntRoofTop1Src from "@/public/copelia/interiores/interior-roof-top-1-copelia.webp";
+import copeliaIntRoofTop2Src from "@/public/copelia/interiores/interior-roof-top-2-copelia.webp";
+import copeliaIntRecPrincipalSrc from "@/public/copelia/interiores/interior-recamara-principal-copelia.webp";
+import copeliaIntRecamaraSrc from "@/public/copelia/interiores/interior-recamara-copelia.webp";
+import copeliaIntRecInfantilSrc from "@/public/copelia/interiores/interior-recamara-infantil-copelia.webp";
+import copeliaIntBanoVestidorSrc from "@/public/copelia/interiores/interior-bano-vestidor-copelia.webp";
 import copeliaAsadoresSrc from "@/public/copelia/amenidades-area-de-asadores-copelia.webp";
 import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
@@ -85,6 +99,8 @@ export type Proyecto = {
   heroPhoto?: Photo;
   cover?: Photo;
   gallery: Photo[];
+  /** Galería opcional de interiores de departamento. */
+  interiores?: Photo[];
   amenidades: Amenidad[];
   amenidadesTotal: number;
   // La sección Tipologías se retiró de las fichas (20 nov 2026). Los datos se conservan (m² por
@@ -181,8 +197,23 @@ export const proyectos: Proyecto[] = [
       photos.copeliaFachada,
       p(copeliaLobbySrc, "Lobby de Copelia"),
       p(copeliaLobbyOficinasSrc, "Lobby de oficinas de Copelia"),
-      photos.copeliaDepto,
       photos.copeliaTerraza,
+    ],
+    interiores: [
+      p(copeliaIntAreaSocialSrc, "Área social de un departamento"),
+      p(copeliaIntSalaComedorSrc, "Sala comedor con vista a la ciudad"),
+      p(copeliaIntSalaComedor2Src, "Cocina y comedor"),
+      p(copeliaIntSalaComedor3Src, "Sala comedor"),
+      p(copeliaIntSalaTvSrc, "Sala de TV"),
+      p(copeliaIntCocinaBarSrc, "Cocina y bar"),
+      p(copeliaIntBarSrc, "Bar"),
+      p(copeliaIntTerrazaDeptoSrc, "Terraza de un departamento"),
+      p(copeliaIntRoofTop1Src, "Roof top"),
+      p(copeliaIntRoofTop2Src, "Roof top con área de asador"),
+      p(copeliaIntRecPrincipalSrc, "Recámara principal"),
+      p(copeliaIntRecamaraSrc, "Recámara"),
+      p(copeliaIntRecInfantilSrc, "Recámara infantil"),
+      p(copeliaIntBanoVestidorSrc, "Vestidor y baño"),
     ],
     amenidades: [
       { name: "Alberca", photo: p(copeliaAlbercaSrc, "Alberca y asoleaderos de Copelia") },
