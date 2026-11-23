@@ -270,7 +270,7 @@ export const proyectos: Proyecto[] = [
       p(ameliaKickoffSalaSrc, "Sala de estar de The Kickoff"),
       p(ameliaSuiteVestidorSrc, "Vestidor y área de trabajo de Suite Dreams"),
     ],
-    // Descripciones redactadas a partir de los renders; House of Amelia, Sound Lab, Suite Dreams y
+    // Descripciones redactadas a partir de los renders; House of Amelia, Sound Lab y
     // The Kickoff son supuestos por validar con el cliente.
     amenidades: [
       {
@@ -320,7 +320,7 @@ export const proyectos: Proyecto[] = [
       },
       {
         name: "Suite Dreams",
-        description: "Suite para huéspedes de los residentes.",
+        description: "Habitación disponible en renta para visitas de los residentes.",
         photo: p(ameliaA7Src, "Recámara de Suite Dreams en Amelia Santa Lucía"),
       },
     ],
