@@ -3,7 +3,18 @@ import { desarrollos as home, photos, type Drawing, type ProjectColor } from "@/
 import piamontAcabadosSrc from "@/public/piamont/acabados-piamont.webp";
 import piamontMontanasSrc from "@/public/piamont/fondo-montañas-piamont.webp";
 import piamontPatioSrc from "@/public/piamont/patio-central-piamont.webp";
-import piamontBarSrc from "@/public/piamont/amenidades-bar-piamont.webp";
+import piamontSpeakeasySrc from "@/public/piamont/amenidades-speakeasy-piamont.webp";
+import piamontSpeakeasyCavaSrc from "@/public/piamont/speakeasy-cava-piamont.webp";
+import piamontSpeakeasySalonSrc from "@/public/piamont/speakeasy-salon-piamont.webp";
+import piamontRooftopSrc from "@/public/piamont/amenidades-rooftop-asador-piamont.webp";
+import piamontRooftopComedorSrc from "@/public/piamont/rooftop-comedor-piamont.webp";
+import piamontRooftopAlbercaSrc from "@/public/piamont/rooftop-alberca-piamont.webp";
+import piamontRooftopSalaSrc from "@/public/piamont/rooftop-sala-piamont.webp";
+import piamontJardinSrc from "@/public/piamont/amenidades-jardin-central-piamont.webp";
+import piamontTerrazaSrc from "@/public/piamont/amenidades-terraza-piamont.webp";
+import piamontTerrazaLoungeSrc from "@/public/piamont/terraza-lounge-piamont.webp";
+import piamontLobbySrc from "@/public/piamont/lobby-recepcion-piamont.webp";
+import piamontLobbyElevadoresSrc from "@/public/piamont/lobby-elevadores-piamont.webp";
 import piamontDogParkSrc from "@/public/piamont/amenidades-dog-park-piamont.webp";
 import piamontParqueSrc from "@/public/piamont/amenidades-parque-piamont.webp";
 import piamontYogaSrc from "@/public/piamont/amenidades-yoga-deck-piamont.webp";
@@ -121,16 +132,26 @@ export const proyectos: Proyecto[] = [
       p(piamontPatioSrc, "Patio central de Piamont"),
       photos.piamontAereo,
       p(piamontAcabadosSrc, "Acabados de un departamento en Piamont"),
+      p(piamontLobbySrc, "Lobby de Piamont con recepción"),
+      p(piamontLobbyElevadoresSrc, "Vestíbulo de elevadores en el lobby de Piamont"),
+      p(piamontRooftopAlbercaSrc, "Alberca del rooftop de Piamont al atardecer"),
+      p(piamontRooftopComedorSrc, "Comedor del rooftop de Piamont con vista a la ciudad"),
+      p(piamontRooftopSalaSrc, "Sala exterior del rooftop de Piamont"),
+      p(piamontTerrazaLoungeSrc, "Terraza de Piamont con área de descanso"),
+      p(piamontSpeakeasySalonSrc, "Salón del speakeasy de Piamont"),
+      p(piamontSpeakeasyCavaSrc, "Cava del speakeasy de Piamont"),
     ],
     amenidades: [
-      { name: "Speakeasy", photo: p(piamontBarSrc, "Speakeasy de Piamont") },
-      { name: "Rooftop", photo: photos.piamontRooftop },
+      { name: "Speakeasy", photo: p(piamontSpeakeasySrc, "Barra del speakeasy de Piamont") },
+      { name: "Rooftop", photo: p(piamontRooftopSrc, "Rooftop de Piamont con asador y vista a la Sierra Madre") },
       { name: "Alberca", photo: photos.piamontPiscina },
+      { name: "Jardín central", photo: p(piamontJardinSrc, "Jardín central de Piamont") },
+      { name: "Terraza", photo: p(piamontTerrazaSrc, "Terraza de Piamont con vista a la Sierra Madre") },
       { name: "Yoga deck", photo: p(piamontYogaSrc, "Yoga deck de Piamont") },
       { name: "Parque", photo: p(piamontParqueSrc, "Parque de Piamont") },
       { name: "Dog park", photo: p(piamontDogParkSrc, "Dog park de Piamont") },
     ],
-    amenidadesTotal: 6,
+    amenidadesTotal: 8,
     tipologias: [
       { name: "Tipología A", area: "105 m²", detail: POR_CONFIRMAR },
       { name: "Tipología B", area: POR_CONFIRMAR, detail: POR_CONFIRMAR },
