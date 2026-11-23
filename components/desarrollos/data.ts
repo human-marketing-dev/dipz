@@ -99,8 +99,6 @@ export type Proyecto = {
   heroPhoto?: Photo;
   cover?: Photo;
   gallery: Photo[];
-  /** Galería opcional de interiores de departamento. */
-  interiores?: Photo[];
   amenidades: Amenidad[];
   amenidadesTotal: number;
   // La sección Tipologías se retiró de las fichas (20 nov 2026). Los datos se conservan (m² por
@@ -198,8 +196,6 @@ export const proyectos: Proyecto[] = [
       p(copeliaLobbySrc, "Lobby de Copelia"),
       p(copeliaLobbyOficinasSrc, "Lobby de oficinas de Copelia"),
       photos.copeliaTerraza,
-    ],
-    interiores: [
       p(copeliaIntAreaSocialSrc, "Área social de un departamento"),
       p(copeliaIntSalaComedorSrc, "Sala comedor con vista a la ciudad"),
       p(copeliaIntSalaComedor2Src, "Cocina y comedor"),

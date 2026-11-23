@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 // Galería horizontal: en escritorio la sección se fija y el scroll vertical recorre las fotos
 // de izquierda a derecha; en móvil es un carrusel nativo con snap.
-export function Galeria({ photos, name, title = "Galería" }: { photos: Photo[]; name: string; title?: string }) {
+export function Galeria({ photos, name }: { photos: Photo[]; name: string }) {
   const outer = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [shift, setShift] = useState(0);
@@ -41,14 +41,14 @@ export function Galeria({ photos, name, title = "Galería" }: { photos: Photo[];
     <section
       ref={outer}
       data-nav="light"
-      aria-label={`${title} de ${name}`}
+      aria-label={`Galería de ${name}`}
       className="relative bg-surface md:h-[var(--galeria-h)]"
       style={{ "--galeria-h": `${100 + photos.length * 45}dvh` } as CSSProperties}
     >
       <div className="py-16 md:sticky md:top-0 md:flex md:h-[100dvh] md:flex-col md:justify-center md:overflow-hidden md:py-0">
         <div className="frame flex items-end justify-between">
           <Reveal as="p" className="type-eyebrow text-ink-muted">
-            {title}
+            Galería
           </Reveal>
           <p className="type-eyebrow text-ink-muted" aria-hidden>
             {String(current + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
