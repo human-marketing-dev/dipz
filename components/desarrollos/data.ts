@@ -18,7 +18,27 @@ import piamontLobbyElevadoresSrc from "@/public/piamont/lobby-elevadores-piamont
 import piamontDogParkSrc from "@/public/piamont/amenidades-dog-park-piamont.webp";
 import piamontParqueSrc from "@/public/piamont/amenidades-parque-piamont.webp";
 import piamontYogaSrc from "@/public/piamont/amenidades-yoga-deck-piamont.webp";
-import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-copelia.webp";
+import copeliaAlbercaSrc from "@/public/copelia/amenidades-alberca-asoleaderos-copelia.webp";
+import copeliaGolfSrc from "@/public/copelia/amenidades-simulador-de-golf-copelia.webp";
+import copeliaAereaSrc from "@/public/copelia/vista-aerea-frontal-copelia.webp";
+import copeliaAtardecerSrc from "@/public/copelia/exterior-atardecer-copelia.webp";
+import copeliaNocheSrc from "@/public/copelia/exterior-noche-copelia.webp";
+import copeliaLobbySrc from "@/public/copelia/lobby-copelia.webp";
+import copeliaLobbyOficinasSrc from "@/public/copelia/lobby-oficinas-copelia.webp";
+import copeliaIntAreaSocialSrc from "@/public/copelia/interiores/interior-area-social-copelia.webp";
+import copeliaIntSalaComedorSrc from "@/public/copelia/interiores/interior-sala-comedor-copelia.webp";
+import copeliaIntSalaComedor2Src from "@/public/copelia/interiores/interior-sala-comedor-2-copelia.webp";
+import copeliaIntSalaComedor3Src from "@/public/copelia/interiores/interior-sala-comedor-3-copelia.webp";
+import copeliaIntSalaTvSrc from "@/public/copelia/interiores/interior-sala-tv-copelia.webp";
+import copeliaIntCocinaBarSrc from "@/public/copelia/interiores/interior-cocina-bar-copelia.webp";
+import copeliaIntBarSrc from "@/public/copelia/interiores/interior-bar-copelia.webp";
+import copeliaIntTerrazaDeptoSrc from "@/public/copelia/interiores/interior-terraza-copelia.webp";
+import copeliaIntRoofTop1Src from "@/public/copelia/interiores/interior-roof-top-1-copelia.webp";
+import copeliaIntRoofTop2Src from "@/public/copelia/interiores/interior-roof-top-2-copelia.webp";
+import copeliaIntRecPrincipalSrc from "@/public/copelia/interiores/interior-recamara-principal-copelia.webp";
+import copeliaIntRecamaraSrc from "@/public/copelia/interiores/interior-recamara-copelia.webp";
+import copeliaIntRecInfantilSrc from "@/public/copelia/interiores/interior-recamara-infantil-copelia.webp";
+import copeliaIntBanoVestidorSrc from "@/public/copelia/interiores/interior-bano-vestidor-copelia.webp";
 import copeliaAsadoresSrc from "@/public/copelia/amenidades-area-de-asadores-copelia.webp";
 import copeliaGymSrc from "@/public/copelia/amenidades-gym-copelia.webp";
 import copeliaJardinSrc from "@/public/copelia/amenidades-jardin-copelia.webp";
@@ -186,17 +206,40 @@ export const proyectos: Proyecto[] = [
     text: "Torre residencial en Valle Oriente, San Pedro Garza García. Departamentos de 168 a 565 m² en tipologías de dos y tres recámaras, con diez amenidades.",
     facts: [...copelia.facts, { label: "Tipologías", value: "A, B, C y Penthouse" }],
     drawing: copelia.drawing,
-    heroPhoto: photos.copeliaCiudad,
+    heroPhoto: p(copeliaAereaSrc, "Vista aérea de Copelia en Valle Oriente, con la Sierra Madre al fondo"),
     cover: photos.copeliaFachada,
-    gallery: [photos.copeliaCiudad, photos.copeliaFachada, photos.copeliaDepto, photos.copeliaTerraza],
+    gallery: [
+      p(copeliaAereaSrc, "Vista aérea de Copelia en Valle Oriente"),
+      p(copeliaAtardecerSrc, "Copelia al atardecer"),
+      p(copeliaNocheSrc, "Copelia de noche, frente a Valle Oriente"),
+      photos.copeliaFachada,
+      p(copeliaLobbySrc, "Lobby de Copelia"),
+      p(copeliaLobbyOficinasSrc, "Lobby de oficinas de Copelia"),
+      photos.copeliaTerraza,
+      p(copeliaIntAreaSocialSrc, "Área social de un departamento"),
+      p(copeliaIntSalaComedorSrc, "Sala comedor con vista a la ciudad"),
+      p(copeliaIntSalaComedor2Src, "Cocina y comedor"),
+      p(copeliaIntSalaComedor3Src, "Sala comedor"),
+      p(copeliaIntSalaTvSrc, "Sala de TV"),
+      p(copeliaIntCocinaBarSrc, "Cocina y bar"),
+      p(copeliaIntBarSrc, "Bar"),
+      p(copeliaIntTerrazaDeptoSrc, "Terraza de un departamento"),
+      p(copeliaIntRoofTop1Src, "Roof top"),
+      p(copeliaIntRoofTop2Src, "Roof top con área de asador"),
+      p(copeliaIntRecPrincipalSrc, "Recámara principal"),
+      p(copeliaIntRecamaraSrc, "Recámara"),
+      p(copeliaIntRecInfantilSrc, "Recámara infantil"),
+      p(copeliaIntBanoVestidorSrc, "Vestidor y baño"),
+    ],
     amenidades: [
-      { name: "Alberca", photo: p(copeliaAlbercaSrc, "Alberca de Copelia") },
+      { name: "Alberca", photo: p(copeliaAlbercaSrc, "Alberca y asoleaderos de Copelia") },
       { name: "Terraza", photo: photos.copeliaTerraza },
       { name: "Gimnasio", photo: p(copeliaGymSrc, "Gimnasio de Copelia") },
       { name: "Jardín", photo: p(copeliaJardinSrc, "Jardín de Copelia") },
       { name: "Área de asadores", photo: p(copeliaAsadoresSrc, "Área de asadores de Copelia") },
       { name: "Sala de juegos", photo: p(copeliaJuegosSrc, "Sala de juegos de Copelia") },
-      { name: "Sala de estar", photo: photos.copeliaSalaEstar },
+      { name: "Sala privada", photo: photos.copeliaSalaPrivada },
+      { name: "Simulador de golf", photo: p(copeliaGolfSrc, "Simulador de golf de Copelia") },
     ],
     amenidadesTotal: 10,
     mostrarTipologias: true,
