@@ -51,6 +51,8 @@ export const video = {
   eyebrow: "Video institucional",
   title: "Conoce DIPZ",
   youtubeId: "83vlUwvMlGg",
+  // true: el video ocupa todo el ancho de la pantalla. false: dentro del marco, máximo 70% del alto.
+  anchoCompleto: true,
 };
 
 export const hero = {

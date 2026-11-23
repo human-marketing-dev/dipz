@@ -1,9 +1,11 @@
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { video } from "./content";
+import { VideoPlayer } from "./VideoPlayer";
 
-// Video institucional en 16:9 dentro del marco. En escritorio su alto se limita al 70% de la pantalla
-// (el ancho se ajusta en proporción) para que se vea completo sin hacer scroll. Sin ID de YouTube muestra el marcador con el
+// Video institucional en 16:9. Con anchoCompleto ocupa todo el ancho de la pantalla, de orilla a orilla;
+// si no, va dentro del marco y en escritorio su alto se limita al 70% de la pantalla (el ancho se
+// ajusta en proporción) para que se vea completo sin hacer scroll. Sin ID de YouTube muestra el marcador con el
 // botón de reproducir; con ID, el reproductor de YouTube sin cookies.
 export function Video() {
   return (
@@ -17,17 +19,13 @@ export function Video() {
         </Reveal>
       </div>
 
-      <div className="frame mt-10 md:mt-16">
-        <Reveal delay={0.2} className="relative mx-auto aspect-video w-full md:max-w-[calc(70svh*16/9)]">
+      <div className={`mt-10 md:mt-16 ${video.anchoCompleto ? "" : "frame"}`}>
+        <Reveal
+          delay={0.2}
+          className={`relative mx-auto aspect-video w-full ${video.anchoCompleto ? "" : "md:max-w-[calc(70svh*16/9)]"}`}
+        >
           {video.youtubeId ? (
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
-              title={`${video.title}, video institucional`}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 size-full border-0"
-            />
+            <VideoPlayer id={video.youtubeId} title={`${video.title}, video institucional`} />
           ) : (
             <>
               <Placeholder
