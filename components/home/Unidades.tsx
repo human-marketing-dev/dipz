@@ -23,7 +23,7 @@ export function Unidades() {
         </div>
       </div>
 
-      <ul className="mt-12 grid gap-6 md:mt-20 md:grid-cols-2">
+      <ul className="mt-12 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-2">
         {unidades.brands.map((b, i) => (
           <Reveal as="li" key={b.id} delay={(i % 2) * 0.1}>
             <a
@@ -48,17 +48,17 @@ export function Unidades() {
               {/* Velo superior para que la etiqueta se lea sobre cielos claros */}
               <div className="absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-negro-profundo/55 to-transparent" />
 
-              <div className="flex items-center justify-between p-6 md:p-8">
-                <span className="rounded-pill border border-blanco-calido/60 px-3 py-1 type-caption tracking-[0.2em] uppercase">{b.tag}</span>
-                <span className="type-eyebrow text-arena">
+              <div className="flex items-center justify-between gap-4 p-6 md:p-8">
+                <span className="rounded-pill border border-blanco-calido/60 px-3 py-1 type-caption tracking-[0.2em] whitespace-nowrap uppercase">{b.tag}</span>
+                <span className="shrink-0 type-eyebrow whitespace-nowrap text-arena">
                   0{i + 1} / 0{unidades.brands.length}
                 </span>
               </div>
 
               <div className="mt-auto p-6 md:p-8">
                 <div className="flex items-end justify-between gap-6">
-                  <div>
-                    <h3 className="type-h2">{b.name}</h3>
+                  <div className="min-w-0">
+                    <h3 className="type-h3 sm:type-h2">{b.name}</h3>
                     <p className="mt-2 type-body-lg text-arena">{b.title}</p>
                   </div>
                   <span className="sr-only">{b.link}</span>

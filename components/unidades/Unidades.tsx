@@ -64,7 +64,7 @@ export function UnidadSection({ u, n }: { u: Unidad; n: number }) {
               {pad(n)} / {pad(unidades.length)}
             </span>
           </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-8 type-h2 md:type-h1">
+          <Reveal as="h2" delay={0.1} className="mt-8 type-h2 lg:type-h1">
             {u.name}
           </Reveal>
           <Reveal as="p" delay={0.15} className="mt-4 type-h3 text-ink-muted">

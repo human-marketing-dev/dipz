@@ -27,14 +27,14 @@ export function Modelo({ alcance = false, title = modelo.title, paragraph = mode
         </div>
 
         <div className="relative mt-16 md:mt-30">
-          <DrawLine className="absolute top-[15px] right-0 left-0 hidden md:block" />
-          <ol className="grid gap-10 md:grid-cols-4 md:gap-6">
+          <DrawLine className="absolute top-[15px] right-0 left-0 hidden lg:block" />
+          <ol className="grid gap-10 md:grid-cols-2 md:gap-x-6 lg:grid-cols-4">
             {modelo.steps.map((s, i) => (
-              <Reveal as="li" key={s.n} delay={i * 0.12} className="relative border-l border-line pl-5 md:border-none md:pl-0">
-                <span className="relative z-10 hidden size-[31px] place-items-center rounded-pill border border-line bg-surface md:grid">
+              <Reveal as="li" key={s.n} delay={i * 0.12} className="relative border-l border-line pl-5 lg:border-none lg:pl-0">
+                <span className="relative z-10 hidden size-[31px] place-items-center rounded-pill border border-line bg-surface lg:grid">
                   <span className="size-1.5 rounded-pill bg-negro-profundo" />
                 </span>
-                <span className="block type-eyebrow text-ink-muted md:mt-8">{s.n}</span>
+                <span className="block type-eyebrow text-ink-muted lg:mt-8">{s.n}</span>
                 <h3 className="mt-4 type-h3">{s.name}</h3>
                 <p className="mt-3 max-w-[280px] type-body text-ink-muted">{s.text}</p>
               </Reveal>

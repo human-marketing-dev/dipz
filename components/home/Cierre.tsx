@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { SocialLinks } from "@/components/ui/Social";
-import { cierre } from "./content";
+import { cierre, whatsapp } from "./content";
 
 const field =
   "w-full border-0 border-b border-line bg-transparent px-0 py-3 type-body text-ink placeholder:text-ink-muted focus:border-negro-profundo focus:outline-none focus-visible:outline-none";
@@ -89,8 +89,11 @@ export function Cierre({
                   <Arrow className="arrow-nudge" />
                 </span>
               </button>
+              {/* Agendar por WhatsApp con el mismo número del botón flotante */}
               <a
-                href="#"
+                href={`https://wa.me/${whatsapp.number}?text=${encodeURIComponent("Hola, me gustaría agendar una reunión con DIPZ.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-4 rounded-pill border border-line py-2 pr-2 pl-6 type-label transition-colors duration-500 hover:bg-negro-profundo hover:text-ink-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               >
                 {cierre.secondary}

@@ -55,7 +55,7 @@ export function DosCaras() {
           {caras.eyebrow}
         </Reveal>
         <div className="md:col-span-4">
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:mt-0 md:type-h1">
+          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:mt-0 lg:type-h1">
             {caras.title}
           </Reveal>
           <Reveal as="p" delay={0.2} className="mt-6 max-w-[560px] type-body-lg text-ink-muted">
@@ -103,12 +103,12 @@ export function EnCadaUnidad() {
         <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
           {enCadaUnidad.eyebrow}
         </Reveal>
-        <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:col-span-4 md:mt-0 md:type-h1">
+        <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:col-span-4 md:mt-0 lg:type-h1">
           {enCadaUnidad.title}
         </Reveal>
       </div>
 
-      <ul className="mt-12 grid gap-10 sm:grid-cols-2 md:mt-20 md:grid-cols-4 md:gap-6">
+      <ul className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-x-6 md:mt-20 lg:grid-cols-4">
         {enCadaUnidad.units.map((u, i) => (
           <Reveal as="li" key={u.id} delay={i * 0.1} className="flex flex-col border-t border-line pt-5">
             <span className="type-eyebrow text-ink-muted">{u.tag}</span>
@@ -145,7 +145,7 @@ export function LoQueNoEs() {
         <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
           {loQueNoEs.eyebrow}
         </Reveal>
-        <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:col-span-4 md:mt-0 md:type-h1">
+        <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:col-span-4 md:mt-0 lg:type-h1">
           {loQueNoEs.title}
         </Reveal>
       </div>

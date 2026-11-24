@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { notFound } from "next/navigation";
 import { Amenidades, Concepto, FichaHero, Siguiente, Ubicacion } from "@/components/desarrollos/Ficha";
 import { Galeria } from "@/components/desarrollos/Galeria";
@@ -14,7 +15,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/desarrollos/[slug]">): Promise<Metadata> {
   const p = getProyecto((await params).slug);
   if (!p) return {};
-  return { title: p.name, description: p.text };
+  return pageMetadata({
+    title: p.seo?.title ?? p.name,
+    description: p.seo?.description ?? p.text,
+    path: `/desarrollos/${p.slug}`,
+    image: `/og/${p.slug}.jpg`, // generadas a 1200 × 630 desde la foto principal
+  });
 }
 
 export default async function DesarrolloPage({ params }: PageProps<"/desarrollos/[slug]">) {

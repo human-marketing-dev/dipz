@@ -10,10 +10,15 @@ import { Rutas } from "@/components/home/Rutas";
 import { Unidades } from "@/components/home/Unidades";
 import { Video } from "@/components/home/Video";
 import { ZeroGravity } from "@/components/home/ZeroGravity";
+import { organizationJsonLd } from "@/lib/site";
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
+      />
       <Nav />
       <main className="flex-1">
         <Hero />
