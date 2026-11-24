@@ -76,7 +76,7 @@ export const loQueNoEs = {
   eyebrow: "Respaldo",
   title: "Experiencia que respalda el modelo",
   paragraph:
-    "El modelo Zero Gravity se sustenta en más de 20 años y más de 400,000 m² construidos en México, y en un grupo que desarrolla (DIPZ Desarrollos, DIPZ Development) y opera (Amelia Living, Fresh Coco).",
+    "El modelo Zero Gravity se sustenta en más de 20 años y más de 100,000 m² construidos en México, y en un grupo que desarrolla (DIPZ Desarrollos, DIPZ Development) y opera (Amelia Living, Fresh Coco).",
 };
 
 export const cierre = {

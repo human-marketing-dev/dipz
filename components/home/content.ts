@@ -61,7 +61,7 @@ export const hero = {
   eyebrow: "Grupo inmobiliario",
   title: "Elevamos la forma de vivir y de invertir.",
   subtitle:
-    "Más de 20 años y 400,000 m² construidos en México. Hoy desarrollamos Piamont y Copelia en San Pedro Garza García y Amelia Santa Lucía en el centro de Monterrey.",
+    "Más de 20 años y 100,000 m² construidos en México. Hoy desarrollamos Piamont y Copelia en San Pedro Garza García y Amelia Santa Lucía en el centro de Monterrey.",
   primary: { label: "Ver desarrollos", href: "#desarrollos" },
   secondary: { label: "Invertir con DIPZ", href: "#rutas" },
 };
@@ -70,7 +70,7 @@ export const respaldo = {
   eyebrow: "Respaldo",
   stats: [
     { prefix: "+", value: 20, unit: "años", text: "De trayectoria en el sector inmobiliario" },
-    { prefix: "+", value: 400000, unit: "m²", text: "Construidos en México" },
+    { prefix: "+", value: 100000, unit: "m²", text: "Construidos en México" },
     { prefix: "", value: 4, unit: "marcas", text: "Especializadas en desarrollo y operación" },
     { prefix: "", value: 2, unit: "países", text: "México y Estados Unidos" },
   ],
@@ -116,7 +116,7 @@ export const unidades = {
       name: "DIPZ Desarrollos",
       tag: "México",
       title: "Desarrollo residencial y comercial en San Pedro y Monterrey.",
-      text: "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en Valle del Campestre, Valle Oriente y el centro de Monterrey. Más de 400,000 m² construidos en México.",
+      text: "Identificamos oportunidades, estructuramos capital y desarrollamos proyectos en Valle del Campestre, Valle Oriente y el centro de Monterrey. Más de 100,000 m² construidos en México.",
       capabilities: ["Adquisición de tierra", "Desarrollo de proyectos", "Inversión y capital", "Comercialización"],
       link: "Conocer DIPZ Desarrollos",
       drawing: "street" as Drawing,

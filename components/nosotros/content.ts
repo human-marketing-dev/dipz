@@ -20,7 +20,7 @@ export const grupo = {
   title: "Desarrollo, operación y expansión",
   // Tres tiempos del mismo párrafo, para leerlo como una secuencia.
   paragraphs: [
-    "En más de 20 años, DIPZ ha construido más de 400,000 m² en México. Hoy desarrolla Piamont en Valle del Campestre, Copelia en Valle Oriente y Amelia Santa Lucía en el centro de Monterrey.",
+    "En más de 20 años, DIPZ ha construido más de 100,000 m² en México. Hoy desarrolla Piamont en Valle del Campestre, Copelia en Valle Oriente y Amelia Santa Lucía en el centro de Monterrey.",
     "Para dar servicio a sus clientes después de la entrega, el grupo incorporó la administración de propiedades a través de Amelia Living y Fresh Coco, en zonas urbanas y destinos turísticos.",
     "Con DIPZ Development, el grupo extiende su modelo de desarrollo e inversión a Estados Unidos.",
   ],
