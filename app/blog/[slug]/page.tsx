@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { notFound } from "next/navigation";
 import { MasPublicaciones, PostBody, PostHero } from "@/components/blog/BlogPost";
 import { getPost, posts } from "@/components/blog/posts";
@@ -13,7 +14,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const p = getPost((await params).slug);
   if (!p) return {};
-  return { title: p.title, description: p.excerpt };
+  // Las entradas de ejemplo no se indexan ni van al sitemap hasta que se publiquen las reales.
+  return pageMetadata({ title: p.title, description: p.excerpt, path: `/blog/${p.slug}`, noindex: p.ejemplo });
 }
 
 export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">) {

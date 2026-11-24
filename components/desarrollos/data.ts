@@ -108,6 +108,8 @@ export type Proyecto = {
   // Ubicación en Google Maps: el link que comparte el cliente (botón "Cómo llegar") y, si se tienen,
   // las coordenadas para el mapa embebido. Sin coordenadas se muestra el marcador del mapa.
   mapa: { url: string; lat?: number; lng?: number };
+  // Título y descripción para buscadores (sin " | DIPZ"). Si falta la descripción se usa `text`.
+  seo: { title: string; description?: string };
 };
 
 const p = (src: Photo["src"], alt: string, position?: string): Photo => ({ src, alt, position });
@@ -116,6 +118,11 @@ const [piamont, copelia, amelia] = home.projects;
 export const proyectos: Proyecto[] = [
   {
     slug: piamont.id,
+    seo: {
+      title: "Piamont: departamentos en Valle del Campestre",
+      description:
+        "Piamont, desarrollo residencial y comercial de DIPZ en Valle del Campestre, San Pedro Garza García. Departamentos de 105 a 386 m², rooftop, alberca y locales.",
+    },
     color: piamont.color,
     name: piamont.name,
     location: piamont.location,
@@ -172,6 +179,7 @@ export const proyectos: Proyecto[] = [
   },
   {
     slug: copelia.id,
+    seo: { title: "Copelia: departamentos en Valle Oriente, San Pedro" },
     color: copelia.color,
     name: copelia.name,
     location: copelia.location,
@@ -277,6 +285,7 @@ export const proyectos: Proyecto[] = [
   },
   {
     slug: amelia.id,
+    seo: { title: "Amelia Santa Lucía: departamentos en Monterrey" },
     color: amelia.color,
     name: amelia.name,
     location: amelia.location,

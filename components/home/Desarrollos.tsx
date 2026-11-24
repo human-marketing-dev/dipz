@@ -72,9 +72,9 @@ export function Desarrollos() {
             <div className="absolute inset-0 bg-negro-profundo/25 bg-gradient-to-t from-negro-profundo/90 via-negro-profundo/50 to-negro-profundo/10 transition-colors duration-700 group-hover:bg-negro-profundo/45" />
 
             <div className="relative w-full px-6 pb-10 md:px-12 md:pb-16">
-              <div className="flex items-center justify-between border-b border-blanco-calido/25 pb-4">
+              <div className="flex items-center justify-between gap-4 border-b border-blanco-calido/25 pb-4">
                 <p className="type-eyebrow text-arena">{p.location}</p>
-                <p className="type-eyebrow text-arena">
+                <p className="shrink-0 type-eyebrow whitespace-nowrap text-arena">
                   0{i + 1} / 0{total}
                 </p>
               </div>

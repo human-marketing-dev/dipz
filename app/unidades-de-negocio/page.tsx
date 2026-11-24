@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 import { unidades } from "@/components/unidades/content";
 import { UnidadSection, UnidadesHero } from "@/components/unidades/Unidades";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Unidades de negocio: desarrollo y operación",
   description:
-    "DIPZ Desarrollos, DIPZ Development, Amelia Living y Fresh Coco: cuatro marcas para desarrollar en México y Estados Unidos y operar propiedades en renta y en destino.",
-};
+    "DIPZ Desarrollos, DIPZ Development, Amelia Living y Fresh Coco: las unidades del grupo para desarrollar en México y Estados Unidos y operar propiedades.",
+  path: "/unidades-de-negocio",
+});
 
 // Una sola página con un ancla por marca (#dipz-desarrollos, #dipz-development, #amelia-living,
 // #fresh-coco). Si una marca necesita página propia, el ancla pasa a /unidades-de-negocio/<marca>.
