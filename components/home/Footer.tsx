@@ -65,6 +65,19 @@ export function Footer() {
           <a href="/aviso-de-privacidad" className="hover:text-blanco-calido">Aviso de privacidad</a>
         </span>
       </div>
+
+      {/* Crédito de la agencia: última línea del sitio, discreto (menor contraste que la barra legal) */}
+      <p className="mt-6 type-caption text-blanco-calido/50 md:text-center">
+        SEO by{" "}
+        <a
+          href="https://humanmarketing.mx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline-offset-4 transition-colors hover:text-blanco-calido hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blanco-calido"
+        >
+          Human Marketing
+        </a>
+      </p>
     </footer>
   );
 }
