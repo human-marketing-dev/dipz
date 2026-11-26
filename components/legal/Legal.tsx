@@ -1,6 +1,8 @@
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { PageHero } from "@/components/ui/PageHero";
-import type { LegalPage } from "./content";
+import type { Legal as LegalPagina } from "@/lib/sanity";
+
+type LegalPage = LegalPagina["contenido"];
 
 // Página legal: encabezado de página interna y una fila por apartado, título en el primer tercio
 // y texto en los dos siguientes, con regla entre filas. Sin animaciones: es texto de consulta.

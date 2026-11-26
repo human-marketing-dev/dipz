@@ -1,12 +1,13 @@
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { unidades } from "./content";
+import { getSitio } from "@/lib/contenido";
 
 // Las cuatro marcas en cards de foto, en una retícula de 2 × 2. La foto llena la card; encima, la
 // marca y su titular. Al pasar el mouse (o con foco) la foto se acerca y sube el texto con lo que
 // hace la marca. En móvil, sin hover, el texto se ve completo.
-export function Unidades() {
+export async function Unidades() {
+  const { unidades } = (await getSitio()).inicio;
   return (
     <section id="marcas" data-nav="sand" className="frame bg-surface-alt py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">

@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
 import { WhatsApp } from "@/components/ui/WhatsApp";
 import { pageMetadata, SITE_URL } from "@/lib/site";
+import { getSitio } from "@/lib/contenido";
 import { fontVariables } from "./fonts";
 import "./globals.css";
 
-const defaultTitle = "DIPZ | Grupo inmobiliario en Monterrey con más de 20 años";
-
-// Metadatos base del sitio y del home. El ícono y el ícono de Apple salen de app/icon.png y
-// app/apple-icon.png; las imágenes para redes, de public/og/.
-const base = pageMetadata({
-  description:
-    "Desarrollamos y operamos proyectos inmobiliarios en México y Estados Unidos. Más de 20 años y 100,000 m² construidos. Piamont, Copelia y Amelia Santa Lucía.",
-  path: "/",
-});
-
-export const metadata: Metadata = {
-  ...base,
-  metadataBase: new URL(SITE_URL),
-  title: { default: defaultTitle, template: "%s | DIPZ" },
-  openGraph: { ...base.openGraph, title: defaultTitle },
-  twitter: { ...base.twitter, title: defaultTitle },
-};
+// Metadatos base del sitio y del home (título y descripción en Sanity: Configuración → SEO del
+// sitio). El ícono y el ícono de Apple salen de app/icon.png y app/apple-icon.png; las imágenes
+// para redes, de public/og/.
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = (await getSitio()).config;
+  const base = pageMetadata({ description: seo.description, path: "/" });
+  return {
+    ...base,
+    metadataBase: new URL(SITE_URL),
+    title: { default: seo.title, template: "%s | DIPZ" },
+    openGraph: { ...base.openGraph, title: seo.title },
+    twitter: { ...base.twitter, title: seo.title },
+  };
+}
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

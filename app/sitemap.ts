@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { posts } from "@/components/blog/posts";
-import { proyectos } from "@/components/desarrollos/data";
+import { getSitio } from "@/lib/contenido";
 import { SITE_URL } from "@/lib/site";
 
 // sitemap.xml. Las entradas de blog marcadas como ejemplo quedan fuera hasta que se publiquen las reales.
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { desarrollos: proyectos, entradas: posts } = await getSitio();
   const pages: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/desarrollos", priority: 0.9 },

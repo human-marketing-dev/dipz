@@ -1,13 +1,14 @@
 import { CountUp } from "@/components/ui/CountUp";
 import { Reveal } from "@/components/ui/Reveal";
-import { respaldo } from "./content";
+import { getSitio } from "@/lib/contenido";
 
-export function Respaldo() {
+export async function Respaldo() {
+  const { respaldo } = (await getSitio()).inicio;
   return (
     <section data-nav="light" aria-label="Respaldo" className="frame bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
         <p className="type-eyebrow text-ink-muted md:col-span-2">{respaldo.eyebrow}</p>
-        <p className="mt-4 type-caption text-ink-muted md:col-span-4 md:mt-0 md:text-right">Cifras sujetas a confirmación</p>
+        {respaldo.nota && <p className="mt-4 type-caption text-ink-muted md:col-span-4 md:mt-0 md:text-right">{respaldo.nota}</p>}
       </div>
       <dl className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:mt-16 md:grid-cols-4">
         {respaldo.stats.map((s, i) => (

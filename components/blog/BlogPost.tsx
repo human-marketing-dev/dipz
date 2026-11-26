@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import type { Block, Post } from "./posts";
+import type { Block, Entrada as Post } from "@/lib/sanity";
 
 // Encabezado de la entrada: ruta, titular y datos en una barra, y la foto a lo ancho del marco.
 export function PostHero({ p }: { p: Post }) {

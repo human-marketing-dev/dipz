@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { rutas } from "./content";
+import type { Inicio } from "@/lib/sanity";
 
 // Índice editorial: tres filas con regla, como una lista de servicios. La foto de la izquierda
 // cambia según la ruta activa; la fila activa queda en tinta y las demás en gris.
-export function Rutas() {
+export function Rutas({ rutas }: { rutas: Inicio["rutas"] }) {
   const [active, setActive] = useState(0);
 
   return (

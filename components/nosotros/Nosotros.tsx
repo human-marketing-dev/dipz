@@ -2,9 +2,10 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { grupo, hero, marcas } from "./content";
+import { getSitio } from "@/lib/contenido";
 
-export function NosotrosHero() {
+export async function NosotrosHero() {
+  const { hero } = (await getSitio()).nosotros;
   return (
     <PageHero eyebrow={hero.eyebrow} title={hero.title} intro={hero.intro}>
       <Reveal delay={0.3} className="mt-12 md:mt-20">
@@ -15,7 +16,8 @@ export function NosotrosHero() {
 }
 
 // Tres tiempos de la historia en filas con regla; la foto acompaña fija a la izquierda.
-export function Grupo() {
+export async function Grupo() {
+  const { grupo } = (await getSitio()).nosotros;
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -49,7 +51,8 @@ export function Grupo() {
   );
 }
 
-export function Marcas() {
+export async function Marcas() {
+  const { marcas } = (await getSitio()).nosotros;
   return (
     <section data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">

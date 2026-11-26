@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { categorias, posts, type Post } from "./posts";
+import type { Entrada as Post } from "@/lib/sanity";
 
 function Meta({ p, className = "" }: { p: Post; className?: string }) {
   return (
@@ -18,7 +18,8 @@ function Meta({ p, className = "" }: { p: Post; className?: string }) {
 
 // Listado: filtro por categoría en píldoras, la publicación más reciente destacada a lo ancho y el
 // resto en una retícula de tres columnas.
-export function BlogIndex() {
+export function BlogIndex({ posts }: { posts: Post[] }) {
+  const categorias = ["Todas", ...Array.from(new Set(posts.map((p) => p.category)))];
   const [cat, setCat] = useState("Todas");
   const list = posts.filter((p) => cat === "Todas" || p.category === cat);
   const [first, ...rest] = list;

@@ -11,25 +11,29 @@ import { Unidades } from "@/components/home/Unidades";
 import { Video } from "@/components/home/Video";
 import { ZeroGravity } from "@/components/home/ZeroGravity";
 import { organizationJsonLd } from "@/lib/site";
+import { getSitio } from "@/lib/contenido";
+import { proyectosInicio } from "@/lib/sanity";
 
-export default function Home() {
+export default async function Home() {
+  const s = await getSitio();
+  const projects = proyectosInicio(s);
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(s.config)).replace(/</g, "\\u003c") }}
       />
       <Nav />
       <main className="flex-1">
-        <Hero />
+        <Hero hero={s.inicio.hero} projects={projects} />
         <Respaldo />
         <Video />
         <ZeroGravity />
         <Unidades />
         <Modelo alcance />
-        <Desarrollos />
-        <Rutas />
-        <Perspectivas />
+        <Desarrollos seccion={s.inicio.desarrollos} projects={projects} />
+        <Rutas rutas={s.inicio.rutas} />
+        <Perspectivas perspectivas={s.inicio.blog} entradas={s.entradas} />
         <Cierre />
       </main>
       <Footer />

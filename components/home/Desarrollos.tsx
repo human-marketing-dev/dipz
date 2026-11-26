@@ -5,10 +5,11 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { projectTones as tones } from "@/components/ui/projectTone";
-import { desarrollos } from "./content";
+import type { Inicio, ProyectoInicio } from "@/lib/sanity";
 
 
-export function Desarrollos() {
+export function Desarrollos({ seccion, projects }: { seccion: Inicio["desarrollos"]; projects: ProyectoInicio[] }) {
+  const desarrollos = { ...seccion, projects };
   const total = desarrollos.projects.length;
   const panels = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);

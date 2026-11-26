@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/site";
+import { getSitio, metadatosDe } from "@/lib/contenido";
 import { BlogIndex } from "@/components/blog/BlogIndex";
-import { blog } from "@/components/blog/posts";
 import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 import { PageHero } from "@/components/ui/PageHero";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Blog de inversión y mercado inmobiliario",
-  description:
-    "Artículos de DIPZ sobre inversión inmobiliaria, preventa, renta administrada y el mercado residencial de Monterrey y San Pedro Garza García.",
-  path: "/blog",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return metadatosDe("blogIndice", "/blog");
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const s = await getSitio();
+  const blog = s.blogIndice.hero;
   return (
     <>
       <Nav />
       <main className="flex-1">
         <PageHero eyebrow={blog.eyebrow} title={blog.title} intro={blog.intro} />
-        <BlogIndex />
+        <BlogIndex posts={s.entradas} />
         <Cierre />
       </main>
       <Footer />

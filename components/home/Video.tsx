@@ -1,13 +1,14 @@
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
-import { video } from "./content";
+import { getSitio } from "@/lib/contenido";
 import { VideoPlayer } from "./VideoPlayer";
 
 // Video institucional en 16:9. Con anchoCompleto ocupa todo el ancho de la pantalla, de orilla a orilla;
 // si no, va dentro del marco y en escritorio su alto se limita al 70% de la pantalla (el ancho se
 // ajusta en proporción) para que se vea completo sin hacer scroll. Sin ID de YouTube muestra el marcador con el
 // botón de reproducir; con ID, el reproductor de YouTube sin cookies.
-export function Video() {
+export async function Video() {
+  const { video } = (await getSitio()).inicio;
   return (
     <section data-nav="dark" aria-label={video.eyebrow} className="bg-surface-inverse py-16 text-ink-inverse md:py-30">
       <div className="frame md:grid md:grid-cols-6 md:gap-x-6">
@@ -28,7 +29,7 @@ export function Video() {
             <VideoPlayer
               id={video.youtubeId}
               title={`${video.title}, video institucional`}
-              portada={video.portada}
+              portada={video.portada && `${video.portada.src.src}?w=2560&q=80&auto=format`}
             />
           ) : (
             <>

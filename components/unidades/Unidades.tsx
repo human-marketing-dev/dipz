@@ -2,12 +2,14 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { hero, unidades, type Unidad } from "./content";
+import { getSitio } from "@/lib/contenido";
+import type { Unidad } from "@/lib/sanity";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 // Héroe con el índice de las cuatro marcas: cada fila baja a su sección.
-export function UnidadesHero() {
+export async function UnidadesHero() {
+  const { hero, unidades: { items: unidades } } = (await getSitio()).unidadesNegocio;
   return (
     <PageHero eyebrow={hero.eyebrow} title={hero.title} intro={hero.intro}>
       <Reveal delay={0.3}>
@@ -35,7 +37,7 @@ export function UnidadesHero() {
 
 // Cada marca en su sección: foto en la mitad y ficha en la otra; el lado alterna para que la
 // página se lea como un recorrido y no como una lista de tarjetas.
-export function UnidadSection({ u, n }: { u: Unidad; n: number }) {
+export function UnidadSection({ u, n, total }: { u: Unidad; n: number; total: number }) {
   const alt = n % 2 === 1;
   return (
     <section
@@ -61,7 +63,7 @@ export function UnidadSection({ u, n }: { u: Unidad; n: number }) {
           <Reveal className="flex items-center justify-between border-b border-line pb-4">
             <span className="type-eyebrow text-ink-muted">{u.tag}</span>
             <span className="type-eyebrow text-ink-muted">
-              {pad(n)} / {pad(unidades.length)}
+              {pad(n)} / {pad(total)}
             </span>
           </Reveal>
           <Reveal as="h2" delay={0.1} className="mt-8 type-h2 lg:type-h1">

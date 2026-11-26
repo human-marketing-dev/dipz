@@ -3,7 +3,7 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
-import { POR_CONFIRMAR, type Proyecto } from "./data";
+import { POR_CONFIRMAR, type Proyecto } from "@/lib/sanity";
 import { TipologiasTabs } from "./TipologiasTabs";
 import { projectTones } from "@/components/ui/projectTone";
 
@@ -217,11 +217,13 @@ export function Ubicacion({ p }: { p: Proyecto }) {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.4} className="mt-10 md:mt-auto md:pt-10">
-            <ArrowLink href={p.mapa.url} variant={t.link}>
-              Cómo llegar
-            </ArrowLink>
-          </Reveal>
+          {p.mapa.url && (
+            <Reveal delay={0.4} className="mt-10 md:mt-auto md:pt-10">
+              <ArrowLink href={p.mapa.url} variant={t.link}>
+                Cómo llegar
+              </ArrowLink>
+            </Reveal>
+          )}
         </div>
         <Reveal delay={0.2} className="mt-12 md:col-span-3 md:mt-0">
           {p.mapa.lat != null && p.mapa.lng != null ? (
