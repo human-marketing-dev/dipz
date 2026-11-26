@@ -1,21 +1,23 @@
 import Image from "next/image";
-import { cierre, desarrollos, nav, redes, unidades } from "./content";
+import { getSitio } from "@/lib/contenido";
+import { telHref } from "@/lib/sanity";
 
-const columns = [
-  { title: "Desarrollos", links: desarrollos.projects.map((p) => ({ label: p.name, href: `/desarrollos/${p.id}` })) },
-  { title: "Unidades", links: unidades.brands.map((b) => ({ label: b.name, href: `/unidades-de-negocio#${b.id}` })) },
-  { title: "Grupo", links: [...nav.filter((l) => l.href !== "/desarrollos"), { label: "Contacto", href: "/contacto" }] },
-  {
-    title: "Contacto",
-    links: [
-      { label: cierre.phone, href: "tel:+528119841517" },
-      { label: "Showroom en San Pedro", href: "/contacto" },
-      ...redes.map((r) => ({ label: r.name, href: r.href })),
-    ],
-  },
-];
-
-export function Footer() {
+export async function Footer() {
+  const s = await getSitio();
+  const { contacto, redes, footer } = s.config;
+  const columns = [
+    { title: "Desarrollos", links: s.desarrollos.map((p) => ({ label: p.name, href: `/desarrollos/${p.slug}` })) },
+    { title: "Unidades", links: s.inicio.unidades.brands.map((b) => ({ label: b.name, href: `/unidades-de-negocio#${b.id}` })) },
+    { title: "Grupo", links: s.config.menu.filter((l) => l.href !== "/desarrollos") },
+    {
+      title: "Contacto",
+      links: [
+        { label: contacto.phone, href: telHref(contacto.phone) },
+        { label: "Showroom en San Pedro", href: "/contacto" },
+        ...redes.map((r) => ({ label: r.name, href: r.href })),
+      ],
+    },
+  ];
   return (
     <footer data-nav="dark" className="relative isolate overflow-hidden bg-verde-salvia px-6 pt-16 pb-6 text-ink-inverse md:px-[var(--margin)] md:pt-30">
       {/* Fondo: textura verde de la marca. Textura y logo van sin optimizar: la recompresión
@@ -58,8 +60,8 @@ export function Footer() {
       </div>
 
       <div className="mt-16 flex flex-col gap-2 border-t border-blanco-calido/30 pt-4 type-caption text-blanco-calido/80 md:mt-24 md:flex-row md:justify-between">
-        <span>© 2026 DIPZ. Todos los derechos reservados.</span>
-        <span className="tracking-[0.3em] uppercase">The future of real estate</span>
+        <span>{footer.copyright}</span>
+        <span className="tracking-[0.3em] uppercase">{footer.lema}</span>
         <span className="flex gap-6">
           <a href="/terminos-y-condiciones" className="hover:text-blanco-calido">Términos y condiciones</a>
           <a href="/aviso-de-privacidad" className="hover:text-blanco-calido">Aviso de privacidad</a>

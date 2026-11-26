@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Placeholder } from "@/components/ui/Placeholder";
-import type { Tipologia } from "./data";
+import type { Tipologia } from "@/lib/sanity";
 
 const POR_CONFIRMAR = "Por confirmar"; // igual que en data.ts; no se importa para no cargar data.ts en el cliente
 
@@ -70,7 +70,7 @@ export function TipologiasTabs({ tipologias }: { tipologias: Tipologia[] }) {
       >
         <div key={t.name} className="tab-fade flex flex-col gap-8 md:col-span-4">
           {t.plantas?.length ? (
-            t.plantas.map((pl) => (
+            t.plantas.flatMap((pl) => (pl.photo ? [{ ...pl, photo: pl.photo }] : [])).map((pl) => (
               <figure key={pl.photo.alt}>
                 <a
                   href={pl.photo.src.src}

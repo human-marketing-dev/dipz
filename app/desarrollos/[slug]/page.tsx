@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/site";
+import { getSitio } from "@/lib/contenido";
 import { notFound } from "next/navigation";
 import { Amenidades, Concepto, FichaHero, Siguiente, Ubicacion } from "@/components/desarrollos/Ficha";
 import { Galeria } from "@/components/desarrollos/Galeria";
-import { getProyecto, proyectos } from "@/components/desarrollos/data";
 import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 
-export function generateStaticParams() {
-  return proyectos.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return (await getSitio()).desarrollos.map((p) => ({ slug: p.slug }));
 }
 
+const getProyecto = async (slug: string) => (await getSitio()).desarrollos.find((p) => p.slug === slug);
+
 export async function generateMetadata({ params }: PageProps<"/desarrollos/[slug]">): Promise<Metadata> {
-  const p = getProyecto((await params).slug);
+  const p = await getProyecto((await params).slug);
   if (!p) return {};
   return pageMetadata({
     title: p.seo?.title ?? p.name,
@@ -25,7 +27,8 @@ export async function generateMetadata({ params }: PageProps<"/desarrollos/[slug
 
 export default async function DesarrolloPage({ params }: PageProps<"/desarrollos/[slug]">) {
   const { slug } = await params;
-  const p = getProyecto(slug);
+  const { desarrollos: proyectos } = await getSitio();
+  const p = proyectos.find((x) => x.slug === slug);
   if (!p) notFound();
   const next = proyectos[(proyectos.indexOf(p) + 1) % proyectos.length];
 

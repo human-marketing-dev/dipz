@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { desarrollos, hero } from "./content";
+import type { Inicio, ProyectoInicio } from "@/lib/sanity";
 
 const SLIDE_MS = 6000;
 
-export function Hero() {
-  const projects = desarrollos.projects;
+export function Hero({ hero, projects }: { hero: Inicio["hero"]; projects: ProyectoInicio[] }) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {

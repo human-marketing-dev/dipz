@@ -3,10 +3,11 @@ import { Arrow, ArrowLink } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollWords } from "@/components/ui/ScrollWords";
-import { caras, enCadaUnidad, hero, loQueNoEs } from "./content";
+import { getSitio } from "@/lib/contenido";
 
 // Héroe a pantalla completa sobre la alberca de Copelia: el cielo abierto es la imagen de la idea.
-export function ZeroGravityHero() {
+export async function ZeroGravityHero() {
+  const { hero } = (await getSitio()).zeroGravity;
   return (
     <section
       data-nav="dark"
@@ -47,7 +48,9 @@ export function ZeroGravityHero() {
 }
 
 // Dos columnas: a la izquierda de qué se encarga DIPZ, a la derecha lo que recibe el cliente.
-export function DosCaras() {
+export async function DosCaras() {
+  const { caras: c } = (await getSitio()).zeroGravity;
+  const caras = { ...c, headers: [c.headerIzquierda, c.headerDerecha], rows: c.rows.map((r) => [r.izquierda, r.derecha]) };
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -96,7 +99,8 @@ export function DosCaras() {
   );
 }
 
-export function EnCadaUnidad() {
+export async function EnCadaUnidad() {
+  const { enCadaUnidad } = (await getSitio()).zeroGravity;
   return (
     <section data-nav="sand" className="frame bg-surface-alt py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -138,7 +142,8 @@ export function EnCadaUnidad() {
   );
 }
 
-export function LoQueNoEs() {
+export async function LoQueNoEs() {
+  const { loQueNoEs } = (await getSitio()).zeroGravity;
   return (
     <section data-nav="light" className="frame bg-surface py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">

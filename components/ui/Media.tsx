@@ -1,10 +1,16 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image, { type ImageLoader, type StaticImageData } from "next/image";
 import { useState, type ComponentProps } from "react";
 import { Placeholder } from "./Placeholder";
 
 export type Photo = { src: StaticImageData; alt: string; position?: string };
+
+// Fotos de Sanity: las recorta y comprime su propio CDN (ancho pedido, WebP/AVIF automático), así el
+// servidor no procesa imágenes. Las fotos locales siguen pasando por el optimizador de Next.
+const sanityLoader: ImageLoader = ({ src, width, quality }) =>
+  `${src}?w=${width}&q=${quality ?? 75}&fit=max&auto=format`;
+const esSanity = (src: string) => src.includes("/images/jsqssfsb/");
 
 type MediaProps = ComponentProps<typeof Placeholder> & {
   photo?: Photo;
@@ -44,6 +50,7 @@ export function Media({ photo, sizes = "100vw", aspect, fit, preload, className 
     <div className={`relative overflow-hidden bg-negro-profundo ${className}`}>
       <Image
         src={photo.src}
+        loader={esSanity(photo.src.src) ? sanityLoader : undefined}
         alt={photo.alt}
         fill
         sizes={cropSizes}

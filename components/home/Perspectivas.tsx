@@ -4,12 +4,11 @@ import { useRef, useState } from "react";
 import { ArrowLink, Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { posts } from "@/components/blog/posts";
-import { perspectivas } from "./content";
+import type { Entrada, Inicio } from "@/lib/sanity";
 
-const recientes = [...posts].sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, 3);
-
-export function Perspectivas() {
+// Las tres entradas más recientes del blog (vienen ordenadas por fecha desde Sanity).
+export function Perspectivas({ perspectivas, entradas }: { perspectivas: Inicio["blog"]; entradas: Entrada[] }) {
+  const recientes = entradas.slice(0, 3);
   const listRef = useRef<HTMLUListElement>(null);
   const [hover, setHover] = useState<number | null>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });

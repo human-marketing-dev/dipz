@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/site";
+import { getSitio } from "@/lib/contenido";
 import { notFound } from "next/navigation";
 import { MasPublicaciones, PostBody, PostHero } from "@/components/blog/BlogPost";
-import { getPost, posts } from "@/components/blog/posts";
 import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 
-export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return (await getSitio()).entradas.map((p) => ({ slug: p.slug }));
 }
 
+const getPost = async (slug: string) => (await getSitio()).entradas.find((p) => p.slug === slug);
+
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
-  const p = getPost((await params).slug);
+  const p = await getPost((await params).slug);
   if (!p) return {};
   // Las entradas de ejemplo no se indexan ni van al sitemap hasta que se publiquen las reales.
   return pageMetadata({ title: p.title, description: p.excerpt, path: `/blog/${p.slug}`, noindex: p.ejemplo });
@@ -20,7 +22,8 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
 
 export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const p = getPost(slug);
+  const { entradas: posts } = await getSitio();
+  const p = posts.find((x) => x.slug === slug);
   if (!p) notFound();
 
   return (

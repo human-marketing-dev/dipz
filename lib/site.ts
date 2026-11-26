@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cierre, redes } from "@/components/home/content";
+import type { Config } from "@/lib/sanity";
 
 // Dominio de producción. Se puede cambiar sin tocar código con la variable NEXT_PUBLIC_SITE_URL.
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://dipz.mx").replace(/\/$/, "");
@@ -43,14 +43,14 @@ export function pageMetadata({ title, description, path, image = DEFAULT_OG_IMAG
 }
 
 // Datos estructurados de la empresa (schema.org) para buscadores; se insertan en el home.
-export const organizationJsonLd = {
+export const organizationJsonLd = (config: Config) => ({
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
   image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
-  telephone: cierre.phone.replace(/\s/g, ""),
+  telephone: config.contacto.phone.replace(/\s/g, ""),
   address: {
     "@type": "PostalAddress",
     streetAddress: "Río Guadalquivir 305, del Valle",
@@ -59,5 +59,5 @@ export const organizationJsonLd = {
     postalCode: "66220",
     addressCountry: "MX",
   },
-  sameAs: redes.map((r) => r.href),
-};
+  sameAs: config.redes.map((r) => r.href),
+});

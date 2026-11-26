@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
-import { indice, perfiles, proyectos, type Perfil, type Proyecto } from "./data";
+import type { DesarrollosIndice, Perfil, Proyecto } from "@/lib/sanity";
 
 const CYCLE_MS = 1100;
 
@@ -99,7 +99,13 @@ function Fila({ p, n, total }: { p: Proyecto; n: number; total: number }) {
   );
 }
 
-export function Indice() {
+export function Indice({ indice: pagina, proyectos }: { indice: DesarrollosIndice; proyectos: Proyecto[] }) {
+  const indice = pagina.hero;
+  const perfiles: { id: Perfil | "todos"; label: string }[] = [
+    { id: "todos", label: pagina.filtros.todos },
+    { id: "vivir", label: pagina.filtros.vivir },
+    { id: "invertir", label: pagina.filtros.invertir },
+  ];
   const [perfil, setPerfil] = useState<Perfil | "todos">("todos");
   const lista = proyectos.filter((p) => perfil === "todos" || p.perfil.includes(perfil));
 

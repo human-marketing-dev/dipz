@@ -1,4 +1,4 @@
-import type { ProjectColor } from "@/components/home/content";
+import type { ProjectColor } from "@/lib/sanity";
 
 // Color de cada desarrollo y el texto que va encima: blanco sobre terracota y verde, negro sobre
 // azul talco (el blanco no se lee sobre un fondo tan claro). Lo usan la sección Desarrollos del home

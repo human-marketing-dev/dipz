@@ -1,30 +1,28 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { SocialLinks } from "@/components/ui/Social";
-import { cierre, whatsapp } from "./content";
+import { getSitio } from "@/lib/contenido";
+import { telHref } from "@/lib/sanity";
 
 const field =
   "w-full border-0 border-b border-line bg-transparent px-0 py-3 type-body text-ink placeholder:text-ink-muted focus:border-negro-profundo focus:outline-none focus-visible:outline-none";
 
 // En las páginas de cada desarrollo el formulario lleva su propio título y el proyecto de interés.
-export function Cierre({
-  eyebrow = cierre.eyebrow,
-  title = cierre.title,
-  interes,
-}: {
-  eyebrow?: string;
-  title?: string;
-  interes?: string;
-}) {
+// Textos generales en Sanity (Configuración → Bloque de contacto); cada página puede cambiar
+// antetítulo y título.
+export async function Cierre({ eyebrow, title, interes }: { eyebrow?: string; title?: string; interes?: string }) {
+  const { config } = await getSitio();
+  const { cierre: c, contacto, whatsapp, redes } = config;
+  const cierre = { ...c, eyebrow: eyebrow || c.eyebrow, title: title || c.title, phone: contacto.phone, showroom: contacto.showroom };
   return (
     <section id="contacto" data-nav="sand" className="frame bg-surface-alt py-16 md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
         <Reveal as="p" className="type-eyebrow text-ink-muted md:col-span-2">
-          {eyebrow}
+          {cierre.eyebrow}
         </Reveal>
       </div>
       <Reveal as="h2" delay={0.1} className="mt-8 type-display-xl md:mt-16">
-        {title}
+        {cierre.title}
       </Reveal>
 
       <div className="mt-12 border-t border-line pt-10 md:mt-20 md:grid md:grid-cols-6 md:gap-x-6 md:pt-12">
@@ -35,7 +33,7 @@ export function Cierre({
           <Reveal delay={0.3} className="mt-10 grid max-w-[480px] grid-cols-2 gap-6">
             <div>
               <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Teléfono</p>
-              <a href="tel:+528119841517" className="mt-1 block type-small hover:text-accent">{cierre.phone}</a>
+              <a href={telHref(cierre.phone)} className="mt-1 block type-small hover:text-accent">{cierre.phone}</a>
             </div>
             <div>
               <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Showroom</p>
@@ -44,7 +42,7 @@ export function Cierre({
           </Reveal>
           <Reveal delay={0.35} className="mt-10 max-w-[480px] border-t border-line pt-6">
             <p className="type-caption tracking-[0.2em] text-ink-muted uppercase">Síguenos</p>
-            <SocialLinks className="mt-4" />
+            <SocialLinks redes={redes} className="mt-4" />
           </Reveal>
         </div>
 

@@ -1,10 +1,13 @@
 import { DrawLine } from "@/components/ui/DrawLine";
 import { Reveal } from "@/components/ui/Reveal";
-import { alcance as alcanceText, modelo } from "./content";
+import { getSitio } from "@/lib/contenido";
 
 // En el home lleva también el texto de Alcance, debajo del párrafo (la sección del mapa salió del home).
 // Otras páginas pueden cambiar título y párrafo (en /zero-gravity llevan los suyos).
-export function Modelo({ alcance = false, title = modelo.title, paragraph = modelo.paragraph }: { alcance?: boolean; title?: string; paragraph?: string }) {
+export async function Modelo({ alcance = false, ...textos }: { alcance?: boolean; title?: string; paragraph?: string }) {
+  const { modelo } = (await getSitio()).inicio;
+  const title = textos.title || modelo.title;
+  const paragraph = textos.paragraph || modelo.paragraph;
   return (
     <>
       <section data-nav="light" className="frame bg-surface py-16 md:py-30">
@@ -20,8 +23,8 @@ export function Modelo({ alcance = false, title = modelo.title, paragraph = mode
           {/* Texto desde el riel 2/3, alineado arriba con el título */}
           <Reveal delay={0.2} className="mt-6 md:col-span-2 md:col-start-5 md:mt-10">
             <p className="type-body-lg text-ink-muted">{paragraph}</p>
-            {alcance && (
-              <p className="mt-4 type-body-lg text-ink-muted">{alcanceText.paragraph}</p>
+            {alcance && modelo.alcance && (
+              <p className="mt-4 type-body-lg text-ink-muted">{modelo.alcance}</p>
             )}
           </Reveal>
         </div>

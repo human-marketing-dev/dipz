@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { redes } from "@/components/home/content";
+import type { Config } from "@/lib/sanity";
 
 // Íconos de línea fina (trazo 1.5, terminaciones redondeadas), con el dibujo de Lucide.
 const icons: Record<string, ReactNode> = {
@@ -29,7 +29,7 @@ export function SocialIcon({ name, className = "size-4" }: { name: string; class
 }
 
 // Fila de redes en píldoras redondas; `tone` según el fondo.
-export function SocialLinks({ tone = "light", className = "" }: { tone?: "light" | "dark"; className?: string }) {
+export function SocialLinks({ redes, tone = "light", className = "" }: { redes: Config["redes"]; tone?: "light" | "dark"; className?: string }) {
   const shell =
     tone === "dark"
       ? "border-blanco-calido/60 hover:bg-blanco-calido hover:text-ink"

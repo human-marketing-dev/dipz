@@ -27,11 +27,11 @@ npm run deploy            # publica el Studio en https://dipz.sanity.studio
 ```
 
 `cargar-contenido` solo crea lo que todavía no existe, así que no pisa lo que ya se editó en el Studio.
-Para volver a dejar todo como está en el código: `npm run cargar-contenido -- --reemplazar` (borra los cambios hechos en el Studio).
+Para volver al contenido inicial (el de `seed/`): `npm run cargar-contenido -- --reemplazar` (borra los cambios hechos en el Studio).
 
 ## Para desarrolladores
 
 - Esquemas: `schemas/` (páginas en `paginas.ts`, desarrollos y blog en `documentos.ts`).
-- `seed/contenido.ndjson` se genera desde los archivos de contenido del sitio:
-  `npx tsx --import ./studio/scripts/webp-loader.mjs studio/scripts/generar-contenido.ts` (desde la raíz del repo).
+- `seed/contenido.ndjson`: el contenido inicial del sitio (noviembre 2026), el que sube `cargar-contenido`. Las fotos apuntan a `public/`.
+- El sitio lee Sanity en `lib/contenido.ts` (una sola consulta, caché de 1 minuto); los tipos están en `lib/sanity.ts`.
 - Probar el Studio en local: `npm run dev` (http://localhost:3333).

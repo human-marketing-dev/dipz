@@ -1,30 +1,27 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/site";
+import { getSitio, metadatosDe } from "@/lib/contenido";
 import { Cierre } from "@/components/home/Cierre";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
-import { unidades } from "@/components/unidades/content";
 import { UnidadSection, UnidadesHero } from "@/components/unidades/Unidades";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Unidades de negocio: desarrollo y operación",
-  description:
-    "DIPZ Desarrollos, DIPZ Development, Amelia Living y Fresh Coco: las unidades del grupo para desarrollar en México y Estados Unidos y operar propiedades.",
-  path: "/unidades-de-negocio",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return metadatosDe("unidadesNegocio", "/unidades-de-negocio");
+}
 
 // Una sola página con un ancla por marca (#dipz-desarrollos, #dipz-development, #amelia-living,
 // #fresh-coco). Si una marca necesita página propia, el ancla pasa a /unidades-de-negocio/<marca>.
-export default function UnidadesPage() {
+export default async function UnidadesPage() {
+  const { unidades: { items: unidades }, cierre } = (await getSitio()).unidadesNegocio;
   return (
     <>
       <Nav />
       <main className="flex-1">
         <UnidadesHero />
         {unidades.map((u, i) => (
-          <UnidadSection key={u.id} u={u} n={i + 1} />
+          <UnidadSection key={u.id} u={u} n={i + 1} total={unidades.length} />
         ))}
-        <Cierre />
+        <Cierre eyebrow={cierre?.eyebrow} title={cierre?.title} />
       </main>
       <Footer />
     </>

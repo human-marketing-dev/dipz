@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollWords } from "@/components/ui/ScrollWords";
-import { zeroGravity as zg } from "./content";
+import { getSitio } from "@/lib/contenido";
 
-export function ZeroGravity() {
+// El logo de Zero Gravity es parte de la marca y se queda en el código.
+const logo = { src: "/brand/zero-gravity-logo.webp", width: 1200, height: 960 };
+
+export async function ZeroGravity() {
+  const zg = (await getSitio()).inicio.zeroGravity;
   return (
     <section id="zero-gravity" data-nav="light" className="frame relative overflow-hidden bg-surface pt-16 pb-16 md:pt-30 md:pb-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
@@ -13,10 +17,10 @@ export function ZeroGravity() {
         {/* Logo de Zero Gravity a la izquierda del titular, a la altura de sus mayúsculas */}
         <Reveal delay={0.1} className="mt-6 flex items-center gap-4 md:col-span-4 md:mt-0 md:gap-6">
           <Image
-            src={zg.logo.src}
+            src={logo.src}
             alt=""
-            width={zg.logo.width}
-            height={zg.logo.height}
+            width={logo.width}
+            height={logo.height}
             sizes="160px"
             className="h-[clamp(40px,6.4vw,120px)] w-auto shrink-0"
           />

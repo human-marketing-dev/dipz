@@ -2,47 +2,52 @@
 
 import { useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
-import { proyectos } from "@/components/desarrollos/data";
-import { cierre } from "@/components/home/content";
+import { Media, type Photo } from "@/components/ui/Media";
 import { SocialLinks } from "@/components/ui/Social";
+import { telHref, type Config } from "@/lib/sanity";
 
 // Página de contacto. El correo y el horario del showroom siguen pendientes del cliente.
 
 const POR_CONFIRMAR = "Por confirmar";
 
-const intenciones = [
-  { id: "invertir", label: "Invertir", hint: "Te compartimos los modelos de inversión disponibles en México y Estados Unidos." },
-  { id: "vivir", label: "Comprar para vivir", hint: "Te mostramos los desarrollos y las unidades disponibles." },
-  { id: "operar", label: "Operar mi propiedad", hint: "Amelia Living evalúa tu propiedad para operarla en renta." },
-  { id: "otro", label: "Otro tema", hint: "Prensa, alianzas, proveedores o cualquier otro asunto." },
-];
-
-const canales = [
-  { label: "Teléfono", value: cierre.phone, href: "tel:+528119841517" },
-  { label: "Correo", value: POR_CONFIRMAR },
-  { label: "Redes", value: "redes" },
-];
+// Textos desde Sanity (página Contacto y Configuración general).
+type Encabezado = { eyebrow: string; title: string };
+type Motivo = { id: string; label: string; hint: string };
 
 const field =
   "w-full border-0 border-b border-line bg-transparent px-0 py-3 type-body text-ink placeholder:text-ink-muted focus:border-negro-profundo focus:outline-none";
 const fieldLabel = "type-caption tracking-[0.2em] text-ink-muted uppercase";
 
-export function ContactoHero() {
+export function ContactoHero({
+  hero,
+  paragraph,
+  contacto,
+  redes,
+}: {
+  hero: Encabezado;
+  paragraph: string;
+  contacto: Config["contacto"];
+  redes: Config["redes"];
+}) {
+  const canales = [
+    { label: "Teléfono", value: contacto.phone, href: telHref(contacto.phone) },
+    { label: "Correo", value: contacto.email || POR_CONFIRMAR, href: contacto.email ? `mailto:${contacto.email}` : undefined },
+    { label: "Redes", value: "redes" },
+  ];
   return (
     <section data-nav="light" className="frame bg-surface pt-36 pb-12 md:pt-48 md:pb-20">
       <div className="md:grid md:grid-cols-6 md:items-end md:gap-x-6">
         <div className="md:col-span-4">
           <Reveal as="p" className="type-eyebrow text-ink-muted">
-            Contacto
+            {hero.eyebrow}
           </Reveal>
           <Reveal as="h1" delay={0.1} className="mt-6 type-display-xl">
-            Hablemos.
+            {hero.title}
           </Reveal>
         </div>
         <Reveal as="p" delay={0.2} className="mt-6 max-w-[420px] type-body-lg text-ink-muted md:col-span-2 md:mt-0">
-          {cierre.paragraph}
+          {paragraph}
         </Reveal>
       </div>
 
@@ -54,7 +59,7 @@ export function ContactoHero() {
               <dt className={fieldLabel}>{c.label}</dt>
               <dd className={`mt-1 type-h3 ${c.value === POR_CONFIRMAR ? "text-ink-muted" : ""}`}>
                 {c.value === "redes" ? (
-                  <SocialLinks className="mt-1" />
+                  <SocialLinks redes={redes} className="mt-1" />
                 ) : c.href ? (
                   <a href={c.href} className="transition-colors duration-300 hover:text-accent">
                     {c.value}
@@ -71,7 +76,7 @@ export function ContactoHero() {
   );
 }
 
-export function ContactoForm() {
+export function ContactoForm({ motivos: intenciones, proyectos }: { motivos: Motivo[]; proyectos: string[] }) {
   const [intencion, setIntencion] = useState(intenciones[0].id);
   const activa = intenciones.find((i) => i.id === intencion)!;
   const conDesarrollo = intencion === "invertir" || intencion === "vivir";
@@ -127,7 +132,7 @@ export function ContactoForm() {
               <fieldset>
                 <legend className={fieldLabel}>Desarrollo de interés</legend>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {[...proyectos.map((p) => p.name), "Aún no sé"].map((name) => (
+                  {[...proyectos, "Aún no sé"].map((name) => (
                     <label key={name} className="cursor-pointer">
                       <input type="checkbox" name="desarrollo" value={name} className="peer sr-only" />
                       <span className="inline-block rounded-pill border border-line px-5 py-2.5 type-label transition-colors duration-300 peer-checked:border-negro-profundo peer-checked:bg-negro-profundo peer-checked:text-ink-inverse peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus hover:bg-blanco-calido">
@@ -191,17 +196,18 @@ export function ContactoForm() {
   );
 }
 
-export function Showroom() {
+export function Showroom({ showroom, contacto }: { showroom: Encabezado & { photo?: Photo }; contacto: Config["contacto"] }) {
+  const cierre = contacto;
   const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cierre.showroom)}`;
   return (
     <section data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
       <div className="md:grid md:grid-cols-6 md:gap-x-6">
         <div className="flex flex-col md:col-span-2">
           <Reveal as="p" className="type-eyebrow text-arena">
-            Showroom
+            {showroom.eyebrow}
           </Reveal>
           <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
-            San Pedro Garza García
+            {showroom.title}
           </Reveal>
           <Reveal as="p" delay={0.2} className="mt-6 max-w-[360px] type-body-lg text-arena">
             {cierre.showroom}
@@ -209,8 +215,8 @@ export function Showroom() {
           <Reveal delay={0.3} className="mt-10">
             <dl className="border-t border-blanco-calido/25">
               {[
-                { label: "Horario", value: POR_CONFIRMAR },
-                { label: "Citas", value: "Previa cita con un asesor" },
+                { label: "Horario", value: contacto.horario || POR_CONFIRMAR },
+                { label: "Citas", value: contacto.citas || POR_CONFIRMAR },
               ].map((r) => (
                 <div key={r.label} className="flex items-baseline justify-between gap-6 border-b border-blanco-calido/25 py-4">
                   <dt className="type-caption tracking-[0.2em] text-arena uppercase">{r.label}</dt>
@@ -234,7 +240,7 @@ export function Showroom() {
           </Reveal>
         </div>
         <Reveal delay={0.2} className="mt-12 md:col-span-4 md:mt-0">
-          <Placeholder label="Foto del showroom" drawing="interior" tone="dark" className="aspect-[16/10]" />
+          <Media photo={showroom.photo} sizes="(min-width: 768px) 66vw, 100vw" aspect={16 / 10} label="Foto del showroom" drawing="interior" tone="dark" className="aspect-[16/10]" />
         </Reveal>
       </div>
     </section>
