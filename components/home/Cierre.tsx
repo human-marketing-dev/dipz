@@ -58,7 +58,7 @@ export function Cierre({
                 {cierre.profiles.map((p) => (
                   <label key={p} className="cursor-pointer">
                     <input type="checkbox" name="perfil" value={p} className="peer sr-only" />
-                    <span className="inline-block rounded-pill border border-line px-5 py-2.5 type-label transition-colors duration-300 peer-checked:border-negro-profundo peer-checked:bg-negro-profundo peer-checked:text-ink-inverse peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus hover:bg-blanco-calido">
+                    <span className="inline-block rounded-pill border border-line px-5 py-2.5 type-label transition-colors duration-300 peer-checked:border-negro-profundo peer-checked:bg-negro-profundo peer-checked:text-ink-inverse peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus hover:border-negro-profundo hover:bg-negro-profundo hover:text-ink-inverse">
                       {p}
                     </span>
                   </label>
