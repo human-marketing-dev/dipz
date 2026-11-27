@@ -11,15 +11,13 @@ const HUBSPOT = {
   region: "na1", // si el código de inserción dice region: "eu1", cambiar aquí
 };
 
-// Campo del sitio → propiedad de contacto en HubSpot (las dipz_* son propiedades personalizadas).
-const PROPIEDADES: Record<string, string> = {
-  correo: "email",
-  telefono: "phone",
-  mensaje: "message",
-  perfil: "dipz_perfil",
-  desarrollo: "dipz_desarrollo",
-  motivo: "dipz_motivo",
-  propiedad: "dipz_ubicacion_propiedad",
+// Datos del sitio que HubSpot no trae como propiedad: van al inicio del Mensaje para que lleguen
+// en el aviso por correo sin crear propiedades personalizadas.
+const EXTRAS: Record<string, string> = {
+  motivo: "Motivo",
+  perfil: "Perfil",
+  desarrollo: "Desarrollo de interés",
+  propiedad: "Ubicación de la propiedad",
 };
 
 const LIMITE = 5000;
@@ -67,21 +65,31 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "config" }, { status: 500 });
   }
 
+  const extras = Object.entries(EXTRAS)
+    .map(([campo, etiqueta]) => (valor(campo) ? `${etiqueta}: ${valor(campo)}` : ""))
+    .filter(Boolean);
+  const message = [...extras, ...(extras.length && valor("mensaje") ? [""] : []), valor("mensaje")]
+    .join("\n")
+    .trim();
+
   // "Ana López García" → nombre "Ana", apellido "López García".
   const [firstname, ...resto] = nombre.split(/\s+/);
   const fields = [
     { name: "firstname", value: firstname },
     ...(resto.length ? [{ name: "lastname", value: resto.join(" ") }] : []),
-    ...Object.entries(PROPIEDADES)
-      .map(([campo, propiedad]) => ({ name: propiedad, value: valor(campo) }))
-      .filter((f) => f.value),
+    { name: "email", value: correo },
+    ...(valor("telefono") ? [{ name: "phone", value: valor("telefono") }] : []),
+    ...(message ? [{ name: "message", value: message }] : []),
   ];
 
-  const pagina = valor("pagina");
+  let pagina = "";
+  try {
+    pagina = new URL(valor("pagina")).href;
+  } catch {}
   const hutk = (await cookies()).get("hubspotutk")?.value;
   const context = {
     ...(hutk ? { hutk } : {}),
-    ...(pagina ? { pageUri: pagina, pageName: new URL(pagina).pathname || "/" } : {}),
+    ...(pagina ? { pageUri: pagina, pageName: new URL(pagina).pathname } : {}),
     ...(ip ? { ipAddress: ip } : {}),
   };
 
