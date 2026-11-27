@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { WhatsApp } from "@/components/ui/WhatsApp";
 import { pageMetadata, SITE_URL } from "@/lib/site";
 import { getSitio } from "@/lib/contenido";
@@ -31,6 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col overflow-x-clip bg-surface text-ink type-body antialiased">
         {children}
         <WhatsApp />
+        {/* Código de seguimiento de HubSpot (cuenta del cliente): ayuda a que HubSpot confíe en los
+            envíos de formularios (cookie hubspotutk) y registra visitas de cada contacto. */}
+        <Script id="hs-script-loader" src="https://js.hs-scripts.com/51097290.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -38,8 +38,10 @@ export function FormularioEnvio({ className, children }: { className?: string; c
     }
   }
 
+  // data-hs-do-not-collect: que el código de seguimiento de HubSpot no capture el formulario por su
+  // cuenta (ya lo enviamos nosotros; evitaría envíos duplicados).
   return (
-    <form className={className} onSubmit={enviar} aria-busy={estado === "enviando"}>
+    <form className={className} onSubmit={enviar} aria-busy={estado === "enviando"} data-hs-do-not-collect="true">
       {/* Campo trampa para bots: oculto a personas y lectores de pantalla */}
       <input type="text" name="empresa_web" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       {children}
