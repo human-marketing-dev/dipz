@@ -1,22 +1,25 @@
-import nodemailer from "nodemailer";
+import { cookies } from "next/headers";
 
-// Recibe los formularios del sitio (bloque de contacto y /contacto) y los manda por correo vía SMTP.
-// Funciona con el SMTP de HubSpot o con el de cualquier proveedor de correo. Los datos viven en
-// el archivo .env.local del servidor (nunca en el código):
-//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS  → servidor y acceso SMTP
-//   CONTACTO_PARA                                → a quién llega (varios separados por coma)
-//   CONTACTO_DE (opcional)                       → remitente; si falta se usa SMTP_USER
+// Recibe los formularios del sitio (bloque de contacto y /contacto) y los manda a un formulario
+// "buzón" de HubSpot que nunca se muestra en el sitio. HubSpot guarda el contacto en el CRM y
+// envía el aviso por correo a quien esté configurado en ese formulario.
+// Usa el endpoint público de envío de formularios (no requiere token ni plan de pago).
+// Portal ID y Form ID salen del código de inserción del formulario en HubSpot.
+const HUBSPOT = {
+  portalId: "",
+  formId: "",
+  region: "na1", // si el código de inserción dice region: "eu1", cambiar aquí
+};
 
-const ETIQUETAS: Record<string, string> = {
-  motivo: "Motivo",
-  perfil: "Perfil",
-  desarrollo: "Desarrollo de interés",
-  propiedad: "Ubicación de la propiedad",
-  nombre: "Nombre",
-  correo: "Correo",
-  telefono: "Teléfono",
-  mensaje: "Mensaje",
-  pagina: "Enviado desde",
+// Campo del sitio → propiedad de contacto en HubSpot (las dipz_* son propiedades personalizadas).
+const PROPIEDADES: Record<string, string> = {
+  correo: "email",
+  telefono: "phone",
+  mensaje: "message",
+  perfil: "dipz_perfil",
+  desarrollo: "dipz_desarrollo",
+  motivo: "dipz_motivo",
+  propiedad: "dipz_ubicacion_propiedad",
 };
 
 const LIMITE = 5000;
@@ -31,9 +34,6 @@ function permitido(ip: string) {
   return true;
 }
 
-const escapar = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
-
 export async function POST(request: Request) {
   let form: FormData;
   try {
@@ -46,58 +46,58 @@ export async function POST(request: Request) {
   if (String(form.get("empresa_web") ?? "")) return Response.json({ ok: true });
 
   // Junta cada campo (los de casillas pueden venir repetidos).
-  const datos: Record<string, string> = {};
-  for (const clave of Object.keys(ETIQUETAS)) {
-    const valores = form
+  const valor = (clave: string) =>
+    form
       .getAll(clave)
       .map((v) => String(v).trim().slice(0, LIMITE))
-      .filter(Boolean);
-    if (valores.length) datos[clave] = valores.join(", ");
-  }
+      .filter(Boolean)
+      .join("; ");
 
-  const correo = datos.correo ?? "";
-  if (!datos.nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+  const nombre = valor("nombre");
+  const correo = valor("correo");
+  if (!nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
     return Response.json({ ok: false, error: "datos" }, { status: 400 });
   }
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "local";
-  if (!permitido(ip)) return Response.json({ ok: false, error: "limite" }, { status: 429 });
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "";
+  if (!permitido(ip || "local")) return Response.json({ ok: false, error: "limite" }, { status: 429 });
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACTO_PARA, CONTACTO_DE } = process.env;
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACTO_PARA) {
-    console.error("[contacto] Faltan variables SMTP en .env.local");
+  if (!HUBSPOT.portalId || !HUBSPOT.formId) {
+    console.error("[contacto] Falta Portal ID / Form ID de HubSpot en app/api/contacto/route.ts");
     return Response.json({ ok: false, error: "config" }, { status: 500 });
   }
 
-  const puerto = Number(SMTP_PORT || 587);
-  const transporte = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: puerto,
-    secure: puerto === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
+  // "Ana López García" → nombre "Ana", apellido "López García".
+  const [firstname, ...resto] = nombre.split(/\s+/);
+  const fields = [
+    { name: "firstname", value: firstname },
+    ...(resto.length ? [{ name: "lastname", value: resto.join(" ") }] : []),
+    ...Object.entries(PROPIEDADES)
+      .map(([campo, propiedad]) => ({ name: propiedad, value: valor(campo) }))
+      .filter((f) => f.value),
+  ];
 
-  const filas = Object.entries(datos).map(([k, v]) => [ETIQUETAS[k], v] as const);
-  const texto = filas.map(([k, v]) => `${k}: ${v}`).join("\n");
-  const html = `<table cellpadding="6" style="font-family:Arial,sans-serif;font-size:14px;border-collapse:collapse">${filas
-    .map(
-      ([k, v]) =>
-        `<tr><td style="color:#666;vertical-align:top;white-space:nowrap"><strong>${k}</strong></td><td>${escapar(v).replace(/\n/g, "<br>")}</td></tr>`,
-    )
-    .join("")}</table>`;
+  const pagina = valor("pagina");
+  const hutk = (await cookies()).get("hubspotutk")?.value;
+  const context = {
+    ...(hutk ? { hutk } : {}),
+    ...(pagina ? { pageUri: pagina, pageName: new URL(pagina).pathname || "/" } : {}),
+    ...(ip ? { ipAddress: ip } : {}),
+  };
 
+  const host = HUBSPOT.region === "na1" ? "api.hsforms.com" : `api-${HUBSPOT.region}.hsforms.com`;
   try {
-    await transporte.sendMail({
-      from: { name: "Sitio web DIPZ", address: CONTACTO_DE || SMTP_USER },
-      to: CONTACTO_PARA,
-      replyTo: { name: datos.nombre, address: correo },
-      subject: `Nuevo contacto desde el sitio: ${datos.nombre}${datos.motivo ? ` (${datos.motivo})` : ""}`,
-      text: texto,
-      html,
-    });
+    const res = await fetch(
+      `https://${host}/submissions/v3/integration/submit/${HUBSPOT.portalId}/${HUBSPOT.formId}`,
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields, context }) },
+    );
+    if (!res.ok) {
+      console.error("[contacto] HubSpot rechazó el envío", res.status, await res.text());
+      return Response.json({ ok: false, error: "envio" }, { status: 502 });
+    }
     return Response.json({ ok: true });
   } catch (e) {
-    console.error("[contacto] Error al enviar por SMTP", e);
+    console.error("[contacto] No se pudo contactar a HubSpot", e);
     return Response.json({ ok: false, error: "envio" }, { status: 502 });
   }
 }
