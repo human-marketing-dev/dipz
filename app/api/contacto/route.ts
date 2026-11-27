@@ -6,8 +6,8 @@ import { cookies } from "next/headers";
 // Usa el endpoint público de envío de formularios (no requiere token ni plan de pago).
 // Portal ID y Form ID salen del código de inserción del formulario en HubSpot.
 const HUBSPOT = {
-  portalId: "",
-  formId: "",
+  portalId: "51097290",
+  formId: "8d35375a-91ed-4bd9-ac33-5ac465d9a81c",
   region: "na1", // si el código de inserción dice region: "eu1", cambiar aquí
 };
 
