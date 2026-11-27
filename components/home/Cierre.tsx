@@ -3,6 +3,7 @@ import { Arrow } from "@/components/ui/ArrowLink";
 import { SocialLinks } from "@/components/ui/Social";
 import { getSitio } from "@/lib/contenido";
 import { telHref } from "@/lib/sanity";
+import { FormularioEnvio } from "@/components/ui/FormularioEnvio";
 
 const field =
   "w-full border-0 border-b border-line bg-transparent px-0 py-3 type-body text-ink placeholder:text-ink-muted focus:border-negro-profundo focus:outline-none focus-visible:outline-none";
@@ -48,7 +49,7 @@ export async function Cierre({ eyebrow, title, interes }: { eyebrow?: string; ti
 
         {/* Formulario de la mitad al margen, alineado arriba */}
         <Reveal delay={0.2} className="mt-16 md:col-span-3 md:mt-0">
-          <form className="flex flex-col gap-8" action="#">
+          <FormularioEnvio className="flex flex-col gap-8">
             {interes && <input type="hidden" name="desarrollo" value={interes} />}
             <fieldset>
               <legend className="type-caption tracking-[0.2em] text-ink-muted uppercase">Soy</legend>
@@ -64,13 +65,13 @@ export async function Cierre({ eyebrow, title, interes }: { eyebrow?: string; ti
               </div>
             </fieldset>
             {[
-              { name: "nombre", label: "Nombre", type: "text" },
-              { name: "correo", label: "Correo electrónico", type: "email" },
-              { name: "telefono", label: "Teléfono", type: "tel" },
+              { name: "nombre", label: "Nombre", type: "text", auto: "name", required: true },
+              { name: "correo", label: "Correo electrónico", type: "email", auto: "email", required: true },
+              { name: "telefono", label: "Teléfono", type: "tel", auto: "tel", required: false },
             ].map((f) => (
               <label key={f.name} className="block">
                 <span className="type-caption tracking-[0.2em] text-ink-muted uppercase">{f.label}</span>
-                <input name={f.name} type={f.type} className={field} />
+                <input name={f.name} type={f.type} autoComplete={f.auto} required={f.required} className={field} />
               </label>
             ))}
             <label className="block">
@@ -100,7 +101,7 @@ export async function Cierre({ eyebrow, title, interes }: { eyebrow?: string; ti
                 </span>
               </a>
             </div>
-          </form>
+          </FormularioEnvio>
         </Reveal>
       </div>
     </section>
