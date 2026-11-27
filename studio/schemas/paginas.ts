@@ -309,10 +309,6 @@ export const contacto = pagina("contacto", "Contacto", [
       ],
     }),
   ]),
-  seccion("showroom", "Showroom", [
-    ...encabezado(),
-    foto("photo", "Foto del showroom", { description: "Mientras no haya foto se muestra la ilustración." }),
-  ]),
 ]);
 
 // ─── Blog (índice) ───────────────────────────────────────────────────────────────────
@@ -354,9 +350,8 @@ export const configuracion = pagina("configuracion", "Configuración general", [
   ]),
   seccion("contacto", "Datos de contacto", [
     texto("phone", "Teléfono", { description: "Como se muestra, p. ej. +52 81 1984 1517." }),
-    texto("email", "Correo", { description: "Vacío: se muestra “Por confirmar”." }),
+    texto("email", "Correo", { description: "Vacío: se muestra contacto@dipz.mx." }),
     texto("showroom", "Dirección del showroom"),
-    texto("horario", "Horario del showroom", { description: "Vacío: se muestra “Por confirmar”." }),
     texto("citas", "Citas"),
   ]),
   seccion("redes", "Redes sociales", [

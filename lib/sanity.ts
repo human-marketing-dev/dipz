@@ -74,7 +74,7 @@ type Cierre = Partial<Encabezado>;
 
 export type Config = {
   seo: { title: string; description: string };
-  contacto: { phone: string; email?: string; showroom: string; horario?: string; citas?: string };
+  contacto: { phone: string; email?: string; showroom: string; citas?: string };
   redes: { name: string; handle: string; href: string }[];
   whatsapp: { number: string; greeting: string; message: string };
   cierre: Encabezado & { paragraph: string; primary: string; secondary: string; profiles: string[] };
@@ -172,6 +172,8 @@ function aBloques(body: BloqueSanity[] = []): Block[] {
 }
 
 export const POR_CONFIRMAR = "Por confirmar";
+// Correo de contacto si en Sanity el campo está vacío.
+export const CORREO_CONTACTO = "contacto@dipz.mx";
 
 export type Entrada = {
   slug: string;
