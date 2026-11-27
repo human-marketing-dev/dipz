@@ -5,6 +5,7 @@ import { Arrow } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media, type Photo } from "@/components/ui/Media";
 import { SocialLinks } from "@/components/ui/Social";
+import { FormularioEnvio } from "@/components/ui/FormularioEnvio";
 import { telHref, type Config } from "@/lib/sanity";
 
 // Página de contacto. El correo y el horario del showroom siguen pendientes del cliente.
@@ -126,7 +127,7 @@ export function ContactoForm({ motivos: intenciones, proyectos }: { motivos: Mot
         </div>
 
         <Reveal delay={0.2} className="mt-14 md:col-span-3 md:col-start-4 md:mt-0">
-          <form className="flex flex-col gap-8" action="#">
+          <FormularioEnvio className="flex flex-col gap-8">
             <input type="hidden" name="motivo" value={activa.label} />
             {conDesarrollo && (
               <fieldset>
@@ -189,7 +190,7 @@ export function ContactoForm({ motivos: intenciones, proyectos }: { motivos: Mot
                 </span>
               </button>
             </div>
-          </form>
+          </FormularioEnvio>
         </Reveal>
       </div>
     </section>
