@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
+import { enviarAHubspot } from "@/lib/hubspot";
 
-// Envuelve los formularios del sitio: los manda a /api/contacto (que los envía por correo SMTP)
-// y muestra el estado debajo, sin cambiar el diseño del formulario.
+// Envuelve los formularios del sitio: los manda a HubSpot (lib/hubspot.ts) y muestra el estado
+// debajo, sin cambiar el diseño del formulario.
 
 type Estado = "listo" | "enviando" | "enviado" | "error";
 
@@ -21,11 +22,15 @@ export function FormularioEnvio({ className, children }: { className?: string; c
     if (estado === "enviando") return;
     const form = e.currentTarget;
     const datos = new FormData(form);
-    datos.set("pagina", window.location.href);
+    // Campo trampa lleno = bot: se finge éxito sin enviar.
+    if (String(datos.get("empresa_web") ?? "")) {
+      form.reset();
+      setEstado("enviado");
+      return;
+    }
     setEstado("enviando");
     try {
-      const res = await fetch("/api/contacto", { method: "POST", body: datos });
-      if (!res.ok) throw new Error(String(res.status));
+      if (!(await enviarAHubspot(datos))) throw new Error("HubSpot");
       form.reset();
       setEstado("enviado");
     } catch {
