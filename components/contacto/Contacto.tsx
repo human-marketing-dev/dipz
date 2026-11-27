@@ -3,14 +3,11 @@
 import { useState } from "react";
 import { Arrow } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
-import { Media, type Photo } from "@/components/ui/Media";
 import { SocialLinks } from "@/components/ui/Social";
 import { FormularioEnvio } from "@/components/ui/FormularioEnvio";
-import { telHref, type Config } from "@/lib/sanity";
+import { CORREO_CONTACTO, telHref, type Config } from "@/lib/sanity";
 
-// Página de contacto. El correo y el horario del showroom siguen pendientes del cliente.
-
-const POR_CONFIRMAR = "Por confirmar";
+// Página de contacto.
 
 // Textos desde Sanity (página Contacto y Configuración general).
 type Encabezado = { eyebrow: string; title: string };
@@ -31,9 +28,10 @@ export function ContactoHero({
   contacto: Config["contacto"];
   redes: Config["redes"];
 }) {
+  const correo = contacto.email || CORREO_CONTACTO;
   const canales = [
     { label: "Teléfono", value: contacto.phone, href: telHref(contacto.phone) },
-    { label: "Correo", value: contacto.email || POR_CONFIRMAR, href: contacto.email ? `mailto:${contacto.email}` : undefined },
+    { label: "Correo", value: correo, href: `mailto:${correo}` },
     { label: "Redes", value: "redes" },
   ];
   return (
@@ -58,7 +56,7 @@ export function ContactoHero({
           {canales.map((c) => (
             <div key={c.label}>
               <dt className={fieldLabel}>{c.label}</dt>
-              <dd className={`mt-1 type-h3 ${c.value === POR_CONFIRMAR ? "text-ink-muted" : ""}`}>
+              <dd className="mt-1 type-h3 break-words">
                 {c.value === "redes" ? (
                   <SocialLinks redes={redes} className="mt-1" />
                 ) : c.href ? (
@@ -191,57 +189,6 @@ export function ContactoForm({ motivos: intenciones, proyectos }: { motivos: Mot
               </button>
             </div>
           </FormularioEnvio>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-export function Showroom({ showroom, contacto }: { showroom: Encabezado & { photo?: Photo }; contacto: Config["contacto"] }) {
-  const cierre = contacto;
-  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cierre.showroom)}`;
-  return (
-    <section data-nav="dark" className="frame bg-surface-inverse py-16 text-ink-inverse md:py-30">
-      <div className="md:grid md:grid-cols-6 md:gap-x-6">
-        <div className="flex flex-col md:col-span-2">
-          <Reveal as="p" className="type-eyebrow text-arena">
-            {showroom.eyebrow}
-          </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-6 type-h2 md:type-h1">
-            {showroom.title}
-          </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-6 max-w-[360px] type-body-lg text-arena">
-            {cierre.showroom}
-          </Reveal>
-          <Reveal delay={0.3} className="mt-10">
-            <dl className="border-t border-blanco-calido/25">
-              {[
-                { label: "Horario", value: contacto.horario || POR_CONFIRMAR },
-                { label: "Citas", value: contacto.citas || POR_CONFIRMAR },
-              ].map((r) => (
-                <div key={r.label} className="flex items-baseline justify-between gap-6 border-b border-blanco-calido/25 py-4">
-                  <dt className="type-caption tracking-[0.2em] text-arena uppercase">{r.label}</dt>
-                  <dd className={`text-right type-small ${r.value === POR_CONFIRMAR ? "text-arena" : ""}`}>{r.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-          <Reveal delay={0.4} className="mt-10 md:mt-auto md:pt-10">
-            <a
-              href={maps}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center gap-4 rounded-pill border border-blanco-calido/60 py-2 pr-2 pl-6 type-label transition-colors duration-500 hover:bg-blanco-calido hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-            >
-              Cómo llegar
-              <span className="grid size-10 place-items-center rounded-pill bg-blanco-calido text-ink">
-                <Arrow className="arrow-nudge -rotate-45" />
-              </span>
-            </a>
-          </Reveal>
-        </div>
-        <Reveal delay={0.2} className="mt-12 md:col-span-4 md:mt-0">
-          <Media photo={showroom.photo} sizes="(min-width: 768px) 66vw, 100vw" aspect={16 / 10} label="Foto del showroom" drawing="interior" tone="dark" className="aspect-[16/10]" />
         </Reveal>
       </div>
     </section>

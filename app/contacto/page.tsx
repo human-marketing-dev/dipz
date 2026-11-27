@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/site";
 import { getSitio } from "@/lib/contenido";
-import { ContactoForm, ContactoHero, Showroom } from "@/components/contacto/Contacto";
+import { ContactoForm, ContactoHero } from "@/components/contacto/Contacto";
 import { Footer } from "@/components/home/Footer";
 import { Nav } from "@/components/home/Nav";
 
 type ContactoPagina = {
   hero: { eyebrow: string; title: string };
   formulario: { motivos: { id: string; label: string; hint: string }[] };
-  showroom: { eyebrow: string; title: string; photo?: import("@/components/ui/Media").Photo };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -26,7 +25,6 @@ export default async function ContactoPage() {
       <main className="flex-1">
         <ContactoHero hero={c.hero} paragraph={config.cierre.paragraph} contacto={config.contacto} redes={config.redes} />
         <ContactoForm motivos={c.formulario.motivos} proyectos={s.desarrollos.map((d) => d.name)} />
-        <Showroom showroom={c.showroom} contacto={config.contacto} />
       </main>
       <Footer />
     </>

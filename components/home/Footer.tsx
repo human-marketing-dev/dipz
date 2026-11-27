@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getSitio } from "@/lib/contenido";
-import { telHref } from "@/lib/sanity";
+import { CORREO_CONTACTO, telHref } from "@/lib/sanity";
 
 export async function Footer() {
   const s = await getSitio();
@@ -13,7 +13,7 @@ export async function Footer() {
       title: "Contacto",
       links: [
         { label: contacto.phone, href: telHref(contacto.phone) },
-        { label: "Showroom en San Pedro", href: "/contacto" },
+        { label: contacto.email || CORREO_CONTACTO, href: `mailto:${contacto.email || CORREO_CONTACTO}` },
         ...redes.map((r) => ({ label: r.name, href: r.href })),
       ],
     },
